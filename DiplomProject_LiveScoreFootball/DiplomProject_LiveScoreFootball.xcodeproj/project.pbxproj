@@ -13,6 +13,23 @@
 		8425490328A1BC850078427F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8425490128A1BC850078427F /* Main.storyboard */; };
 		8425490528A1BC880078427F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8425490428A1BC880078427F /* Assets.xcassets */; };
 		8425490828A1BC880078427F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8425490628A1BC880078427F /* LaunchScreen.storyboard */; };
+		8425491128A32D260078427F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8425491028A32D260078427F /* Alamofire */; };
+		8425491428A32E1E0078427F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8425491328A32E1E0078427F /* Realm */; };
+		8425491628A32E1E0078427F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8425491528A32E1E0078427F /* RealmSwift */; };
+		8425491828A32E3C0078427F /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425491728A32E3C0078427F /* Countries.swift */; };
+		8425491B28A333FC0078427F /* LeaguesByCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425491A28A333FC0078427F /* LeaguesByCountry.swift */; };
+		84B1D79728A4A6420004A6FF /* LeagueTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D79628A4A6420004A6FF /* LeagueTable.swift */; };
+		84B1D79928A4A8F30004A6FF /* TimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D79828A4A8F30004A6FF /* TimeZone.swift */; };
+		84B1D79B28A4A9C40004A6FF /* LiveMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D79A28A4A9C40004A6FF /* LiveMatches.swift */; };
+		84B1D79D28A4ACB60004A6FF /* MatchesByDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D79C28A4ACB60004A6FF /* MatchesByDate.swift */; };
+		84B1D79F28A4B2510004A6FF /* MatchesByLeague.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D79E28A4B2510004A6FF /* MatchesByLeague.swift */; };
+		84B1D7A128A4B54B0004A6FF /* MatchComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D7A028A4B54B0004A6FF /* MatchComments.swift */; };
+		84B1D7A328A4B6110004A6FF /* MatchEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D7A228A4B6110004A6FF /* MatchEvents.swift */; };
+		84B1D7A528A4B7A60004A6FF /* MatchHeadToHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D7A428A4B7A60004A6FF /* MatchHeadToHead.swift */; };
+		84B1D7A728A4B98F0004A6FF /* MatchLineups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D7A628A4B98F0004A6FF /* MatchLineups.swift */; };
+		84B1D7A928A4BB0C0004A6FF /* MatchStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D7A828A4BB0C0004A6FF /* MatchStatistics.swift */; };
+		84B1D7AB28A4BC990004A6FF /* AlamofireAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D7AA28A4BC990004A6FF /* AlamofireAPIProvider.swift */; };
+		84B1D7AE28A4C1370004A6FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D7AD28A4C1370004A6FF /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +41,20 @@
 		8425490428A1BC880078427F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8425490728A1BC880078427F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8425490928A1BC880078427F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8425491728A32E3C0078427F /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		8425491A28A333FC0078427F /* LeaguesByCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesByCountry.swift; sourceTree = "<group>"; };
+		84B1D79628A4A6420004A6FF /* LeagueTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTable.swift; sourceTree = "<group>"; };
+		84B1D79828A4A8F30004A6FF /* TimeZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZone.swift; sourceTree = "<group>"; };
+		84B1D79A28A4A9C40004A6FF /* LiveMatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatches.swift; sourceTree = "<group>"; };
+		84B1D79C28A4ACB60004A6FF /* MatchesByDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesByDate.swift; sourceTree = "<group>"; };
+		84B1D79E28A4B2510004A6FF /* MatchesByLeague.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesByLeague.swift; sourceTree = "<group>"; };
+		84B1D7A028A4B54B0004A6FF /* MatchComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchComments.swift; sourceTree = "<group>"; };
+		84B1D7A228A4B6110004A6FF /* MatchEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchEvents.swift; sourceTree = "<group>"; };
+		84B1D7A428A4B7A60004A6FF /* MatchHeadToHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHeadToHead.swift; sourceTree = "<group>"; };
+		84B1D7A628A4B98F0004A6FF /* MatchLineups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchLineups.swift; sourceTree = "<group>"; };
+		84B1D7A828A4BB0C0004A6FF /* MatchStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchStatistics.swift; sourceTree = "<group>"; };
+		84B1D7AA28A4BC990004A6FF /* AlamofireAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAPIProvider.swift; sourceTree = "<group>"; };
+		84B1D7AD28A4C1370004A6FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8425491628A32E1E0078427F /* RealmSwift in Frameworks */,
+				8425491428A32E1E0078427F /* Realm in Frameworks */,
+				8425491128A32D260078427F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,12 +93,42 @@
 				842548FB28A1BC850078427F /* AppDelegate.swift */,
 				842548FD28A1BC850078427F /* SceneDelegate.swift */,
 				842548FF28A1BC850078427F /* ViewController.swift */,
+				84B1D7AD28A4C1370004A6FF /* Constants.swift */,
+				84B1D7AC28A4BCA20004A6FF /* Services */,
+				8425491928A32EAE0078427F /* Models */,
 				8425490128A1BC850078427F /* Main.storyboard */,
 				8425490428A1BC880078427F /* Assets.xcassets */,
 				8425490628A1BC880078427F /* LaunchScreen.storyboard */,
 				8425490928A1BC880078427F /* Info.plist */,
 			);
 			path = DiplomProject_LiveScoreFootball;
+			sourceTree = "<group>";
+		};
+		8425491928A32EAE0078427F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8425491728A32E3C0078427F /* Countries.swift */,
+				8425491A28A333FC0078427F /* LeaguesByCountry.swift */,
+				84B1D79628A4A6420004A6FF /* LeagueTable.swift */,
+				84B1D79828A4A8F30004A6FF /* TimeZone.swift */,
+				84B1D79A28A4A9C40004A6FF /* LiveMatches.swift */,
+				84B1D79C28A4ACB60004A6FF /* MatchesByDate.swift */,
+				84B1D79E28A4B2510004A6FF /* MatchesByLeague.swift */,
+				84B1D7A028A4B54B0004A6FF /* MatchComments.swift */,
+				84B1D7A228A4B6110004A6FF /* MatchEvents.swift */,
+				84B1D7A428A4B7A60004A6FF /* MatchHeadToHead.swift */,
+				84B1D7A628A4B98F0004A6FF /* MatchLineups.swift */,
+				84B1D7A828A4BB0C0004A6FF /* MatchStatistics.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		84B1D7AC28A4BCA20004A6FF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84B1D7AA28A4BC990004A6FF /* AlamofireAPIProvider.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +147,11 @@
 			dependencies = (
 			);
 			name = DiplomProject_LiveScoreFootball;
+			packageProductDependencies = (
+				8425491028A32D260078427F /* Alamofire */,
+				8425491328A32E1E0078427F /* Realm */,
+				8425491528A32E1E0078427F /* RealmSwift */,
+			);
 			productName = DiplomProject_LiveScoreFootball;
 			productReference = 842548F828A1BC850078427F /* DiplomProject_LiveScoreFootball.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +180,10 @@
 				Base,
 			);
 			mainGroup = 842548EF28A1BC850078427F;
+			packageReferences = (
+				8425490F28A32D260078427F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				8425491228A32E1E0078427F /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 842548F928A1BC850078427F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,8 +212,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				8425490028A1BC850078427F /* ViewController.swift in Sources */,
+				84B1D7AE28A4C1370004A6FF /* Constants.swift in Sources */,
+				84B1D79B28A4A9C40004A6FF /* LiveMatches.swift in Sources */,
+				8425491B28A333FC0078427F /* LeaguesByCountry.swift in Sources */,
+				84B1D79F28A4B2510004A6FF /* MatchesByLeague.swift in Sources */,
 				842548FC28A1BC850078427F /* AppDelegate.swift in Sources */,
+				84B1D7A528A4B7A60004A6FF /* MatchHeadToHead.swift in Sources */,
+				84B1D7A128A4B54B0004A6FF /* MatchComments.swift in Sources */,
+				84B1D7A328A4B6110004A6FF /* MatchEvents.swift in Sources */,
+				84B1D79928A4A8F30004A6FF /* TimeZone.swift in Sources */,
+				84B1D79728A4A6420004A6FF /* LeagueTable.swift in Sources */,
+				84B1D7AB28A4BC990004A6FF /* AlamofireAPIProvider.swift in Sources */,
+				84B1D7A728A4B98F0004A6FF /* MatchLineups.swift in Sources */,
 				842548FE28A1BC850078427F /* SceneDelegate.swift in Sources */,
+				84B1D79D28A4ACB60004A6FF /* MatchesByDate.swift in Sources */,
+				8425491828A32E3C0078427F /* Countries.swift in Sources */,
+				84B1D7A928A4BB0C0004A6FF /* MatchStatistics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +445,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8425490F28A32D260078427F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		8425491228A32E1E0078427F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8425491028A32D260078427F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8425490F28A32D260078427F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		8425491328A32E1E0078427F /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8425491228A32E1E0078427F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		8425491528A32E1E0078427F /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8425491228A32E1E0078427F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 842548F028A1BC850078427F /* Project object */;
 }
