@@ -13,7 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if let valueAPIkey =  Bundle.main.infoDictionary?["API_KEY"] as? String {
+            Constants.valueAPIkey = valueAPIkey
+        }
         return true
     }
 

@@ -11,14 +11,7 @@ import Alamofire
 
 struct Constants {
     
-    static var valueAPIkey: String {
-        var valueKey = String()
-        if let valueAPIkey =  Bundle.main.infoDictionary?["API_KEY"] as? String {
-            valueKey = valueAPIkey
-        }
-        return valueKey
-    }
-        
+    static var valueAPIkey: String!
     static let headers: HTTPHeaders = [
         "X-RapidAPI-Key" : valueAPIkey,
         "X-RapidAPI-Host" : "livescore-football.p.rapidapi.com"
