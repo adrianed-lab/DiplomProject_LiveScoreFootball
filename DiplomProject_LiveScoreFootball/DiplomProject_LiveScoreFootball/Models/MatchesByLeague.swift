@@ -20,7 +20,7 @@ struct DataMatchInfo: Codable {
     let lastUpdate: Int
     let team1: Team1Class
     let score: ScoreMatch
-    let time: TimeClassMatch
+    let time: TimeMatch
     let roundInfo: String
 
     enum CodingKeys: String, CodingKey {
@@ -45,39 +45,11 @@ struct ScoreMatch: Codable {
 }
 
 struct TimeMatch: Codable {
-    let team1, team2: Team1Union
+    let team1, team2: String?
 
     enum CodingKeys: String, CodingKey {
         case team1 = "team_1"
         case team2 = "team_2"
-    }
-}
-
-enum Team1Union: Codable {
-    case integer(Int)
-    case string(String)
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let x = try? container.decode(Int.self) {
-            self = .integer(x)
-            return
-        }
-        if let x = try? container.decode(String.self) {
-            self = .string(x)
-            return
-        }
-        throw DecodingError.typeMismatch(Team1Union.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for Team1_Union"))
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .integer(let x):
-            try container.encode(x)
-        case .string(let x):
-            try container.encode(x)
-        }
     }
 }
 
