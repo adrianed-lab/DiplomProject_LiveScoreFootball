@@ -12,7 +12,7 @@ import Alamofire
 struct Constants {
     
     static var valueAPIkey: String {
-        guard let key = Bundle.main.infoDictionary?["API_KEY"] as? String else {return ""}
+        guard let key = Bundle.main.infoDictionary?["API_KEY"] as? String else {return String()}
         return key
     }
     static let headers: HTTPHeaders = [

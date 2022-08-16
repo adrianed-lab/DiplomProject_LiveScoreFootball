@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8414492B28AC2B5000308711 /* PresenterScoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492828AC2B4F00308711 /* PresenterScoreVC.swift */; };
+		8414492C28AC2B5000308711 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492A28AC2B4F00308711 /* ScoreViewController.swift */; };
+		8414492F28AC2B9B00308711 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492D28AC2B9B00308711 /* Router.swift */; };
+		8414493028AC2B9B00308711 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492E28AC2B9B00308711 /* ModuleBuilder.swift */; };
 		842548FC28A1BC850078427F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842548FB28A1BC850078427F /* AppDelegate.swift */; };
 		842548FE28A1BC850078427F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842548FD28A1BC850078427F /* SceneDelegate.swift */; };
-		8425490028A1BC850078427F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842548FF28A1BC850078427F /* ViewController.swift */; };
 		8425490328A1BC850078427F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8425490128A1BC850078427F /* Main.storyboard */; };
 		8425490528A1BC880078427F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8425490428A1BC880078427F /* Assets.xcassets */; };
 		8425490828A1BC880078427F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8425490628A1BC880078427F /* LaunchScreen.storyboard */; };
@@ -33,10 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8414492828AC2B4F00308711 /* PresenterScoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenterScoreVC.swift; sourceTree = "<group>"; };
+		8414492A28AC2B4F00308711 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		8414492D28AC2B9B00308711 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = DiplomProject_LiveScoreFootball/Router.swift; sourceTree = SOURCE_ROOT; };
+		8414492E28AC2B9B00308711 /* ModuleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModuleBuilder.swift; path = DiplomProject_LiveScoreFootball/ModuleBuilder.swift; sourceTree = SOURCE_ROOT; };
 		842548F828A1BC850078427F /* DiplomProject_LiveScoreFootball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiplomProject_LiveScoreFootball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842548FB28A1BC850078427F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842548FD28A1BC850078427F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		842548FF28A1BC850078427F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8425490228A1BC850078427F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8425490428A1BC880078427F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8425490728A1BC880078427F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,6 +77,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8414492628AC2B4F00308711 /* ScoreModule */ = {
+			isa = PBXGroup;
+			children = (
+				8414492728AC2B4F00308711 /* Presenter */,
+				8414492928AC2B4F00308711 /* View */,
+			);
+			name = ScoreModule;
+			path = DiplomProject_LiveScoreFootball/ScoreModule;
+			sourceTree = SOURCE_ROOT;
+		};
+		8414492728AC2B4F00308711 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8414492828AC2B4F00308711 /* PresenterScoreVC.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8414492928AC2B4F00308711 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8414492A28AC2B4F00308711 /* ScoreViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		842548EF28A1BC850078427F = {
 			isa = PBXGroup;
 			children = (
@@ -92,9 +124,11 @@
 			children = (
 				842548FB28A1BC850078427F /* AppDelegate.swift */,
 				842548FD28A1BC850078427F /* SceneDelegate.swift */,
-				842548FF28A1BC850078427F /* ViewController.swift */,
 				84B1D7AD28A4C1370004A6FF /* Constants.swift */,
+				8414492E28AC2B9B00308711 /* ModuleBuilder.swift */,
+				8414492D28AC2B9B00308711 /* Router.swift */,
 				84B1D7AC28A4BCA20004A6FF /* Services */,
+				8414492628AC2B4F00308711 /* ScoreModule */,
 				8425491928A32EAE0078427F /* Models */,
 				8425490128A1BC850078427F /* Main.storyboard */,
 				8425490428A1BC880078427F /* Assets.xcassets */,
@@ -211,13 +245,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8425490028A1BC850078427F /* ViewController.swift in Sources */,
 				84B1D7AE28A4C1370004A6FF /* Constants.swift in Sources */,
 				84B1D79B28A4A9C40004A6FF /* LiveMatches.swift in Sources */,
 				8425491B28A333FC0078427F /* LeaguesByCountry.swift in Sources */,
+				8414493028AC2B9B00308711 /* ModuleBuilder.swift in Sources */,
 				84B1D79F28A4B2510004A6FF /* MatchesByLeague.swift in Sources */,
 				842548FC28A1BC850078427F /* AppDelegate.swift in Sources */,
 				84B1D7A528A4B7A60004A6FF /* MatchHeadToHead.swift in Sources */,
+				8414492F28AC2B9B00308711 /* Router.swift in Sources */,
 				84B1D7A128A4B54B0004A6FF /* MatchComments.swift in Sources */,
 				84B1D7A328A4B6110004A6FF /* MatchEvents.swift in Sources */,
 				84B1D79928A4A8F30004A6FF /* TimeZone.swift in Sources */,
@@ -226,8 +261,10 @@
 				84B1D7A728A4B98F0004A6FF /* MatchLineups.swift in Sources */,
 				842548FE28A1BC850078427F /* SceneDelegate.swift in Sources */,
 				84B1D79D28A4ACB60004A6FF /* MatchesByDate.swift in Sources */,
+				8414492B28AC2B5000308711 /* PresenterScoreVC.swift in Sources */,
 				8425491828A32E3C0078427F /* Countries.swift in Sources */,
 				84B1D7A928A4BB0C0004A6FF /* MatchStatistics.swift in Sources */,
+				8414492C28AC2B5000308711 /* ScoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
