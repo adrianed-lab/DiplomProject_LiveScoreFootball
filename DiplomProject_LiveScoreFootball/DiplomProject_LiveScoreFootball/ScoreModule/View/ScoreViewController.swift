@@ -7,30 +7,20 @@
 
 import UIKit
 
-protocol ScoreViewProtocol {
+protocol ScoreViewProtocol: AnyObject {
     func successGetMatchesByDate()
-    func failure()
+    func failure(error: Error)
 }
 
 class ScoreViewController: UIViewController {
-    
+    @IBOutlet weak var tableViewMatchesByDate: UITableView!
+    var presenter: PresenterScoreViewProtocol!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableViewMatchesByDate.register(UINib(nibName: "ScoreTableViewCell", bundle: nil), forCellReuseIdentifier: ScoreTableViewCell.key)
     }
 
 
 }
 
-extension ScoreViewController: ScoreViewProtocol {
-    func successGetMatchesByDate() {
-        <#code#>
-    }
-    
-    func failure() {
-        <#code#>
-    }
-    
-    
-}
 

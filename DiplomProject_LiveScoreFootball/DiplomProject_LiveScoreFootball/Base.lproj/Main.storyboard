@@ -34,6 +34,9 @@
                             <constraint firstItem="BMY-1q-Gkc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nOU-zC-0MT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableViewMatchesByDate" destination="BMY-1q-Gkc" id="QoF-q9-yUR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
