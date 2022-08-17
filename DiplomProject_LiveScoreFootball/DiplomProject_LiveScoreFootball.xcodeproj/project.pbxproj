@@ -11,6 +11,9 @@
 		8414492C28AC2B5000308711 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492A28AC2B4F00308711 /* ScoreViewController.swift */; };
 		8414492F28AC2B9B00308711 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492D28AC2B9B00308711 /* Router.swift */; };
 		8414493028AC2B9B00308711 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492E28AC2B9B00308711 /* ModuleBuilder.swift */; };
+		8414493328AC57B700308711 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414493128AC57B700308711 /* ScoreTableViewCell.swift */; };
+		8414493428AC57B700308711 /* ScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8414493228AC57B700308711 /* ScoreTableViewCell.xib */; };
+		8414493828AC58FA00308711 /* ScoreViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414493728AC58FA00308711 /* ScoreViewController+Extensions.swift */; };
 		842548FC28A1BC850078427F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842548FB28A1BC850078427F /* AppDelegate.swift */; };
 		842548FE28A1BC850078427F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842548FD28A1BC850078427F /* SceneDelegate.swift */; };
 		8425490328A1BC850078427F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8425490128A1BC850078427F /* Main.storyboard */; };
@@ -40,6 +43,9 @@
 		8414492A28AC2B4F00308711 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		8414492D28AC2B9B00308711 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = DiplomProject_LiveScoreFootball/Router.swift; sourceTree = SOURCE_ROOT; };
 		8414492E28AC2B9B00308711 /* ModuleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModuleBuilder.swift; path = DiplomProject_LiveScoreFootball/ModuleBuilder.swift; sourceTree = SOURCE_ROOT; };
+		8414493128AC57B700308711 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
+		8414493228AC57B700308711 /* ScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreTableViewCell.xib; sourceTree = "<group>"; };
+		8414493728AC58FA00308711 /* ScoreViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScoreViewController+Extensions.swift"; sourceTree = "<group>"; };
 		842548F828A1BC850078427F /* DiplomProject_LiveScoreFootball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiplomProject_LiveScoreFootball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842548FB28A1BC850078427F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842548FD28A1BC850078427F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +109,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8414493528AC57C100308711 /* ScoreTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8414493128AC57B700308711 /* ScoreTableViewCell.swift */,
+				8414493228AC57B700308711 /* ScoreTableViewCell.xib */,
+			);
+			path = ScoreTableViewCell;
+			sourceTree = "<group>";
+		};
+		8414493628AC58BE00308711 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8414493728AC58FA00308711 /* ScoreViewController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		842548EF28A1BC850078427F = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +150,8 @@
 				84B1D7AD28A4C1370004A6FF /* Constants.swift */,
 				8414492E28AC2B9B00308711 /* ModuleBuilder.swift */,
 				8414492D28AC2B9B00308711 /* Router.swift */,
+				8414493628AC58BE00308711 /* Extensions */,
+				8414493528AC57C100308711 /* ScoreTableViewCell */,
 				84B1D7AC28A4BCA20004A6FF /* Services */,
 				8414492628AC2B4F00308711 /* ScoreModule */,
 				8425491928A32EAE0078427F /* Models */,
@@ -233,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8425490828A1BC880078427F /* LaunchScreen.storyboard in Resources */,
+				8414493428AC57B700308711 /* ScoreTableViewCell.xib in Resources */,
 				8425490528A1BC880078427F /* Assets.xcassets in Resources */,
 				8425490328A1BC850078427F /* Main.storyboard in Resources */,
 			);
@@ -257,12 +283,14 @@
 				84B1D7A328A4B6110004A6FF /* MatchEvents.swift in Sources */,
 				84B1D79928A4A8F30004A6FF /* TimeZone.swift in Sources */,
 				84B1D79728A4A6420004A6FF /* LeagueTable.swift in Sources */,
+				8414493328AC57B700308711 /* ScoreTableViewCell.swift in Sources */,
 				84B1D7AB28A4BC990004A6FF /* AlamofireAPIProvider.swift in Sources */,
 				84B1D7A728A4B98F0004A6FF /* MatchLineups.swift in Sources */,
 				842548FE28A1BC850078427F /* SceneDelegate.swift in Sources */,
 				84B1D79D28A4ACB60004A6FF /* MatchesByDate.swift in Sources */,
 				8414492B28AC2B5000308711 /* PresenterScoreVC.swift in Sources */,
 				8425491828A32E3C0078427F /* Countries.swift in Sources */,
+				8414493828AC58FA00308711 /* ScoreViewController+Extensions.swift in Sources */,
 				84B1D7A928A4BB0C0004A6FF /* MatchStatistics.swift in Sources */,
 				8414492C28AC2B5000308711 /* ScoreViewController.swift in Sources */,
 			);
