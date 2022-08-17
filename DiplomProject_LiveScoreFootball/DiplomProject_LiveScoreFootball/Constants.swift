@@ -57,4 +57,23 @@ struct Constants {
     static var getMatchStatistics: String {
         baseURL.appending("match-statistics")
     }
+    static var currentDate: String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormat.fullDate.formatPattern
+        return dateFormatter.string(from: date)
+    }
 }
+
+enum DateFormat {
+    case fullDate
+    
+    var formatPattern: String {
+        switch self {
+        case .fullDate:
+            return "yyyyMMdd"
+        }
+    }
+    
+}
+
