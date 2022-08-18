@@ -21,25 +21,26 @@ extension ScoreViewController: ScoreViewProtocol {
 extension ScoreViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let leagues = presenter.matchesBydate?.data else {return Int()}
-        return leagues.count
+        2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let matches = presenter.matchesBydate?.data[section].matches else {return Int()}
-        return matches.count
+        guard let leagues = presenter.leaguesBySeason?.response else {return Int()}
+        return leagues.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewMatchesByDate.dequeueReusableCell(withIdentifier: ScoreTableViewCell.key, for: indexPath)
-        guard let matches = presenter.matchesBydate?.data.first?.matches else {return UITableViewCell()}
-        let match = matches[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = match.team1.name
-        content.secondaryText = match.team2.name
-        content.textProperties.font = UIFont(name: "Regular", size: 17)!
-        content.secondaryTextProperties.font = UIFont(name: "Regular", size: 17)!
-        cell.contentConfiguration = content
-        return cell
+        guard let leagues = presenter.leaguesBySeason?.response else {return UITableViewCell()}
+            let league = leagues[indexPath.row]
+            var content = cell.defaultContentConfiguration()
+            content.text = league.country.name
+            content.secondaryText = league.league.name
+            cell.contentConfiguration = content
+            return cell
+            
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        section == 0 ? TypeEnum.cup.rawValue : TypeEnum.league.rawValue
     }
    // func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //
