@@ -8,6 +8,5 @@
 import Foundation
 
 struct TimeZone: Codable {
-    let status: Int
     let data: [String]
 }

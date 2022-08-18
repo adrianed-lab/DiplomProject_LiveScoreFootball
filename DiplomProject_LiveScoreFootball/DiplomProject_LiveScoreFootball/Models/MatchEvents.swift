@@ -8,29 +8,32 @@
 import Foundation
 
 struct MatchEvents: Codable {
-    let status: Int
-    let data: [EventsInfo]
+    let response: [DataMatchEvent]
 }
 
-struct EventsInfo: Codable {
-    let minute: Int
-    let event: Event?
-    let playerName: String?
-    let sort: Int
-    let score: [Int]?
-    let id: String?
-    let team: Int
-    let events: [EventsInfo]?
-
-    enum CodingKeys: String, CodingKey {
-        case minute, event
-        case playerName = "player_name"
-        case sort, score, id, team, events
-    }
+struct DataMatchEvent: Codable {
+    let time: TimeEvent
+    let team: TeamEvent
+    let player, assist: AssistEvent
+    let type: String
+    let detail: String
+    let comments: String?
 }
 
-enum Event: String, Codable {
-    case goal = "GOAL"
-    case goalAssist = "GOAL_ASSIST"
-    case yellowCard = "YELLOW_CARD"
+struct AssistEvent: Codable {
+    let id: Int?
+    let name: String?
 }
+
+struct TeamEvent: Codable {
+    let id: Int
+    let name: String
+    let logo: String
+}
+
+struct TimeEvent: Codable {
+    let elapsed: Int
+    let extra: Int?
+}
+
+

@@ -7,21 +7,20 @@
 
 import Foundation
 
+
 struct DataCountries: Codable {
-    let status: Int
-    let data: [Countries]
+    let response: [CountryInfo]
 }
 
-struct Countries: Codable {
-    let countryID: String?
-    let countryCode: String
-    let countryName: String
-
-    enum CodingKeys: String, CodingKey {
-        case countryID = "country_id"
-        case countryCode = "country_code"
-        case countryName = "country_name"
-    }
+struct CountryInfo: Codable {
+    let name: String
+    let code: String?
+    let flag: String?
 }
+
+struct Seasons: Codable {
+    let dataSeasons: [Int]
+}
+
 
 

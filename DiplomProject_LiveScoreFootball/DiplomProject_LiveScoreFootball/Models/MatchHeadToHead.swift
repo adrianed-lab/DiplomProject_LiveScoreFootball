@@ -8,79 +8,71 @@
 import Foundation
 
 
-struct MatchH2H: Codable {
-    let status: Int
-    let data: DataH2H
+struct MatchHeadToHead: Codable {
+    let response: [DataMatchH2H]
 }
 
-struct DataH2H: Codable {
-    let team1: DataTeam
-    let h2H: H2H
-    let team2: DataTeam
-
-    enum CodingKeys: String, CodingKey {
-        case team1 = "team_1"
-        case h2H = "h2h"
-        case team2 = "team_2"
-    }
+struct DataMatchH2H: Codable {
+    let fixture: FixtureH2H
+    let league: LeagueH2H
+    let teams: HomeAway
+    let goals: GoalsH2H
+    let score: ScoreH2H
 }
 
-struct H2H: Codable {
-    let lastMatches: [LastMatch]
-
-    enum CodingKeys: String, CodingKey {
-        case lastMatches = "last_matches"
-    }
+struct FixtureH2H: Codable {
+    let id: Int
+    let referee: String?
+    let timezone: String
+    let date: Date
+    let timestamp: Int
+    let periods: PeriodsH2H
+    let venue: VenueH2H
+    let status: StatusH2H
 }
 
-struct LastMatch: Codable {
-    let leagueName: String
-    let team1, team2: LastMatchTeam
-    let matchDate: Int
-    let score: ScoreLastMatch
-    let countryName: String
-    let leagueID: String?
-    let countryCode: String?
-
-    enum CodingKeys: String, CodingKey {
-        case leagueName = "league_name"
-        case team1 = "team_1"
-        case team2 = "team_2"
-        case matchDate = "match_date"
-        case score
-        case countryName = "country_name"
-        case leagueID = "league_id"
-        case countryCode = "country_code"
-    }
+struct PeriodsH2H: Codable {
+    let first, second: Int?
 }
 
-struct ScoreLastMatch: Codable {
-    let team1, team2: String
-
-    enum CodingKeys: String, CodingKey {
-        case team1 = "team_1"
-        case team2 = "team_2"
-    }
+struct StatusH2H: Codable {
+    let long: String
+    let short: String
+    let elapsed: Int?
 }
 
-struct LastMatchTeam: Codable {
+struct VenueH2H: Codable {
+    let id: Int?
     let name: String
-    let countryName: String
-    let id: String
-
-    enum CodingKeys: String, CodingKey {
-        case name
-        case countryName = "country_name"
-        case id
-    }
+    let city: String?
 }
 
-struct DataTeam: Codable {
-    let lastMatches: [LastMatch]
-    let name, id: String
-
-    enum CodingKeys: String, CodingKey {
-        case lastMatches = "last_matches"
-        case name, id
-    }
+struct GoalsH2H: Codable {
+    let home, away: Int?
 }
+
+struct HomeAway: Codable {
+    let home, away: AwayClassH2H
+}
+
+struct AwayClassH2H: Codable {
+    let id: Int
+    let name: String
+    let logo: String
+    let winner: Bool?
+}
+
+struct LeagueH2H: Codable {
+    let id: Int
+    let name: String
+    let country: String
+    let logo: String
+    let flag: String
+    let season: Int
+    let round: String
+}
+
+struct ScoreH2H: Codable {
+    let halftime, fulltime, extratime, penalty: GoalsH2H
+}
+

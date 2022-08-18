@@ -7,32 +7,55 @@
 
 import Foundation
 
-
 struct LeagueTable: Codable {
-    let status: Int
-    let data: DataStatistics
+    let response: [LeagueInfo]
 }
 
-struct DataStatistics: Codable {
-    let total, home, away: [Statistics]
+struct LeagueInfo: Codable {
+    let id: Int
+    let name: String
+    let country: String
+    let logo: String
+    let flag: String
+    let season: Int
+    let standings: [Standing]
 }
 
-struct Statistics: Codable {
-    let draw, won, lost: Int
-    let teamName: String
-    let points, goalsDiff, goalsFor: Int
-    let teamID: String
-    let rank, goalsAgainst, gamesPlayed: Int
+struct Standing: Codable {
+    let rank: Int
+    let team: Team
+    let points, goalsDiff: Int
+    let group: String
+    let form: String
+    let status: String
+    let standingDescription: String?
+    let all, home, away: All
+    let update: Date
 
     enum CodingKeys: String, CodingKey {
-        case draw, won, lost
-        case teamName = "team_name"
-        case points
-        case goalsDiff = "goals_diff"
-        case goalsFor = "goals_for"
-        case teamID = "team_id"
-        case rank
-        case goalsAgainst = "goals_against"
-        case gamesPlayed = "games_played"
+        case rank, team, points, goalsDiff, group, form, status
+        case standingDescription = "description"
+        case all, home, away, update
     }
 }
+
+struct All: Codable {
+    let played, win, draw, lose: Int
+    let goals: Goals
+}
+
+struct Goals: Codable {
+    let goalsFor, against: Int
+
+    enum CodingKeys: String, CodingKey {
+        case goalsFor = "for"
+        case against
+    }
+}
+
+struct Team: Codable {
+    let id: Int
+    let name: String
+    let logo: String
+}
+
