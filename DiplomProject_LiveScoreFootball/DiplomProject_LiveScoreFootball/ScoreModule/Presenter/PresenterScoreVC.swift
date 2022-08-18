@@ -7,35 +7,39 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 protocol PresenterScoreViewProtocol: AnyObject {
     init(view: ScoreViewProtocol, apiProvider: RestAPIProviderProtocol, router: RouterProtocol)
-    func getMatchesByDate(date: String)
-    var matchesBydate: MatchesByDate? {get set}
+    func getLeaguesBySeason(season: Int)
+    var leaguesBySeason: LeaguesByCountryName? {get set}
 }
 
 class PresenterScoreView: PresenterScoreViewProtocol {
-    weak var view: ScoreViewProtocol!
+
+    weak var view: ScoreViewProtocol?
     var apiProvider: RestAPIProviderProtocol!
-    var matchesBydate: MatchesByDate?
     var router: RouterProtocol?
-    
+    var leaguesBySeason: LeaguesByCountryName?
+
     required init(view: ScoreViewProtocol, apiProvider: RestAPIProviderProtocol, router: RouterProtocol) {
         self.view = view
         self.apiProvider = apiProvider
         self.router = router
-        getMatchesByDate(date: Constants.currentDate)
+        getLeaguesBySeason(season: 2022)
     }
 
-    func getMatchesByDate(date: String) {
-        apiProvider.getMatchesByDate(date: date) { [weak self] result in
+    func getLeaguesBySeason(season: Int) {
+        apiProvider.getLeaguesBySeason(seasonYear: season) { [weak self] result in
             guard let self = self else {return}
-            switch result {
-            case .success(let value):
-                self.matchesBydate = value
-                self.view.successGetMatchesByDate()
-            case .failure(let error):
-                self.view.failure(error: error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let value):
+                    self.leaguesBySeason = value
+                    self.view?.successGetMatchesByDate()
+                case .failure(let error):
+                    self.view?.failure(error: error)
+                }
             }
         }
     
