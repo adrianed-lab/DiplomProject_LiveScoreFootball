@@ -7,16 +7,16 @@
 
 import Foundation
 import UIKit
-protocol MainRouter {
+protocol BaseRouter {
     var navigationController: UINavigationController? {get set}
     var builder: BuilderProtocol? {get set}
 }
 
-protocol RouterProtocol: MainRouter {
+protocol ScoreViewRouterProtocol: BaseRouter {
     func initialViewController()
 }
 
-class Router: RouterProtocol {
+class Router: ScoreViewRouterProtocol {
     
     var navigationController: UINavigationController?
     var builder: BuilderProtocol?

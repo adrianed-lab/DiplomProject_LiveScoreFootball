@@ -12,8 +12,8 @@ import UIKit
 protocol RestAPIProviderProtocol {
     func getCountries(completion: @escaping (Result<DataCountries, Error>) -> Void)
     func getSeasons(completion: @escaping(Result<Seasons, Error>) -> Void)
-    func getLeaguesByCountry(countryName: String, completion: @escaping (Result<LeaguesByCountryName, Error>) -> Void)
-    func getLeaguesBySeason(seasonYear: Int, completion: @escaping(Result<LeaguesByCountryName, Error>) -> Void)
+    func getLeaguesByCountry(countryName: String, completion: @escaping (Result<LeaguesByCountryNameOrSeason, Error>) -> Void)
+    func getLeaguesBySeason(seasonYear: Int, completion: @escaping(Result<LeaguesByCountryNameOrSeason, Error>) -> Void)
     func getLeagueTable(seasonYear: Int, leagueId: Int, completion: @escaping (Result<LeagueTable, Error>) -> Void)
     func getTimeZone(completion: @escaping (Result<TimeZone, Error>) -> Void)
     func getLiveMatches(live: String, completion: @escaping (Result<LiveMatches, Error>) -> Void)
@@ -26,9 +26,9 @@ protocol RestAPIProviderProtocol {
 }
 
 class AlamofireAPIProvider: RestAPIProviderProtocol {
-    func getLeaguesBySeason(seasonYear: Int, completion: @escaping (Result<LeaguesByCountryName, Error>) -> Void) {
+    func getLeaguesBySeason(seasonYear: Int, completion: @escaping (Result<LeaguesByCountryNameOrSeason, Error>) -> Void) {
         let parameters = addParameters(queryItems: ["season": seasonYear.description])
-        AF.request(Constants.getLeaguesByCountryNameOrSeason, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: LeaguesByCountryName.self) { response in
+        AF.request(Constants.getLeaguesByCountryNameOrSeason, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: LeaguesByCountryNameOrSeason.self) { response in
             switch response.result {
             case .success(let result):
                 completion(.success(result))
@@ -63,9 +63,9 @@ class AlamofireAPIProvider: RestAPIProviderProtocol {
         }
     }
     
-    func getLeaguesByCountry(countryName: String, completion: @escaping (Result<LeaguesByCountryName, Error>) -> Void) {
+    func getLeaguesByCountry(countryName: String, completion: @escaping (Result<LeaguesByCountryNameOrSeason, Error>) -> Void) {
         let parameters = addParameters(queryItems: ["country": countryName])
-        AF.request(Constants.getLeaguesByCountryNameOrSeason, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: LeaguesByCountryName.self) { response in
+        AF.request(Constants.getLeaguesByCountryNameOrSeason, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: LeaguesByCountryNameOrSeason.self) { response in
             switch response.result {
             case .success(let result):
                 completion(.success(result))
