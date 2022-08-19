@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct LeaguesByCountryName: Codable {
+struct LeaguesByCountryNameOrSeason: Codable {
     let response: [DataLeague]
 }
 
