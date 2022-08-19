@@ -8,21 +8,28 @@
 import UIKit
 
 protocol ScoreViewProtocol: AnyObject {
-    func successGetMatchesByDate()
+    func successGetLeaguesBySeason()
     func failure(error: Error)
 }
 
-class ScoreViewController: UIViewController {
+class ScoreViewController: UIViewController, ScoreViewProtocol {
     @IBOutlet weak var tableViewMatchesByDate: UITableView!
-    var presenter: PresenterScoreViewProtocol!
+    var presenter: ScoreViewPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableViewMatchesByDate.register(UINib(nibName: "ScoreTableViewCell", bundle: nil), forCellReuseIdentifier: ScoreTableViewCell.key)
     }
+    
+    func successGetLeaguesBySeason() {
+        tableViewMatchesByDate.reloadData()
+        }
+        
+    func failure(error: Error) {
+        print(error.localizedDescription)
+        }
+    }
 
-
-}
 
 
