@@ -12,15 +12,13 @@ import Alamofire
 protocol ScoreViewPresenterProtocol: AnyObject {
     func getLeaguesBySeason(season: Int)
     func getLeaguesCount() -> Int
-    func scoreTableViewCellConfigure(cell: UITableViewCell, indexPath: IndexPath)
+    func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol)
     var leaguesBySeason: LeaguesByCountryNameOrSeason? {get}
     
 }
 
 class ScoreViewPresenter: ScoreViewPresenterProtocol {
     
-    
-   
     weak var view: ScoreViewProtocol?
     var apiProvider: RestAPIProviderProtocol!
     var router: ScoreViewRouterProtocol?
@@ -53,12 +51,12 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
         return leaguesCount
     }
     
-    func scoreTableViewCellConfigure(cell: UITableViewCell, indexPath: IndexPath) {
-        guard let leagues = leaguesBySeason?.response else {return}
-        let league = leagues[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = league.country.name
-        content.secondaryText = league.league.name
-        cell.contentConfiguration = content
+    func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol) {
+       guard let leaguesBySeason = leaguesBySeason else {return}
+       let leagues = leaguesBySeason.response[indexPath.row]
+       guard let codeCountry = leagues.country.code else {return}
+       let countryName = leagues.country.name
+       let leagueName = leagues.league.name
+        cell.configureCell(codeCountry: codeCountry.lowercased(), countryNameInfo: countryName, leagueName: leagueName)
     }
 }
