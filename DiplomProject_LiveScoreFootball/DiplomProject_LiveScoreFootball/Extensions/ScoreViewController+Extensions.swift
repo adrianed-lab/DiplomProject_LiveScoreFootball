@@ -21,9 +21,10 @@ extension ScoreViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewMatchesByDate.dequeueReusableCell(withIdentifier: ScoreTableViewCell.key, for: indexPath)
-        presenter.scoreTableViewCellConfigure(cell: cell, indexPath: indexPath)
+        guard let cell = tableViewMatchesByDate.dequeueReusableCell(withIdentifier: ScoreTableViewCell.key, for: indexPath) as? ScoreTableViewCell else {return UITableViewCell()}
+        presenter.scoreTableViewCellConfigure(indexPath: indexPath, cell: cell)
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -33,6 +34,8 @@ extension ScoreViewController: UITableViewDataSource, UITableViewDelegate {
    // func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //
     //}
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80
+    }
     
 }
