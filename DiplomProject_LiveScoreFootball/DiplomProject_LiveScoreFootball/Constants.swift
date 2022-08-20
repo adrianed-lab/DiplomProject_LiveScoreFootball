@@ -12,49 +12,72 @@ import Alamofire
 struct Constants {
     
     static var valueAPIkey: String {
-        guard let key = Bundle.main.infoDictionary?["API_KEY"] as? String else {return ""}
+        guard let key = Bundle.main.infoDictionary?["API_KEY"] as? String else {return String()}
         return key
     }
     static let headers: HTTPHeaders = [
         "X-RapidAPI-Key" : valueAPIkey,
-        "X-RapidAPI-Host" : "livescore-football.p.rapidapi.com"
+        "X-RapidAPI-Host" : "api-football-v1.p.rapidapi.com"
     ]
     
-    static var baseURL = "https://livescore-football.p.rapidapi.com/soccer/"
+    static var baseURL = "https://api-football-v1.p.rapidapi.com/v3/"
+    static var baseURLForCountryImage = "https://media.api-sports.io/flags/"
+    static var countryImagePrefixURL: String {
+        return ".svg"
+    }
     static var getCountries: String {
         baseURL.appending("countries")
     }
-    static var getLeaguesByCountry: String {
-        baseURL.appending("leagues-by-country")
+    static var getSeasons: String {
+        baseURL.appending("leagues/seasons")
+    }
+    static var getLeaguesByCountryNameOrSeason: String {
+        baseURL.appending("leagues")
     }
     static var getLeagueTable: String {
-        baseURL.appending("league-table")
+        baseURL.appending("standings")
     }
     static var getTimeZone: String {
-        baseURL.appending("timezones")
+        baseURL.appending("timezone")
     }
     static var getLiveMatches: String {
-        baseURL.appending("live-matches")
+        baseURL.appending("fixtures")
     }
     static var getMatchesByDate: String {
-        baseURL.appending("matches-by-date")
+        baseURL.appending("fixtures")
     }
     static var getMatchesByLeague: String {
-        baseURL.appending("matches-by-league")
-    }
-    static var getMatchComments: String {
-        baseURL.appending("match-commentaries")
+        baseURL.appending("fixtures")
     }
     static var getMatchEvents: String {
-        baseURL.appending("match-events")
+        baseURL.appending("fixtures/events")
     }
     static var getMatchH2H: String {
-        baseURL.appending("match-h2h")
+        baseURL.appending("fixtures/headtohead")
     }
     static var getMatchLineups: String {
-        baseURL.appending("match-lineups")
+        baseURL.appending("fixtures/lineups")
     }
     static var getMatchStatistics: String {
-        baseURL.appending("match-statistics")
+        baseURL.appending("fixtures/statistics")
+    }
+    static var currentDate: String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormat.fullDate.formatPattern
+        return dateFormatter.string(from: date)
     }
 }
+
+enum DateFormat {
+    case fullDate
+    
+    var formatPattern: String {
+        switch self {
+        case .fullDate:
+            return "yyyy-MM-dd"
+        }
+    }
+    
+}
+

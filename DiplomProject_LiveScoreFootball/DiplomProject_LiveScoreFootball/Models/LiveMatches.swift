@@ -7,75 +7,88 @@
 
 import Foundation
 
+
 struct LiveMatches: Codable {
-    let status: Int
-    let data: [DataMatch]
+    let response: [DataLiveFixtures]
 }
 
-struct DataMatch: Codable {
-    let leagueID: String
-    let matches: [Match]
-    let leagueName, countryID, leagueCode, countryCode: String
-    let countryName: String
-
-    enum CodingKeys: String, CodingKey {
-        case leagueID = "league_id"
-        case matches
-        case leagueName = "league_name"
-        case countryID = "country_id"
-        case leagueCode = "league_code"
-        case countryCode = "country_code"
-        case countryName = "country_name"
-    }
+struct DataLiveFixtures: Codable {
+    let fixture: DataFixture
+    let league: DataLeagueInfo
+    let teams, goals: GoalsInfo
+    let score: ScoreInfo
+    let events: [Event]
 }
 
-struct Match: Codable {
-    let round: Int
-    let matchID, status: String
-    let team2: Team
-    let lastUpdate: Int?
-    let team1: Team
-    let score: Score
-    let time: TimeClass
-    let roundInfo: String
-
-    enum CodingKeys: String, CodingKey {
-        case round
-        case matchID = "match_id"
-        case status
-        case team2 = "team_2"
-        case lastUpdate = "last_update"
-        case team1 = "team_1"
-        case score, time
-        case roundInfo = "round_info"
-    }
+struct Event: Codable {
+    let time: TimeInfo
+    let team: TeamInfo
+    let player, assist: Assist
+    let type: String
+    let detail: String
+    let comments: String?
 }
 
-struct Score: Codable {
-    let fullTime, halfTime: Time
-
-    enum CodingKeys: String, CodingKey {
-        case fullTime = "full_time"
-        case halfTime = "half_time"
-    }
+struct Assist: Codable {
+    let id: Int?
+    let name: String?
 }
 
-struct Time: Codable {
-    let team1, team2: String
-
-    enum CodingKeys: String, CodingKey {
-        case team1 = "team_1"
-        case team2 = "team_2"
-    }
+struct TeamInfo: Codable {
+    let id: Int
+    let name: String
+    let logo: String
+    let winner: Bool?
 }
 
-struct Team: Codable {
-    let country, name, id: String
+struct TimeInfo: Codable {
+    let elapsed: Int
+    let extra: Int?
 }
 
-struct TimeClass: Codable {
-    let scheduled: Int
-    let finish: Int?
+struct DataFixture: Codable {
+    let id: Int
+    let referee: String?
     let timezone: String
-    let start: Int?
+    let date: Date
+    let timestamp: Int
+    let periods: PeriodsInfo
+    let venue: VenueInfo
+    let status: StatusInfo
 }
+
+struct PeriodsInfo: Codable {
+    let first: Int
+    let second: Int?
+}
+
+struct StatusInfo: Codable {
+    let long: String
+    let short: String
+    let elapsed: Int?
+}
+
+struct VenueInfo: Codable {
+    let id: Int?
+    let name, city: String
+}
+
+struct GoalsInfo: Codable {
+    let home, away: Int?
+}
+
+struct DataLeagueInfo: Codable {
+    let id: Int
+    let name, country: String
+    let logo: String
+    let flag: String?
+    let season: Int
+    let round: String
+}
+
+struct ScoreInfo: Codable {
+    let halftime, fulltime, extratime, penalty: GoalsInfo
+}
+
+
+
