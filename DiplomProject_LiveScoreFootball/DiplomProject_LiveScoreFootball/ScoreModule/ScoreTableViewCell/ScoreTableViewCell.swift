@@ -7,9 +7,16 @@
 
 import UIKit
 
-
-class ScoreTableViewCell: UITableViewCell {
+protocol ScoreTableViewCellProtocol: AnyObject {
     
+    func configureCell(codeCountry: String, countryNameInfo: String, leagueName: String)
+    }
+
+class ScoreTableViewCell: UITableViewCell, ScoreTableViewCellProtocol {
+    
+    @IBOutlet weak var countryName: UILabel!
+    @IBOutlet weak var leagueOrCupName: UILabel!
+    @IBOutlet weak var countryFlag: UIImageView!
     static let key = "ScoreTableViewCell"
     
     override func awakeFromNib() {
@@ -19,5 +26,11 @@ class ScoreTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func configureCell(codeCountry: String, countryNameInfo: String, leagueName: String) {
+        countryName.text = countryNameInfo
+//        countryFlag.image =
+        leagueOrCupName.text = leagueName
     }
 }
