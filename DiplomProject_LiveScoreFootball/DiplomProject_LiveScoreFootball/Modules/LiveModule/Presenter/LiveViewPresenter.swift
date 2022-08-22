@@ -16,11 +16,10 @@ protocol LiveViewPresenterProtocol: AnyObject {
 
 class LiveViewPresenter: LiveViewPresenterProtocol {
     
-    
     weak var view: LiveViewProtocol?
     var router: ViewsRouterProtocol?
     var apiProvider: RestAPIProviderProtocol!
-    var liveMatches: LiveMatches?
+    private(set) var liveMatches: LiveMatches?
     
     required init(view: LiveViewProtocol, router: ViewsRouterProtocol, apiProvider: RestAPIProviderProtocol) {
         self.view = view
@@ -45,17 +44,16 @@ class LiveViewPresenter: LiveViewPresenterProtocol {
     }
         
    func getLeaguesCount() -> Int {
-       guard let liveMatches = liveMatches else {return 0}
-       return liveMatches.response.count
+       guard let liveMatches = liveMatches?.response.count else {return 0}
+       return liveMatches
     }
+    
     func configureLiveTableViewCell(indexPath: IndexPath, cell: LiveTableViewCellProtocol) {
-        guard let liveMatches = liveMatches else {return}
-        let live = liveMatches.response[indexPath.row]
-        let logoFirstTeam = String(live.teams.home.id)
-        let logoSecondTeam = String(live.teams.away.id)
-        let nameFirstTeam = live.teams.home.name
-        let nameSecondTeam = live.teams.away.name
-        guard let goalsFirstTeam = live.goals.home, let goalsSecondTeam = live.goals.away, let currentTime = live.fixture.status.elapsed else {return}
+        guard let liveMatches = liveMatches?.response[indexPath.row], let goalsFirstTeam = liveMatches.goals.home, let goalsSecondTeam = liveMatches.goals.away, let currentTime = liveMatches.fixture.status.elapsed else {return}
+        let logoFirstTeam = liveMatches.teams.home.id
+        let logoSecondTeam = liveMatches.teams.away.id
+        let nameFirstTeam = liveMatches.teams.home.name
+        let nameSecondTeam = liveMatches.teams.away.name
         cell.configureCell(firstTeamLogo: logoFirstTeam, secondTeamLogo: logoSecondTeam, firstTeamName: nameFirstTeam, secondTeamName: nameSecondTeam, currentTimeInfo: currentTime, homeGoalsTeam: goalsFirstTeam, awayGoalsTeam: goalsSecondTeam)
     }
 }

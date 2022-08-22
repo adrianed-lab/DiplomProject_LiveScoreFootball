@@ -8,7 +8,7 @@
 import UIKit
 
 protocol LiveTableViewCellProtocol {
-    func configureCell(firstTeamLogo: String, secondTeamLogo: String, firstTeamName: String, secondTeamName: String, currentTimeInfo: Int, homeGoalsTeam: Int, awayGoalsTeam: Int )
+    func configureCell(firstTeamLogo: Int, secondTeamLogo: Int, firstTeamName: String, secondTeamName: String, currentTimeInfo: Int, homeGoalsTeam: Int, awayGoalsTeam: Int )
 }
 
 class LiveTableViewCell: UITableViewCell, LiveTableViewCellProtocol {
@@ -32,7 +32,7 @@ class LiveTableViewCell: UITableViewCell, LiveTableViewCellProtocol {
 
     }
     
-    func configureCell(firstTeamLogo: String, secondTeamLogo: String, firstTeamName: String, secondTeamName: String, currentTimeInfo: Int, homeGoalsTeam: Int, awayGoalsTeam: Int) {
+    func configureCell(firstTeamLogo: Int, secondTeamLogo: Int, firstTeamName: String, secondTeamName: String, currentTimeInfo: Int, homeGoalsTeam: Int, awayGoalsTeam: Int) {
         logoFirstTeam.getLogoTeam(teamId: firstTeamLogo)
         logoSecondTeam.getLogoTeam(teamId: secondTeamLogo)
         nameFirstTeam.text = firstTeamName
