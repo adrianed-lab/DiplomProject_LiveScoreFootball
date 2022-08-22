@@ -16,12 +16,10 @@ protocol TablesViewPresenterProtocol: AnyObject {
 
 class TablesViewPresenter: TablesViewPresenterProtocol {
     
-    
-    
     weak var view: TablesViewProtocol?
     var router: ViewsRouterProtocol?
     var apiProvider: RestAPIProviderProtocol!
-    var countries: DataCountries?
+    private(set) var countries: DataCountries?
     
     required init(view: TablesViewProtocol, router: ViewsRouterProtocol, apiProvider: RestAPIProviderProtocol) {
         self.view = view
@@ -31,8 +29,8 @@ class TablesViewPresenter: TablesViewPresenterProtocol {
     }
     
     func getCountCountries() -> Int {
-        guard let countries = countries else {return 0}
-        return countries.response.count
+        guard let countries = countries?.response.count else {return 0}
+        return countries
     }
         
     func getCountries() {
@@ -48,10 +46,8 @@ class TablesViewPresenter: TablesViewPresenterProtocol {
     }
     
     func configureTablesViewCell(indexPath: IndexPath, cell: TablesViewCellProtocol) {
-        guard let countries = countries?.response[indexPath.row] else {return}
+        guard let countries = countries?.response[indexPath.row], let countryLogo = countries.flag else {return}
         let countryName = countries.name
-        guard let countryLogo = countries.flag else {return}
-        
         cell.configureCell(nameCountry: countryName, logoCountry: countryLogo)
     }
 }

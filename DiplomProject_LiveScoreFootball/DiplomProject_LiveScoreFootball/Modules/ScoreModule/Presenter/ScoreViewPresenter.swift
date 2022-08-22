@@ -22,7 +22,7 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
     weak var view: ScoreViewProtocol?
     var apiProvider: RestAPIProviderProtocol!
     var router: ViewsRouterProtocol?
-    var leaguesBySeason: LeaguesByCountryNameOrSeason?
+    private(set) var leaguesBySeason: LeaguesByCountryNameOrSeason?
 
     required init(view: ScoreViewProtocol, apiProvider: RestAPIProviderProtocol, router: ViewsRouterProtocol) {
         self.view = view
@@ -52,11 +52,9 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
     }
     
     func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol) {
-       guard let leaguesBySeason = leaguesBySeason else {return}
-        let leagues = leaguesBySeason.response[indexPath.row]
-       guard let codeCountry = leagues.country.code else {return}
-       let countryName = leagues.country.name
-       let leagueName = leagues.league.name
+        guard let leaguesBySeason = leaguesBySeason?.response[indexPath.row], let codeCountry = leaguesBySeason.country.code else {return}
+       let countryName = leaguesBySeason.country.name
+       let leagueName = leaguesBySeason.league.name
         cell.configureCell(codeCountry: codeCountry.lowercased(), countryNameInfo: countryName, leagueName: leagueName)
     }
 }
