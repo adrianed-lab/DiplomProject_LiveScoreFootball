@@ -22,6 +22,10 @@ struct Constants {
     
     static var baseURL = "https://api-football-v1.p.rapidapi.com/v3/"
     static var baseURLForCountryImage = "https://media.api-sports.io/flags/"
+    static var baseURLForTeamLogo = "https://media.api-sports.io/football/teams/"
+    static var teamlogoPrefixURL: String {
+        return ".png"
+    }
     static var countryImagePrefixURL: String {
         return ".svg"
     }

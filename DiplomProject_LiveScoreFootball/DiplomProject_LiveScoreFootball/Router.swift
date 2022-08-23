@@ -8,28 +8,28 @@
 import Foundation
 import UIKit
 protocol BaseRouter {
-    var navigationController: UINavigationController? {get set}
+    var navigationController: UITabBarController? {get set}
     var builder: BuilderProtocol? {get set}
 }
 
-protocol ScoreViewRouterProtocol: BaseRouter {
-    func initialViewController()
+protocol ViewsRouterProtocol: BaseRouter {
+    func initialViewControllers()
 }
 
-class Router: ScoreViewRouterProtocol {
+class Router: ViewsRouterProtocol {
     
-    var navigationController: UINavigationController?
+    var navigationController: UITabBarController?
     var builder: BuilderProtocol?
     
-    init(navigationController: UINavigationController, builder: BuilderProtocol) {
+    init(navigationController: UITabBarController, builder: BuilderProtocol) {
         self.navigationController = navigationController
         self.builder = builder
     }
     
-    func initialViewController() {
+    func initialViewControllers() {
         if let navigationController = navigationController {
-            guard let scoreViewController = builder?.createScoreModule(router: self) else {return}
-            navigationController.viewControllers = [scoreViewController]
+            guard let scoreViewController = builder?.createScoreModule(router: self, title: "Leagues and Cups", image: UIImage(systemName: "sportscourt")), let liveViewController = builder?.createLiveModule(router: self, title: "Live", image: UIImage(systemName: "livephoto")), let favouritesViewController = builder?.createFavouritesModule(router: self, title: "Favourites", image: UIImage(systemName: "star")), let tablesViewController = builder?.createTablesModule(router: self, title: "Tables", image: UIImage(systemName: "tablecells")) else {return}
+            navigationController.viewControllers = [UINavigationController(rootViewController: scoreViewController), UINavigationController(rootViewController: liveViewController), UINavigationController(rootViewController: favouritesViewController), UINavigationController(rootViewController: tablesViewController)]
         }
     }
     

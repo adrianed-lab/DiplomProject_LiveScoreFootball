@@ -15,7 +15,8 @@ struct LiveMatches: Codable {
 struct DataLiveFixtures: Codable {
     let fixture: DataFixture
     let league: DataLeagueInfo
-    let teams, goals: GoalsInfo
+    let teams: TeamLiveInfo
+    let goals: GoalsInfo
     let score: ScoreInfo
     let events: [Event]
 }
@@ -50,7 +51,7 @@ struct DataFixture: Codable {
     let id: Int
     let referee: String?
     let timezone: String
-    let date: Date
+    let date: String?
     let timestamp: Int
     let periods: PeriodsInfo
     let venue: VenueInfo
@@ -70,7 +71,11 @@ struct StatusInfo: Codable {
 
 struct VenueInfo: Codable {
     let id: Int?
-    let name, city: String
+    let name, city: String?
+}
+
+struct TeamLiveInfo: Codable {
+    let home, away: TeamInfo
 }
 
 struct GoalsInfo: Codable {
