@@ -17,11 +17,11 @@ protocol LiveViewPresenterProtocol: AnyObject {
 class LiveViewPresenter: LiveViewPresenterProtocol {
     
     weak var view: LiveViewProtocol?
-    var router: ViewsRouterProtocol?
+    var router: LiveRouterProtocol?
     var apiProvider: RestAPIProviderProtocol!
     private(set) var liveMatches: LiveMatches?
     
-    required init(view: LiveViewProtocol, router: ViewsRouterProtocol, apiProvider: RestAPIProviderProtocol) {
+    required init(view: LiveViewProtocol, router: LiveRouterProtocol, apiProvider: RestAPIProviderProtocol) {
         self.view = view
         self.router = router
         self.apiProvider = apiProvider
