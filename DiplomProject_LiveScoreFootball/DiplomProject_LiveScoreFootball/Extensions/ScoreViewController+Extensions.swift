@@ -13,7 +13,7 @@ import UIKit
 extension ScoreViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,7 +28,7 @@ extension ScoreViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        section == 0 ? TypeEnum.cup.rawValue : TypeEnum.league.rawValue
+        "Fixtures"
     }
     
    // func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

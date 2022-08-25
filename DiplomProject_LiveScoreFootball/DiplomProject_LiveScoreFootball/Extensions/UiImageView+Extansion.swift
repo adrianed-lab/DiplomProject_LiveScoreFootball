@@ -10,7 +10,7 @@ import UIKit
 
 
 extension UIImageView {
-    func getCountryFlaf(codeCountry: String) {
+    func getCountryFlag(codeCountry: String) {
         
         guard let imageUrl = URL(string: "\(Constants.baseURLForCountryImage)\(codeCountry)\(Constants.countryImagePrefixURL)") else {return}
         DispatchQueue.global(qos: .utility).async {
