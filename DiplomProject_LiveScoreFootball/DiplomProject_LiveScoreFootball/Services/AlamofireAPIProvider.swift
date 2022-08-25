@@ -18,7 +18,7 @@ protocol RestAPIProviderProtocol {
     func getTimeZone(completion: @escaping (Result<TimeZone, Error>) -> Void)
     func getLiveMatches(live: String, completion: @escaping (Result<LiveMatches, Error>) -> Void)
     func getMatchesByDate(date: String, completion: @escaping (Result<MatchesByDate, Error>) -> Void)
-    func getMatchesByLeague(seasonYear: Int, leagueId: Int, completion: @escaping (Result<MatchesByLeague, Error>) -> Void)
+    func getMatchesByLeague(seasonYear: Int, leagueId: Int, date: String, completion: @escaping (Result<MatchesByLeague, Error>) -> Void)
     func getMatchEvents(fixture: Int, completion: @escaping (Result<MatchEvents, Error>) -> Void)
     func getMatchH2H(h2h: String, completion: @escaping (Result<MatchHeadToHead, Error>) -> Void)
     func getMatchLineups(fixture: Int, completion: @escaping (Result<MatchLineups, Error>) -> Void)
@@ -127,8 +127,8 @@ class AlamofireAPIProvider: RestAPIProviderProtocol {
         }
     }
     
-    func getMatchesByLeague(seasonYear: Int, leagueId: Int, completion: @escaping (Result<MatchesByLeague, Error>) -> Void) {
-        let parameters = addParameters(queryItems: ["season": seasonYear.description, "league": leagueId.description])
+    func getMatchesByLeague(seasonYear: Int, leagueId: Int, date: String, completion: @escaping (Result<MatchesByLeague, Error>) -> Void) {
+        let parameters = addParameters(queryItems: ["season": seasonYear.description, "league": leagueId.description, "date": date])
         AF.request(Constants.getMatchesByLeague, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: MatchesByLeague.self) { response in
             switch response.result {
             case .success(let result):

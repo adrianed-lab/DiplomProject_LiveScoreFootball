@@ -10,34 +10,34 @@ import UIKit
 import Alamofire
 
 protocol ScoreViewPresenterProtocol: AnyObject {
-    func getLeaguesBySeason(season: Int)
+    func getFixturesByDate(date: String)
     func getLeaguesCount() -> Int
     func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol)
-    var leaguesBySeason: LeaguesByCountryNameOrSeason? {get}
+    var leaguesByDate: MatchesByDate? {get}
     
 }
 
 class ScoreViewPresenter: ScoreViewPresenterProtocol {
     
     weak var view: ScoreViewProtocol?
-    var apiProvider: RestAPIProviderProtocol!
-    var router: ViewsRouterProtocol?
-    private(set) var leaguesBySeason: LeaguesByCountryNameOrSeason?
+    private(set) var apiProvider: RestAPIProviderProtocol!
+    private(set) var router: ScoreRouterProtocol?
+    private(set) var leaguesByDate: MatchesByDate?
 
-    required init(view: ScoreViewProtocol, apiProvider: RestAPIProviderProtocol, router: ViewsRouterProtocol) {
+    required init(view: ScoreViewProtocol, apiProvider: RestAPIProviderProtocol, router: ScoreRouterProtocol) {
         self.view = view
         self.apiProvider = apiProvider
         self.router = router
-        getLeaguesBySeason(season: 2022)
+        getFixturesByDate(date: Constants.currentDate)
     }
 
-    func getLeaguesBySeason(season: Int) {
-        apiProvider.getLeaguesBySeason(seasonYear: season) { [weak self] result in
+    func getFixturesByDate(date: String) {
+        apiProvider.getMatchesByDate(date: date) { [weak self] result in
             guard let self = self else {return}
             DispatchQueue.main.async {
                 switch result {
                 case .success(let value):
-                    self.leaguesBySeason = value
+                    self.leaguesByDate = value
                     self.view?.successGetLeaguesBySeason()
                 case .failure(let error):
                     self.view?.failure(error: error)
@@ -47,14 +47,14 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
     }
     
     func getLeaguesCount() -> Int {
-        guard let leaguesCount = leaguesBySeason?.response.count else {return 0}
+        let leaguesCount = leaguesByDate?.response.count ?? 0
         return leaguesCount
     }
     
     func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol) {
-        guard let leaguesBySeason = leaguesBySeason?.response[indexPath.row], let codeCountry = leaguesBySeason.country.code else {return}
-       let countryName = leaguesBySeason.country.name
-       let leagueName = leaguesBySeason.league.name
-        cell.configureCell(codeCountry: codeCountry.lowercased(), countryNameInfo: countryName, leagueName: leagueName)
+        guard let leaguesBySeason = leaguesByDate?.response[indexPath.row], let flagCountry = leaguesBySeason.league.flag else {return}
+        let countryName = leaguesBySeason.league.country
+        let leagueName = leaguesBySeason.league.name
+        cell.configureCell(codeCountry: flagCountry, countryNameInfo: countryName, leagueName: leagueName)
     }
 }

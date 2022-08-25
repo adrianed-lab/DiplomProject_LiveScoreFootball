@@ -17,11 +17,11 @@ protocol LiveViewPresenterProtocol: AnyObject {
 class LiveViewPresenter: LiveViewPresenterProtocol {
     
     weak var view: LiveViewProtocol?
-    var router: ViewsRouterProtocol?
-    var apiProvider: RestAPIProviderProtocol!
+    private(set) var router: LiveRouterProtocol?
+    private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var liveMatches: LiveMatches?
     
-    required init(view: LiveViewProtocol, router: ViewsRouterProtocol, apiProvider: RestAPIProviderProtocol) {
+    required init(view: LiveViewProtocol, router: LiveRouterProtocol, apiProvider: RestAPIProviderProtocol) {
         self.view = view
         self.router = router
         self.apiProvider = apiProvider
@@ -44,7 +44,7 @@ class LiveViewPresenter: LiveViewPresenterProtocol {
     }
         
    func getLeaguesCount() -> Int {
-       guard let liveMatches = liveMatches?.response.count else {return 0}
+       let liveMatches = liveMatches?.response.count ?? 0
        return liveMatches
     }
     

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol TablesViewCellProtocol {
+protocol TablesViewCellProtocol: AnyObject {
     func configureCell(nameCountry: String, logoCountry: String)
 }
 

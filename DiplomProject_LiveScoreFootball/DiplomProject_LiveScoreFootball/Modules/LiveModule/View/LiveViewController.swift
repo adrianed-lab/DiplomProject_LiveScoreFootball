@@ -25,7 +25,7 @@ class LiveViewController: UIViewController, LiveViewProtocol {
     }
     
     func successGetLiveMatches() {
-     
+        //liveTableView.reloadData()
     }
         
     func failure(error: Error) {

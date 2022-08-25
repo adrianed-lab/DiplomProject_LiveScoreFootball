@@ -17,9 +17,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioY-Iy-DhA">
-                        <rect key="frame" x="80" y="72" width="200" height="21"/>
+                        <rect key="frame" x="80" y="72" width="270" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="GBG-n3-sHd"/>
+                            <constraint firstAttribute="width" constant="270" id="GBG-n3-sHd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
@@ -33,9 +33,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DwV-tl-zra">
-                        <rect key="frame" x="80" y="16" width="200" height="21"/>
+                        <rect key="frame" x="80" y="16" width="270" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="qdT-b4-kdH"/>
+                            <constraint firstAttribute="width" constant="270" id="qdT-b4-kdH"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
