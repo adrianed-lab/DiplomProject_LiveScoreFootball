@@ -14,9 +14,9 @@ protocol FavouritesViewPresenterProtocol: AnyObject {
 class FavouritesViewPresenter: FavouritesViewPresenterProtocol {
     
     weak var view: FavouritesViewProtocol!
-    var router: ViewsRouterProtocol?
+    var router: FavouritesRouterProtocol?
     
-    required init(view: FavouritesViewProtocol, router: ViewsRouterProtocol) {
+    required init(view: FavouritesViewProtocol, router: FavouritesRouterProtocol) {
         self.view = view
         self.router = router
     }
