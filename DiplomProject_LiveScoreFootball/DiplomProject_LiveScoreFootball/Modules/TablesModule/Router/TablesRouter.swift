@@ -28,9 +28,7 @@ class TablesRouter: TablesRouterProtocol {
     }
     
     func showLeaguesByCountry(countryName: String) {
-        if let leaguesByCountry = builder?.createLeaguesByContryNameModule(nameCountry: countryName) {
-            guard let tablesViewController = viewController?.navigationController else {return}
+        guard let leaguesByCountry = builder?.createLeaguesByContryNameModule(nameCountry: countryName), let tablesViewController = viewController?.navigationController else {return}
             tablesViewController.pushViewController(leaguesByCountry, animated: true)
-        }
     }
 }

@@ -17,10 +17,10 @@ protocol StandingViewPresenterProtocol: AnyObject {
 class StandingViewPresenter: StandingViewPresenterProtocol {
     
     weak var view: StandingViewProtocol?
-    var router: StandingRouterProtocol?
-    var apiProvider: RestAPIProviderProtocol!
-    private (set) var leagueTable: LeagueTable?
-    var leagueId: Int
+    private(set) var router: StandingRouterProtocol?
+    private(set) var apiProvider: RestAPIProviderProtocol!
+    private(set) var leagueTable: LeagueTable?
+    private(set) var leagueId: Int
 
     required init(view: StandingViewProtocol, router: StandingRouterProtocol, apiProvider: RestAPIProviderProtocol, leagueId: Int) {
         self.view = view
@@ -46,7 +46,7 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
     }
 
     func countStandings() -> Int {
-        guard let countStandings = leagueTable?.response.first?.league.standings.first?.count else {return 0}
+        let countStandings = leagueTable?.response.first?.league.standings.first?.count ?? 0
         return countStandings
     }
     

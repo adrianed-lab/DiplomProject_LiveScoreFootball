@@ -28,10 +28,7 @@ class Router: ViewsRouterProtocol {
     }
     
     func initialViewControllers() {
-        if let navigationController = navigationTabBarController {
-            guard let scoreViewController = builder?.createScoreModule(title: "Leagues and Cups", image: UIImage(systemName: "sportscourt")), let liveViewController = builder?.createLiveModule(title: "Live", image: UIImage(systemName: "livephoto")), let favouritesViewController = builder?.createFavouritesModule(title: "Favourites", image: UIImage(systemName: "star")), let tablesViewController = builder?.createTablesModule(title: "Tables", image: UIImage(systemName: "tablecells")) else {return}
+        guard let navigationController = navigationTabBarController, let scoreViewController = builder?.createScoreModule(title: "Leagues and Cups", image: UIImage(systemName: "sportscourt")), let liveViewController = builder?.createLiveModule(title: "Live", image: UIImage(systemName: "livephoto")), let favouritesViewController = builder?.createFavouritesModule(title: "Favourites", image: UIImage(systemName: "star")), let tablesViewController = builder?.createTablesModule(title: "Tables", image: UIImage(systemName: "tablecells")) else {return}
             navigationController.viewControllers = [UINavigationController(rootViewController: scoreViewController), UINavigationController(rootViewController: liveViewController), UINavigationController(rootViewController: favouritesViewController), UINavigationController(rootViewController: tablesViewController)]
-        }
-        
     }
 }
