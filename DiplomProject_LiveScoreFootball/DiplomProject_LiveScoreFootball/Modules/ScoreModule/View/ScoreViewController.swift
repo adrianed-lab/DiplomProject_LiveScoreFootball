@@ -25,7 +25,7 @@ class ScoreViewController: UIViewController, ScoreViewProtocol {
     
     func successGetLeaguesBySeason() {
         tableViewMatchesByDate.reloadData()
-        }
+    }
         
     func failure(error: Error) {
         print(error.localizedDescription)
