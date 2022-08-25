@@ -11,17 +11,18 @@ protocol TablesViewPresenterProtocol: AnyObject {
     func getCountCountries() -> Int
     func getCountries()
     func configureTablesViewCell(indexPath: IndexPath, cell: TablesViewCellProtocol)
+    func getCountryNameByTap(indexPath: IndexPath)
     var countries: DataCountries? {get}
 }
 
 class TablesViewPresenter: TablesViewPresenterProtocol {
-    
+   
     weak var view: TablesViewProtocol?
-    var router: ViewsRouterProtocol?
+    var router: TablesRouterProtocol?
     var apiProvider: RestAPIProviderProtocol!
     private(set) var countries: DataCountries?
     
-    required init(view: TablesViewProtocol, router: ViewsRouterProtocol, apiProvider: RestAPIProviderProtocol) {
+    required init(view: TablesViewProtocol, router: TablesRouterProtocol, apiProvider: RestAPIProviderProtocol) {
         self.view = view
         self.router = router
         self.apiProvider = apiProvider
@@ -49,5 +50,10 @@ class TablesViewPresenter: TablesViewPresenterProtocol {
         guard let countries = countries?.response[indexPath.row], let countryLogo = countries.flag else {return}
         let countryName = countries.name
         cell.configureCell(nameCountry: countryName, logoCountry: countryLogo)
+    }
+    
+    func getCountryNameByTap(indexPath: IndexPath) {
+        guard let countryName = countries?.response[indexPath.row].name, let router = router else{return}
+        router.showLeaguesByCountry(countryName: countryName)
     }
 }
