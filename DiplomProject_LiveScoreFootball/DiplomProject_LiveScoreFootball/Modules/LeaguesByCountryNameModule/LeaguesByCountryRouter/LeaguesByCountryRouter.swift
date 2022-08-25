@@ -29,9 +29,7 @@ class LeaguesByCountryRouter: LeaguesByCountryRouterProtocol {
     }
     
     func showStandings(leagueId: Int) {
-        if let standingViewController = builder?.createTableByLeagueModule(leagueId: leagueId) {
-            guard let leaguesViewController = viewController?.navigationController else {return}
+        guard let standingViewController = builder?.createTableByLeagueModule(leagueId: leagueId), let leaguesViewController = viewController?.navigationController else {return}
             leaguesViewController.pushViewController(standingViewController, animated: true)
-        }
     }
 }

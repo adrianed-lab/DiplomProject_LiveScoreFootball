@@ -19,10 +19,10 @@ protocol LeaguesByCountryViewPresenterProtocol: AnyObject {
 class LeaguesByCountryViewPresenter: LeaguesByCountryViewPresenterProtocol {
     
     weak var view: LeaguesByCountryViewProtocol?
-    var router: LeaguesByCountryRouterProtocol?
-    var apiProvider: RestAPIProviderProtocol!
+    private(set) var router: LeaguesByCountryRouterProtocol?
+    private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var leaguesByCountry: LeaguesByCountryNameOrSeason?
-    var nameCountry: String
+    private(set) var nameCountry: String
     
     required init(view: LeaguesByCountryViewProtocol, router: LeaguesByCountryRouterProtocol, apiProvider: RestAPIProviderProtocol, nameCountry: String) {
         self.view = view
@@ -49,7 +49,7 @@ class LeaguesByCountryViewPresenter: LeaguesByCountryViewPresenterProtocol {
     }
     
     func countLeagues() -> Int {
-        guard let leaguesByCountry = leaguesByCountry?.response.count else {return 0}
+        let leaguesByCountry = leaguesByCountry?.response.count ?? 0
         return leaguesByCountry
 
     }
