@@ -13,7 +13,7 @@ struct MatchesByLeague: Codable {
 
 struct DataMatchesByLeague: Codable {
     let fixture: FixtureDataByLeague
-    let league: LeagueByLeagueID
+    let league: InfoByLeagueID
     let teams: HomeAwayByLeague
     let goals: DataGoals
     let score: DataScore
@@ -23,7 +23,7 @@ struct FixtureDataByLeague: Codable {
     let id: Int
     let referee: String?
     let timezone: String
-    let date: Date
+    let date: String?
     let timestamp: Int
     let periods: DataPeriods
     let venue: DataVenue
@@ -61,7 +61,7 @@ struct AwayClass: Codable {
     let winner: Bool?
 }
 
-struct LeagueByLeagueID: Codable {
+struct InfoByLeagueID: Codable {
     let id: Int
     let name: String
     let country: String

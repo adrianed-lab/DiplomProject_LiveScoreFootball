@@ -8,7 +8,10 @@
 import Foundation
 
 struct LeagueTable: Codable {
-    let response: [LeagueInfo]
+    let response: [Response]
+}
+struct Response: Codable {
+    let league: LeagueInfo
 }
 
 struct LeagueInfo: Codable {
@@ -16,9 +19,9 @@ struct LeagueInfo: Codable {
     let name: String
     let country: String
     let logo: String
-    let flag: String
+    let flag: String?
     let season: Int
-    let standings: [Standing]
+    let standings: [[Standing]]
 }
 
 struct Standing: Codable {
@@ -30,7 +33,7 @@ struct Standing: Codable {
     let status: String
     let standingDescription: String?
     let all, home, away: All
-    let update: Date
+    let update: String?
 
     enum CodingKeys: String, CodingKey {
         case rank, team, points, goalsDiff, group, form, status
