@@ -53,7 +53,7 @@ class TablesViewPresenter: TablesViewPresenterProtocol {
     }
     
     func getCountryNameByTap(indexPath: IndexPath) {
-        guard let countryName = countries?.response[indexPath.row].name, let router = router else{return}
+        guard let countryName = countries?.response[indexPath.row].name, let router = router else {return}
         router.showLeaguesByCountry(countryName: countryName)
     }
 }

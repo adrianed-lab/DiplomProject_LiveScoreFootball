@@ -55,12 +55,12 @@ class LeaguesByCountryViewPresenter: LeaguesByCountryViewPresenterProtocol {
     }
     
     func configureCell(indexPath: IndexPath, cell: LeaguesByCountryTableViewCell) {
-        guard let leagueName = leaguesByCountry?.response[indexPath.row].league.name else{return}
+        guard let leagueName = leaguesByCountry?.response[indexPath.row].league.name else {return}
         cell.configureTableViewCell(leagueName: leagueName)
     }
     
     func getLeagueId(indexPath: IndexPath) {
-        guard let leagueId = leaguesByCountry?.response[indexPath.row].league.id, let router = router else{return}
+        guard let leagueId = leaguesByCountry?.response[indexPath.row].league.id, let router = router else {return}
         router.showStandings(leagueId: leagueId)
     }
 }

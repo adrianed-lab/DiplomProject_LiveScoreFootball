@@ -7,8 +7,9 @@
 
 import Foundation
 import UIKit
+
 protocol BaseRouter {
-    var navigationController: UITabBarController? {get set}
+    var navigationTabBarController: UITabBarController? {get set}
     var builder: BuilderProtocol? {get set}
 }
 
@@ -18,22 +19,19 @@ protocol ViewsRouterProtocol: BaseRouter {
 
 class Router: ViewsRouterProtocol {
     
-    var navigationController: UITabBarController?
+    var navigationTabBarController: UITabBarController?
     var builder: BuilderProtocol?
     
-    init(navigationController: UITabBarController, builder: BuilderProtocol) {
-        self.navigationController = navigationController
+    init(navigationTabBarController: UITabBarController, builder: BuilderProtocol) {
+        self.navigationTabBarController = navigationTabBarController
         self.builder = builder
     }
     
     func initialViewControllers() {
-        if let navigationController = navigationController {
-            guard let scoreViewController = builder?.createScoreModule(router: self, title: "Leagues and Cups", image: UIImage(systemName: "sportscourt")), let liveViewController = builder?.createLiveModule(router: self, title: "Live", image: UIImage(systemName: "livephoto")), let favouritesViewController = builder?.createFavouritesModule(router: self, title: "Favourites", image: UIImage(systemName: "star")), let tablesViewController = builder?.createTablesModule(router: self, title: "Tables", image: UIImage(systemName: "tablecells")) else {return}
+        if let navigationController = navigationTabBarController {
+            guard let scoreViewController = builder?.createScoreModule(title: "Leagues and Cups", image: UIImage(systemName: "sportscourt")), let liveViewController = builder?.createLiveModule(title: "Live", image: UIImage(systemName: "livephoto")), let favouritesViewController = builder?.createFavouritesModule(title: "Favourites", image: UIImage(systemName: "star")), let tablesViewController = builder?.createTablesModule(title: "Tables", image: UIImage(systemName: "tablecells")) else {return}
             navigationController.viewControllers = [UINavigationController(rootViewController: scoreViewController), UINavigationController(rootViewController: liveViewController), UINavigationController(rootViewController: favouritesViewController), UINavigationController(rootViewController: tablesViewController)]
         }
+        
     }
-    
-    
-    
-    
 }
