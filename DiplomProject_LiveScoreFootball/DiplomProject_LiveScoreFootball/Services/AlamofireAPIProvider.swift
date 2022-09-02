@@ -23,9 +23,38 @@ protocol RestAPIProviderProtocol {
     func getMatchH2H(h2h: String, completion: @escaping (Result<MatchHeadToHead, Error>) -> Void)
     func getMatchLineups(fixture: Int, completion: @escaping (Result<MatchLineups, Error>) -> Void)
     func getMatchStatistics(fixture: Int, completion: @escaping (Result<MatchStatistics, Error>) -> Void)
+    func getLastMatchesTeamInfo(teamId: Int, countLastMatches: Int, completion: @escaping (Result<MatchesByDate, Error>) -> Void)
+    func getFutureMatchesTeamInfo(teamId: Int, countFutureMatches: Int, completion: @escaping (Result<MatchesByDate, Error>) -> Void)
+
 }
 
 class AlamofireAPIProvider: RestAPIProviderProtocol {
+    func getFutureMatchesTeamInfo(teamId: Int, countFutureMatches: Int, completion: @escaping (Result<MatchesByDate, Error>) -> Void) {
+        let parameters = addParameters(queryItems: ["team": teamId.description, "next": countFutureMatches.description ])
+        AF.request(Constants.getMatchesByDate, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: MatchesByDate.self) { response in
+            switch response.result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+            print(response.result)
+        }
+    }
+    
+    func getLastMatchesTeamInfo(teamId: Int, countLastMatches: Int, completion: @escaping (Result<MatchesByDate, Error>) -> Void) {
+        let parameters = addParameters(queryItems: ["team": teamId.description, "last": countLastMatches.description ])
+        AF.request(Constants.getMatchesByDate, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: MatchesByDate.self) { response in
+            switch response.result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+            print(response.result)
+        }
+    }
+    
     func getLeaguesBySeason(seasonYear: Int, completion: @escaping (Result<LeaguesByCountryNameOrSeason, Error>) -> Void) {
         let parameters = addParameters(queryItems: ["season": seasonYear.description])
         AF.request(Constants.getLeaguesByCountryNameOrSeason, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: LeaguesByCountryNameOrSeason.self) { response in
