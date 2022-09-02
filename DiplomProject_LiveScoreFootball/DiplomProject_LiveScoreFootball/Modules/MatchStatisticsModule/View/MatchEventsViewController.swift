@@ -16,7 +16,7 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
     
     @IBOutlet weak var matchEventsTableView: UITableView!
     @IBOutlet weak var matchEventsCollectionView: UICollectionView!
-    var presenter: MatchEventsViewPresenterProtocol?
+    var presenter: MatchEventsViewPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()

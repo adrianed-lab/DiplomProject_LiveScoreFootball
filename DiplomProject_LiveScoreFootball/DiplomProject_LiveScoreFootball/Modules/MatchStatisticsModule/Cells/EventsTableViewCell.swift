@@ -32,10 +32,10 @@ class EventsTableViewCell: UITableViewCell, EventsTableViewCellProtocol {
     
     func configureCell(playerName: String, assistentPlayerName: String, typeEvent: String, detailTypeEvent: String, timeEvent: Int) {
         namePlayer.text = playerName
-        nameAssistPlayer.text = "(\(assistentPlayerName))"
+        nameAssistPlayer.text = assistentPlayerName
         time.text = "\(timeEvent)'"
         type.text = typeEvent
-        typeDetail.text = "(\(detailTypeEvent))"
+        typeDetail.text = detailTypeEvent
         
     }
     

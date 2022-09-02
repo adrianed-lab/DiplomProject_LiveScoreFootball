@@ -18,7 +18,7 @@ protocol StandingViewPresenterProtocol: AnyObject {
 class StandingViewPresenter: StandingViewPresenterProtocol {
     
     
-    weak var view: StandingViewProtocol?
+    private(set) weak var view: StandingViewProtocol?
     private(set) var router: StandingRouterProtocol?
     private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var leagueTable: LeagueTable?
@@ -48,8 +48,7 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
     }
 
     func countStandings() -> Int {
-        let countStandings = leagueTable?.response.first?.league.standings.first?.count ?? 0
-        return countStandings
+        leagueTable?.response.first?.league.standings.first?.count ?? 0
     }
     
     func configureCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol) {
