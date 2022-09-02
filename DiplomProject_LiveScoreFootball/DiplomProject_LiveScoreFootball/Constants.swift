@@ -65,6 +65,7 @@ struct Constants {
     static var getMatchStatistics: String {
         baseURL.appending("fixtures/statistics")
     }
+    static var collectionCellState = "State"
     static var currentDate: String {
         let date = Date()
         let dateFormatter = DateFormatter()
@@ -75,11 +76,14 @@ struct Constants {
 
 enum DateFormat {
     case fullDate
+    case shortDate
     
     var formatPattern: String {
         switch self {
         case .fullDate:
             return "yyyy-MM-dd"
+        case .shortDate:
+            return "dd.MM."
         }
     }
     
