@@ -19,8 +19,9 @@ class ScoreViewController: UIViewController, ScoreViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Leagues and Cups"
-        
+        addButtons()
         tableViewMatchesByDate.register(UINib(nibName: "ScoreTableViewCell", bundle: nil), forCellReuseIdentifier: ScoreTableViewCell.key)
+        tableViewMatchesByDate.register(UINib(nibName: "DateTableViewCell", bundle: nil), forCellReuseIdentifier: DateTableViewCell.key)
     }
     
     func successGetLeaguesBySeason() {
