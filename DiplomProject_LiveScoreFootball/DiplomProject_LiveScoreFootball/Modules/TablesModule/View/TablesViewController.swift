@@ -20,6 +20,7 @@ class TablesViewController: UIViewController, TablesViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Tables"
+        addButtons()
         countriesTableView.register(UINib(nibName: "TablesViewCell", bundle: nil), forCellReuseIdentifier: TablesViewCell.key)
     }
     

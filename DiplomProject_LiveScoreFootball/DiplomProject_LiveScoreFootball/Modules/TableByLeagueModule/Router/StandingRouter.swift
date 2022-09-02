@@ -15,7 +15,7 @@ protocol BaseStandingRouterProtocol {
 
 
 protocol StandingRouterProtocol: BaseLeaguesByCountryRouterProtocol {
-    func showStandings()
+    func showTeamInfo(teamId: Int)
 }
 
 class StandingRouter: StandingRouterProtocol {
@@ -28,7 +28,8 @@ class StandingRouter: StandingRouterProtocol {
         self.viewController = viewController
     }
     
-    func showStandings() {
-           //
+    func showTeamInfo(teamId: Int) {
+        guard let teamInfoViewController = builder?.createTeamInfoModule(teamId: teamId), let leaguesViewController = viewController?.navigationController else {return}
+            leaguesViewController.pushViewController(teamInfoViewController, animated: true)
     }
 }
