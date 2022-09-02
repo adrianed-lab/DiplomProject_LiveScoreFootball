@@ -10,7 +10,7 @@ import UIKit
 
 protocol BaseTeamInfoRouterProtocol {
     var builder: BuilderProtocol? {get set}
-    var viewController: UIViewController? {get set}
+    var viewController: UIViewController? {get}
 }
 
 

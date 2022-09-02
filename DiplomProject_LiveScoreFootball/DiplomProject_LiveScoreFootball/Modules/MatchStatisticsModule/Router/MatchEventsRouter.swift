@@ -10,7 +10,7 @@ import UIKit
 
 protocol BaseMatchEventsRouterProtocol {
     
-    var builder: BuilderProtocol? {get set}
+    var builder: BuilderProtocol? {get}
     var viewController: UIViewController? {get set}
 }
 
