@@ -20,6 +20,7 @@ class LiveViewController: UIViewController, LiveViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Live"
+        addButtons()
         liveTableView.register(UINib(nibName: "LiveTableViewCell", bundle: nil), forCellReuseIdentifier: LiveTableViewCell.key)
 
     }
