@@ -18,15 +18,13 @@ extension TeamInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let index = teamInfoCollectionView.indexPathsForSelectedItems?.first else {return UITableViewCell()}
+        guard let index = teamInfoCollectionView.indexPathsForSelectedItems?.first, let cell = teamInfoTableView.dequeueReusableCell(withIdentifier: TeamInfoTableViewCell.key, for: indexPath) as? TeamInfoTableViewCell, let cellFuture = teamInfoTableView.dequeueReusableCell(withIdentifier: FutureTeamInfoTableViewCell.key, for: indexPath) as? FutureTeamInfoTableViewCell else {return UITableViewCell()}
         if index.row == 0 {
-            guard let cell = teamInfoTableView.dequeueReusableCell(withIdentifier: TeamInfoTableViewCell.key, for: indexPath) as? TeamInfoTableViewCell else {return UITableViewCell()}
             presenter.configureTableCell(indexPath: indexPath, cell: cell)
         return cell
         } else if index.row == 1 {
-            guard let cell = teamInfoTableView.dequeueReusableCell(withIdentifier: FutureTeamInfoTableViewCell.key, for: indexPath) as? FutureTeamInfoTableViewCell else {return UITableViewCell()}
-            presenter.configureFutureTeamInfoTableCell(indexPath: indexPath, cell: cell)
-            return cell
+            presenter.configureFutureTeamInfoTableCell(indexPath: indexPath, cell: cellFuture)
+            return cellFuture
         }
         return UITableViewCell()
     }
