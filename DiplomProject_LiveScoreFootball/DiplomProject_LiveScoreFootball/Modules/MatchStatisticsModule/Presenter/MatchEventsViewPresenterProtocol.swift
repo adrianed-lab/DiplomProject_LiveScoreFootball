@@ -20,7 +20,7 @@ protocol MatchEventsViewPresenterProtocol: AnyObject {
 class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
     
 
-    weak var view: MatchEventsViewProtocol?
+    private(set) weak var view: MatchEventsViewProtocol?
     private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var router: MatchEventsRouterProtocol?
     private(set) var fixtureId: Int
@@ -51,8 +51,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
     }
     
     func countEvents() -> Int {
-        let matchEvents = matchEvents?.response.count ?? 0
-        return matchEvents
+        matchEvents?.response.count ?? 0
     }
     
     func countCollectionItem() -> Int {
@@ -60,17 +59,16 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
     }
     
     func getItemIndex(indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            apiProvider.getMatchEvents(fixture: fixtureId) { [weak self] result in
-                guard let self = self, let view = self.view else {return}
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let value):
-                        self.matchEvents = value
-                        view.successGetEvents()
-                    case .failure(let error):
-                        view.failureGetEvents(error: error)
-                    }
+        guard indexPath.row == 0 else {return}
+        apiProvider.getMatchEvents(fixture: fixtureId) { [weak self] result in
+            guard let self = self, let view = self.view else {return}
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let value):
+                    self.matchEvents = value
+                    view.successGetEvents()
+                case .failure(let error):
+                    view.failureGetEvents(error: error)
                 }
             }
         }

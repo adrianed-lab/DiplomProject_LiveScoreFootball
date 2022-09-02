@@ -19,7 +19,7 @@ protocol ScoreViewPresenterProtocol: AnyObject {
 
 class ScoreViewPresenter: ScoreViewPresenterProtocol {
     
-    weak var view: ScoreViewProtocol?
+    private(set) weak var view: ScoreViewProtocol?
     private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var router: ScoreRouterProtocol?
     private(set) var leaguesByDate: MatchesByDate?
@@ -47,8 +47,7 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
     }
     
     func getLeaguesCount() -> Int {
-        let leaguesCount = leaguesByDate?.response.count ?? 0
-        return leaguesCount
+        leaguesByDate?.response.count ?? 0
     }
     
     func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol) {

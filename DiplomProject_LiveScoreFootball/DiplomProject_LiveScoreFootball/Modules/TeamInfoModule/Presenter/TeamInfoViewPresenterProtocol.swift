@@ -22,7 +22,7 @@ protocol TeamInfoViewPresenterProtocol: AnyObject {
 class TeamInfoViewPresenter: TeamInfoViewPresenterProtocol {
     
     
-    weak var view: TeamInfoViewProtocol?
+    private(set) weak var view: TeamInfoViewProtocol?
     private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var router: TeamInfoRouterProtocol?
     private(set) var lastFixtures: MatchesByDate?
@@ -74,8 +74,7 @@ class TeamInfoViewPresenter: TeamInfoViewPresenterProtocol {
     
         
     func countLastFixtures() -> Int {
-        let matches = lastFixtures?.response.count ?? 0
-        return matches
+        lastFixtures?.response.count ?? 0
     }
     
     func getFixtureIdIndex(indexPath: IndexPath) {
