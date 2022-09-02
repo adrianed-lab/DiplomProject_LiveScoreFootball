@@ -13,7 +13,7 @@ struct MatchStatistics: Codable {
 }
 
 struct MatchStatisticsData: Codable {
-    let team: Team
+    let team: TeamData
     let statistics: [Statistic]
 }
 
@@ -22,6 +22,9 @@ struct Statistic: Codable {
     let value: Int?
 }
 
-    
-
+struct TeamData: Codable {
+    let id: Int
+    let name: String
+    let logo: String
+}
 

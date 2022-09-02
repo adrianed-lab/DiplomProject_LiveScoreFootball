@@ -29,7 +29,7 @@ struct Standing: Codable {
     let team: Team
     let points, goalsDiff: Int
     let group: String
-    let form: String
+    let form: String?
     let status: String
     let standingDescription: String?
     let all, home, away: All
@@ -43,12 +43,12 @@ struct Standing: Codable {
 }
 
 struct All: Codable {
-    let played, win, draw, lose: Int
+    let played, win, draw, lose: Int?
     let goals: Goals
 }
 
 struct Goals: Codable {
-    let goalsFor, against: Int
+    let goalsFor, against: Int?
 
     enum CodingKeys: String, CodingKey {
         case goalsFor = "for"
