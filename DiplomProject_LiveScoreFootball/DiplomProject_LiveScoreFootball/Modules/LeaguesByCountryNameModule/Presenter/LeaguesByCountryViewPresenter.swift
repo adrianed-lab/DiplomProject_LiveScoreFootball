@@ -18,7 +18,7 @@ protocol LeaguesByCountryViewPresenterProtocol: AnyObject {
 
 class LeaguesByCountryViewPresenter: LeaguesByCountryViewPresenterProtocol {
     
-    weak var view: LeaguesByCountryViewProtocol?
+    private(set) weak var view: LeaguesByCountryViewProtocol?
     private(set) var router: LeaguesByCountryRouterProtocol?
     private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var leaguesByCountry: LeaguesByCountryNameOrSeason?
@@ -49,9 +49,7 @@ class LeaguesByCountryViewPresenter: LeaguesByCountryViewPresenterProtocol {
     }
     
     func countLeagues() -> Int {
-        let leaguesByCountry = leaguesByCountry?.response.count ?? 0
-        return leaguesByCountry
-
+        leaguesByCountry?.response.count ?? 0
     }
     
     func configureCell(indexPath: IndexPath, cell: LeaguesByCountryTableViewCell) {

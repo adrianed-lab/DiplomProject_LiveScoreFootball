@@ -17,7 +17,7 @@ protocol TablesViewPresenterProtocol: AnyObject {
 
 class TablesViewPresenter: TablesViewPresenterProtocol {
    
-    weak var view: TablesViewProtocol?
+    private(set) weak var view: TablesViewProtocol?
     private(set) var router: TablesRouterProtocol?
     private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var countries: DataCountries?
@@ -30,8 +30,7 @@ class TablesViewPresenter: TablesViewPresenterProtocol {
     }
     
     func getCountCountries() -> Int {
-        let countries = countries?.response.count ?? 0
-        return countries
+        countries?.response.count ?? 0
     }
         
     func getCountries() {

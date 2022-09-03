@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 protocol StandingViewProtocol: AnyObject {
     func successGetStanding()
     func failure(error: Error)

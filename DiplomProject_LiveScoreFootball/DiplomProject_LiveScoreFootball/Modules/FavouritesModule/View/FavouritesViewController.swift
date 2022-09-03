@@ -19,6 +19,7 @@ class FavouritesViewController: UIViewController, FavouritesViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addButtons()
         title = "Favourites"
     }
     

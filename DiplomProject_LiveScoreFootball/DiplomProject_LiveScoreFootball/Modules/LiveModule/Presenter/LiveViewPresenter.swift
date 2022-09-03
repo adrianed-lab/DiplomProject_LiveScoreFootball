@@ -16,7 +16,7 @@ protocol LiveViewPresenterProtocol: AnyObject {
 
 class LiveViewPresenter: LiveViewPresenterProtocol {
     
-    weak var view: LiveViewProtocol?
+    private(set) weak var view: LiveViewProtocol?
     private(set) var router: LiveRouterProtocol?
     private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var liveMatches: LiveMatches?
@@ -44,8 +44,7 @@ class LiveViewPresenter: LiveViewPresenterProtocol {
     }
         
    func getLeaguesCount() -> Int {
-       let liveMatches = liveMatches?.response.count ?? 0
-       return liveMatches
+       liveMatches?.response.count ?? 0
     }
     
     func configureLiveTableViewCell(indexPath: IndexPath, cell: LiveTableViewCellProtocol) {

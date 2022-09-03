@@ -1,24 +1,25 @@
 //
-//  ScoreRouter.swift
+//  MatchEventsRouter.swift
 //  DiplomProject_LiveScoreFootball
 //
-//  Created by admin on 25.08.22.
+//  Created by admin on 2.09.22.
 //
 
 import Foundation
 import UIKit
 
-protocol BaseScoreRouterProtocol {
+protocol BaseMatchEventsRouterProtocol {
+    
     var builder: BuilderProtocol? {get}
     var viewController: UIViewController? {get set}
 }
 
 
-protocol ScoreRouterProtocol: BaseScoreRouterProtocol {
-    func showFixturesByLeague()
+protocol MatchEventsRouterProtocol: BaseTeamInfoRouterProtocol {
+    func showStandings()
 }
 
-class ScoreRouter: ScoreRouterProtocol {
+class MatchEventsRouter: MatchEventsRouterProtocol {
    
     var builder: BuilderProtocol?
     var viewController: UIViewController?
@@ -28,8 +29,7 @@ class ScoreRouter: ScoreRouterProtocol {
         self.viewController = viewController
     }
     
-    func showFixturesByLeague() {
+    func showStandings() {
            //
-       }
-       
+    }
 }

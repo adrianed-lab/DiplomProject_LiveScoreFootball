@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol BaseTablesRouter {
-    var builder: BuilderProtocol? {get set}
+    var builder: BuilderProtocol? {get}
     var viewController: UIViewController? {get set}
 }
 

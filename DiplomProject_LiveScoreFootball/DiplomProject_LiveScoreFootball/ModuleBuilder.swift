@@ -15,9 +15,30 @@ protocol BuilderProtocol {
     func createTablesModule(title: String, image: UIImage?) -> UIViewController
     func createLeaguesByContryNameModule(nameCountry: String) -> UIViewController
     func createTableByLeagueModule(leagueId: Int) -> UIViewController
+    func createTeamInfoModule(teamId: Int) -> UIViewController
+    func createMatchEventsModule(fixtureId: Int) -> UIViewController
 }
 
 class ModuleBuilder: BuilderProtocol {
+    
+    func createMatchEventsModule(fixtureId: Int) -> UIViewController {
+        let view = MatchEventsViewController()
+        let apiProvider = AlamofireAPIProvider()
+        let router = MatchEventsRouter(builder: self, viewController: view)
+        let presenter = MatchEventsViewPresenter(view: view, apiProvider: apiProvider, router: router, fixtureId: fixtureId )
+        view.presenter = presenter
+        return view
+    }
+    
+    func createTeamInfoModule(teamId: Int) -> UIViewController {
+        let view = TeamInfoViewController()
+        let apiProvider = AlamofireAPIProvider()
+        let router = TeamInfoRouter(builder: self, viewController: view)
+        let presenter = TeamInfoViewPresenter(view: view, apiProvider: apiProvider, router: router, teamId: teamId)
+        view.presenter = presenter
+        return view
+    }
+    
     func createTableByLeagueModule(leagueId: Int) -> UIViewController {
         let view = StandingViewController()
         let apiProvider = AlamofireAPIProvider()
@@ -79,7 +100,7 @@ class ModuleBuilder: BuilderProtocol {
             let presenter = FavouritesViewPresenter(view: view, router: router)
             view.presenter = presenter
             return view
-        }
+    }
             
 
     

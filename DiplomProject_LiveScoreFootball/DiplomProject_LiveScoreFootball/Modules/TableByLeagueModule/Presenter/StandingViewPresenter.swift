@@ -11,12 +11,14 @@ protocol StandingViewPresenterProtocol: AnyObject {
     func getStandingByLeagueId(leagueId: Int)
     func configureCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol)
     func countStandings() -> Int
+    func getTeamId(indexPath: IndexPath)
     var leagueTable: LeagueTable? {get}
 }
 
 class StandingViewPresenter: StandingViewPresenterProtocol {
     
-    weak var view: StandingViewProtocol?
+    
+    private(set) weak var view: StandingViewProtocol?
     private(set) var router: StandingRouterProtocol?
     private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var leagueTable: LeagueTable?
@@ -46,20 +48,21 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
     }
 
     func countStandings() -> Int {
-        let countStandings = leagueTable?.response.first?.league.standings.first?.count ?? 0
-        return countStandings
+        leagueTable?.response.first?.league.standings.first?.count ?? 0
     }
     
     func configureCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol) {
-        guard let standings = leagueTable?.response.first?.league.standings.first?[indexPath.row] else {return}
+        guard let standings = leagueTable?.response.first?.league.standings.first?[indexPath.row], let playedGames = standings.all.played, let goalsFor = standings.all.goals.goalsFor, let goalsAgainst = standings.all.goals.against else {return}
         let teamRank = standings.rank
         let teamLogo = standings.team.id
         let teamName = standings.team.name
-        let playedGames = standings.all.played
-        let goalsFor = standings.all.goals.goalsFor
-        let goalsAgainst = standings.all.goals.against
         let points = standings.points
         cell.configureCell(rank: teamRank, teamLogo: teamLogo, teamName: teamName, games: playedGames, goalsFor: goalsFor, goalsAgainst: goalsAgainst, points: points)
     }
     
+    func getTeamId(indexPath: IndexPath) {
+        guard let standings = leagueTable?.response.first?.league.standings.first?[indexPath.row], let router = router else {return}
+        let teamId = standings.team.id
+        router.showTeamInfo(teamId: teamId)
+    }
 }
