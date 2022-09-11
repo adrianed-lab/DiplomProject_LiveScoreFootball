@@ -37,9 +37,7 @@
                         <rect key="frame" x="66" y="37" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="A7Z-VM-E5l"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="Gh9-zg-aGl"/>
                             <constraint firstAttribute="width" constant="25" id="RHQ-M1-ok6"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="gUN-Mo-rQ8"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9r-0U-c2a">
