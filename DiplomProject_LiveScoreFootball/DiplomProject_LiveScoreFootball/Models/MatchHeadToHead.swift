@@ -24,7 +24,7 @@ struct FixtureH2H: Codable {
     let id: Int
     let referee: String?
     let timezone: String
-    let date: Date
+    let date: String?
     let timestamp: Int
     let periods: PeriodsH2H
     let venue: VenueH2H
@@ -43,7 +43,7 @@ struct StatusH2H: Codable {
 
 struct VenueH2H: Codable {
     let id: Int?
-    let name: String
+    let name: String?
     let city: String?
 }
 
@@ -67,7 +67,7 @@ struct LeagueH2H: Codable {
     let name: String
     let country: String
     let logo: String
-    let flag: String
+    let flag: String?
     let season: Int
     let round: String
 }

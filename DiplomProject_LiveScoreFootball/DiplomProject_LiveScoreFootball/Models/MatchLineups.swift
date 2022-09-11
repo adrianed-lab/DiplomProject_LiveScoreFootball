@@ -15,14 +15,14 @@ struct MatchLineups: Codable {
 struct DataMatchLineups: Codable {
     let team: TeamInfoLineups
     let coach: Coach
-    let formation: String
+    let formation: String?
     let startXI, substitutes: [StartXi]
 }
 
 struct Coach: Codable {
-    let id: Int
-    let name: String
-    let photo: String
+    let id: Int?
+    let name: String?
+    let photo: String?
 }
 
 struct StartXi: Codable {
@@ -32,14 +32,24 @@ struct StartXi: Codable {
 struct Player: Codable {
     let id: Int
     let name: String
-    let number: Int
+    let number: Int?
     let pos: String?
     let grid: String?
 }
 
 struct TeamInfoLineups: Codable {
     let id: Int
-    let name: String
-    let logo: String
-    let colors: String?
+    let name: String?
+    let logo: String?
+    let colors: Colors?
 }
+
+
+struct Colors: Codable {
+    let player, goalkeeper: Goalkeeper
+}
+
+struct Goalkeeper: Codable {
+    let primary, number, border: String
+}
+
