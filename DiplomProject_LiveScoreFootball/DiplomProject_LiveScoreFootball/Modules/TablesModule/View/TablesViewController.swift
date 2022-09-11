@@ -25,7 +25,7 @@ class TablesViewController: UIViewController, TablesViewProtocol {
     }
     
     func successGetCountriesTable() {
-        countriesTableView.reloadData()
+        
     }
         
     func failure(error: Error) {
