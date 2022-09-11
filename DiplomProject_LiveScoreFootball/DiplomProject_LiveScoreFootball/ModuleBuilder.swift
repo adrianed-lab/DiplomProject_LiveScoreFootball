@@ -13,47 +13,47 @@ protocol BuilderProtocol {
     func createLiveModule(title: String, image: UIImage?) -> UIViewController
     func createFavouritesModule(title: String, image: UIImage?) -> UIViewController
     func createTablesModule(title: String, image: UIImage?) -> UIViewController
-    func createLeaguesByContryNameModule(nameCountry: String) -> UIViewController
-    func createTableByLeagueModule(leagueId: Int) -> UIViewController
-    func createTeamInfoModule(teamId: Int) -> UIViewController
-    func createMatchEventsModule(fixtureId: Int) -> UIViewController
+    func createLeaguesByContryNameModule(nameCountry: String, codeCountry: String) -> UIViewController
+    func createTableByLeagueModule(leagueId: Int, countryCode: String) -> UIViewController
+    func createTeamInfoModule(teamId: Int, countryCode: String, teamName: String, countryName: String, leagueId: Int) -> UIViewController
+    func createMatchEventsModule(fixture: DataMatchesByDate) -> UIViewController
 }
 
 class ModuleBuilder: BuilderProtocol {
     
-    func createMatchEventsModule(fixtureId: Int) -> UIViewController {
+    func createMatchEventsModule(fixture: DataMatchesByDate) -> UIViewController {
         let view = MatchEventsViewController()
         let apiProvider = AlamofireAPIProvider()
         let router = MatchEventsRouter(builder: self, viewController: view)
-        let presenter = MatchEventsViewPresenter(view: view, apiProvider: apiProvider, router: router, fixtureId: fixtureId )
+        let presenter = MatchEventsViewPresenter(view: view, apiProvider: apiProvider, router: router, fixture: fixture)
         view.presenter = presenter
         return view
     }
     
-    func createTeamInfoModule(teamId: Int) -> UIViewController {
+    func createTeamInfoModule(teamId: Int, countryCode: String, teamName: String, countryName: String, leagueId: Int) -> UIViewController {
         let view = TeamInfoViewController()
         let apiProvider = AlamofireAPIProvider()
         let router = TeamInfoRouter(builder: self, viewController: view)
-        let presenter = TeamInfoViewPresenter(view: view, apiProvider: apiProvider, router: router, teamId: teamId)
+        let presenter = TeamInfoViewPresenter(view: view, apiProvider: apiProvider, router: router, teamId: teamId, countryCode: countryCode, teamName: teamName, countryName: countryName, leagueId: leagueId)
         view.presenter = presenter
         return view
     }
     
-    func createTableByLeagueModule(leagueId: Int) -> UIViewController {
+    func createTableByLeagueModule(leagueId: Int, countryCode: String) -> UIViewController {
         let view = StandingViewController()
         let apiProvider = AlamofireAPIProvider()
         let router = StandingRouter(builder: self, viewController: view)
-        let presenter = StandingViewPresenter(view: view, router: router, apiProvider: apiProvider, leagueId: leagueId)
+        let presenter = StandingViewPresenter(view: view, router: router, apiProvider: apiProvider, leagueId: leagueId, countryCode: countryCode)
         view.presenter = presenter
         return view
     }
     
     
-    func createLeaguesByContryNameModule(nameCountry: String) -> UIViewController {
+    func createLeaguesByContryNameModule(nameCountry: String, codeCountry: String) -> UIViewController {
         let view = LeaguesByCountryViewController()
         let apiProvider = AlamofireAPIProvider()
         let router = LeaguesByCountryRouter(builder: self, viewController: view)
-        let presenter = LeaguesByCountryViewPresenter(view: view, router: router, apiProvider: apiProvider, nameCountry: nameCountry)
+        let presenter = LeaguesByCountryViewPresenter(view: view, router: router, apiProvider: apiProvider, nameCountry: nameCountry, codeCountry: codeCountry)
         view.presenter = presenter
         return view
     }
