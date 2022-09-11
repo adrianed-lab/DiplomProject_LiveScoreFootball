@@ -36,23 +36,27 @@ class TablesViewPresenter: TablesViewPresenterProtocol {
     func getCountries() {
         apiProvider.getCountries { [weak self] result in
             guard let self = self, let view = self.view else {return}
-            switch result {
-            case .success(let value):
-                self.countries = value
-            case .failure(let error):
-                view.failure(error: error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let value):
+                    self.countries = value
+                    view.successGetCountriesTable()
+                case .failure(let error):
+                    view.failure(error: error)
+                }
             }
         }
     }
     
     func configureTablesViewCell(indexPath: IndexPath, cell: TablesViewCellProtocol) {
-        guard let countries = countries?.response[indexPath.row], let countryLogo = countries.flag else {return}
+        guard let countries = countries?.response[indexPath.row], let countryLogo = countries.code else {return}
         let countryName = countries.name
         cell.configureCell(nameCountry: countryName, logoCountry: countryLogo)
     }
     
     func getCountryNameByTap(indexPath: IndexPath) {
-        guard let countryName = countries?.response[indexPath.row].name, let router = router else {return}
-        router.showLeaguesByCountry(countryName: countryName)
+        guard let countries = countries?.response[indexPath.row], let countryCode = countries.code, let router = router else {return}
+        let countryName = countries.name
+        router.showLeaguesByCountry(countryName: countryName, codeCountry: countryCode)
     }
 }

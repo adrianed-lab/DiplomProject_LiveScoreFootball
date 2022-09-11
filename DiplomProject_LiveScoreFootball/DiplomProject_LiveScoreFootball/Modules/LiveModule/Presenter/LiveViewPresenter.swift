@@ -29,7 +29,7 @@ class LiveViewPresenter: LiveViewPresenterProtocol {
     }
     
    func getLiveMatches(live: String) {
-       apiProvider.getLiveMatches(live: live) { [weak self] result in
+       apiProvider.getLiveMatches(live: live, timeZone: "Europe/Minsk") { [weak self] result in
            guard let self = self, let view = self.view else {return}
            DispatchQueue.main.async {
                switch result {
@@ -44,7 +44,8 @@ class LiveViewPresenter: LiveViewPresenterProtocol {
     }
         
    func getLeaguesCount() -> Int {
-       liveMatches?.response.count ?? 0
+       let liveMatches = liveMatches?.response.count ?? 0
+       return liveMatches
     }
     
     func configureLiveTableViewCell(indexPath: IndexPath, cell: LiveTableViewCellProtocol) {
@@ -55,4 +56,6 @@ class LiveViewPresenter: LiveViewPresenterProtocol {
         let nameSecondTeam = liveMatches.teams.away.name
         cell.configureCell(firstTeamLogo: logoFirstTeam, secondTeamLogo: logoSecondTeam, firstTeamName: nameFirstTeam, secondTeamName: nameSecondTeam, currentTimeInfo: currentTime, homeGoalsTeam: goalsFirstTeam, awayGoalsTeam: goalsSecondTeam)
     }
+    
+    
 }
