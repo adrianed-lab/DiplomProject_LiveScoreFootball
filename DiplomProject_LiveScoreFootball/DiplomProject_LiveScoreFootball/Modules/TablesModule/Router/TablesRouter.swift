@@ -14,7 +14,7 @@ protocol BaseTablesRouter {
 }
 
 protocol TablesRouterProtocol: BaseTablesRouter {
-    func showLeaguesByCountry(countryName: String)
+    func showLeaguesByCountry(countryName: String, codeCountry: String)
 }
 
 class TablesRouter: TablesRouterProtocol {
@@ -27,8 +27,8 @@ class TablesRouter: TablesRouterProtocol {
         self.viewController = viewController
     }
     
-    func showLeaguesByCountry(countryName: String) {
-        guard let leaguesByCountry = builder?.createLeaguesByContryNameModule(nameCountry: countryName), let tablesViewController = viewController?.navigationController else {return}
+    func showLeaguesByCountry(countryName: String, codeCountry: String) {
+        guard let leaguesByCountry = builder?.createLeaguesByContryNameModule(nameCountry: countryName, codeCountry: codeCountry), let tablesViewController = viewController?.navigationController else {return}
             tablesViewController.pushViewController(leaguesByCountry, animated: true)
     }
 }

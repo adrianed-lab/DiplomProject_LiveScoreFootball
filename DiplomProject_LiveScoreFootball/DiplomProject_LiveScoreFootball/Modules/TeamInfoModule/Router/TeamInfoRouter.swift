@@ -15,7 +15,7 @@ protocol BaseTeamInfoRouterProtocol {
 
 
 protocol TeamInfoRouterProtocol: BaseTeamInfoRouterProtocol {
-    func showMatchEvents(fixtureId: Int)
+    func showMatchEvents(fixture: DataMatchesByDate)
 }
 
 class TeamInfoRouter: TeamInfoRouterProtocol {
@@ -28,8 +28,8 @@ class TeamInfoRouter: TeamInfoRouterProtocol {
         self.viewController = viewController
     }
     
-    func showMatchEvents(fixtureId: Int) {
-        guard let matchEventsViewController = builder?.createMatchEventsModule(fixtureId: fixtureId), let teamInfoViewController = viewController?.navigationController else {return}
+    func showMatchEvents(fixture: DataMatchesByDate) {
+        guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture), let teamInfoViewController = viewController?.navigationController else {return}
         teamInfoViewController.pushViewController(matchEventsViewController, animated: true)
     }
 }
