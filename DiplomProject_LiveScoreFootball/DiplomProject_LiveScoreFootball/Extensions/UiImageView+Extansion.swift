@@ -7,12 +7,12 @@
 
 import Foundation
 import UIKit
+import SVGKit
 
 
 extension UIImageView {
-    func getCountryFlag(codeCountry: String) {
-        
-        guard let imageUrl = URL(string: "\(Constants.baseURLForCountryImage)\(codeCountry)\(Constants.countryImagePrefixURL)") else {return}
+    func getLeagueLogo(leagueId: Int) {
+        guard let imageUrl = URL(string: "\(Constants.baseURLForLeagueLogo)\(leagueId)\(Constants.teamlogoPrefixURL)") else {return}
         DispatchQueue.global(qos: .utility).async {
             if let imageData = try? Data(contentsOf: imageUrl) {
                 DispatchQueue.main.async {
@@ -31,4 +31,29 @@ extension UIImageView {
             }
         }
     }
+    
+    func getPlayerPhoto(playerId: Int) {
+        guard let imageUrl = URL(string: "\(Constants.baseURLForPlayerPhoto)\(playerId)\(Constants.teamlogoPrefixURL)") else {return}
+        DispatchQueue.global(qos: .utility).async {
+            if let imageData = try? Data(contentsOf: imageUrl) {
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: imageData)
+                }
+            }
+        }
+    }
+    
+    func getCountryFlag(codeCountry: String) {
+        guard let svgPhoto = URL(string: "\(Constants.baseURLForCountryImage)\(codeCountry.lowercased())\(Constants.countryImagePrefixURL)") else {return}
+        DispatchQueue.global(qos: .utility).async {
+            if let data = try? Data(contentsOf: svgPhoto) {
+                let receivedimage: SVGKImage = SVGKImage(data: data)
+                let image = receivedimage.uiImage
+                DispatchQueue.main.async {
+                    self.image = image
+                }
+            }
+        }
+    }
 }
+

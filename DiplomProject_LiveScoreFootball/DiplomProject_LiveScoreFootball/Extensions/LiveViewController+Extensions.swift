@@ -22,9 +22,9 @@ extension LiveViewController: UITableViewDataSource, UITableViewDelegate {
         presenter.configureLiveTableViewCell(indexPath: indexPath, cell: cell)
             return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
     }
-    
     
 }
