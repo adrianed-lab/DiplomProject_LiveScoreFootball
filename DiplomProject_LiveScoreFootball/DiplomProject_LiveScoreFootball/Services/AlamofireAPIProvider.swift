@@ -21,7 +21,7 @@ protocol RestAPIProviderProtocol {
     func getMatchesByLeague(seasonYear: Int, leagueId: Int, last: Int, timeZone: String, completion: @escaping (Result<MatchesByDate, Error>) -> Void)
     func getFutureMatchesByLeague(seasonYear: Int, leagueId: Int, next: Int, timeZone: String, completion: @escaping (Result<MatchesByDate, Error>) -> Void)
     func getMatchEvents(fixture: Int, teamId: Int, completion: @escaping (Result<MatchEvents, Error>) -> Void)
-    func getMatchH2H(h2h: String, last: Int, completion: @escaping (Result<MatchHeadToHead, Error>) -> Void)
+    func getMatchH2H(h2h: String, last: Int, completion: @escaping (Result<MatchesByDate, Error>) -> Void)
     func getMatchLineups(fixture: Int, completion: @escaping (Result<MatchLineups, Error>) -> Void)
     func getMatchStatistics(fixture: Int, completion: @escaping (Result<MatchStatistics, Error>) -> Void)
     func getLastMatchesTeamInfo(teamId: Int, countLastMatches: Int, timeZone: String, completion: @escaping (Result<MatchesByDate, Error>) -> Void)
@@ -211,9 +211,9 @@ class AlamofireAPIProvider: RestAPIProviderProtocol {
         }
     }
     
-    func getMatchH2H(h2h: String, last: Int, completion: @escaping (Result<MatchHeadToHead, Error>) -> Void) {
+    func getMatchH2H(h2h: String, last: Int, completion: @escaping (Result<MatchesByDate, Error>) -> Void) {
         let parameters = addParameters(queryItems: ["h2h": h2h, "last": last.description])
-        AF.request(Constants.getMatchH2H, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: MatchHeadToHead.self) { response in
+        AF.request(Constants.getMatchH2H, method: .get, parameters: parameters, headers: Constants.headers).responseDecodable(of: MatchesByDate.self) { response in
             switch response.result {
             case .success(let result):
                 completion(.success(result))

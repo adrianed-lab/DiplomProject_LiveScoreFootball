@@ -16,7 +16,7 @@ protocol BaseMatchEventsRouterProtocol {
 
 
 protocol MatchEventsRouterProtocol: BaseTeamInfoRouterProtocol {
-    func showStandings()
+    func showStandings(fixture: DataMatchesByDate)
 }
 
 class MatchEventsRouter: MatchEventsRouterProtocol {
@@ -29,7 +29,8 @@ class MatchEventsRouter: MatchEventsRouterProtocol {
         self.viewController = viewController
     }
     
-    func showStandings() {
-           //
+    func showStandings(fixture: DataMatchesByDate) {
+        guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture), let eventsViewController = viewController?.navigationController else {return}
+        eventsViewController.pushViewController(matchEventsViewController, animated: true)
     }
 }
