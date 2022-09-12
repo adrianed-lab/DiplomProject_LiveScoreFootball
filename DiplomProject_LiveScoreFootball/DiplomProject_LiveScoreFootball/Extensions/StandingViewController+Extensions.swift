@@ -62,12 +62,8 @@ extension StandingViewController: UITableViewDelegate, UITableViewDataSource {
         switch index.row {
         case 0:
             return 40
-        case 1:
-            return 80
-        case 2:
-            return 80
         default:
-            return 0
+            return 80
         }
     }
     

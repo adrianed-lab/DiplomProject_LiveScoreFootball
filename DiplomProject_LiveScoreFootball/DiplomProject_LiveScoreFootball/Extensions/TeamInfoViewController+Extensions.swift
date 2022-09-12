@@ -51,16 +51,12 @@ extension TeamInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let index = teamInfoCollectionView.indexPathsForSelectedItems?.first else {return 0}
         switch index.row {
-        case 0:
-            return 80
-        case 1:
-            return 80
         case 2:
             return 40
         case 3:
             return 50
         default:
-            return 0
+            return 80
         }
     }
     

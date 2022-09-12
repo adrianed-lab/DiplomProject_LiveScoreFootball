@@ -7,50 +7,93 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 extension UIView {
     func createTableViewHeaderForStandingVC(indexPath:IndexPath, view: UIView) -> UIView {
         let viewForSection = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
+        viewForSection.backgroundColor = .blue
         let viewForResults = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         viewForResults.backgroundColor = .blue
-        let labelResults = UILabel(frame: CGRect(x: 15, y: 5, width: 80, height: 20))
-        labelResults.text = "RESULTS"
-        labelResults.textColor = .white
-        viewForResults.addSubview(labelResults)
         let viewForCalendar = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         viewForCalendar.backgroundColor = .blue
-        let labelCalendar = UILabel(frame: CGRect(x: 15, y: 5, width: 100, height: 20))
-        labelCalendar.text = "CALENDAR"
-        labelCalendar.textColor = .white
+        let labelResults = UILabel()
+        let labelCalendar = UILabel()
+        let labelNumberTeam = UILabel()
+        let labelTeam = UILabel()
+        let labelPTS = UILabel()
+        let labelGoals = UILabel()
+        let labelMatches = UILabel()
+        DispatchQueue.main.async {
+            labelResults.snp.makeConstraints { make in
+                make.width.equalTo(80)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForResults).inset(15)
+                make.top.equalTo(viewForResults).inset(5)
+            }
+            labelCalendar.snp.makeConstraints { make in
+                make.width.equalTo(100)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForCalendar).inset(15)
+                make.top.equalTo(viewForCalendar).inset(5)
+            }
+            labelNumberTeam.snp.makeConstraints { make in
+                make.width.equalTo(10)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForSection).inset(15)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelTeam.snp.makeConstraints { make in
+                make.width.equalTo(60)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForSection).inset(34)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelPTS.snp.makeConstraints { make in
+                make.width.equalTo(35)
+                make.height.equalTo(20)
+                make.trailing.equalTo(viewForSection).inset(0)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelGoals.snp.makeConstraints { make in
+                make.width.equalTo(15)
+                make.height.equalTo(20)
+                make.trailing.equalTo(viewForSection).inset(58)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelMatches.snp.makeConstraints { make in
+                make.width.equalTo(15)
+                make.height.equalTo(20)
+                make.trailing.equalTo(viewForSection).inset(105)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelCalendar.text = "CALENDAR"
+            labelCalendar.textColor = .white
+            labelResults.text = "RESULTS"
+            labelResults.textColor = .white
+            labelNumberTeam.font = UIFont(name: "System", size: 8)
+            labelNumberTeam.text = "#"
+            labelNumberTeam.textColor = .white
+            labelTeam.font = UIFont(name: "System", size: 8)
+            labelTeam.text = "TEAM"
+            labelTeam.textColor = .white
+            labelPTS.font = UIFont(name: "System", size: 8)
+            labelPTS.text = "PTS"
+            labelPTS.textColor = .white
+            labelGoals.text = "G"
+            labelGoals.font = UIFont(name: "System", size: 8)
+            labelGoals.textColor = .white
+            labelMatches.text = "M"
+            labelMatches.font = UIFont(name: "System", size: 8)
+            labelMatches.textColor = .white
+        }
+        viewForResults.addSubview(labelResults)
         viewForCalendar.addSubview(labelCalendar)
-        viewForSection.backgroundColor = .blue
-        let labelNumberTeam = UILabel(frame: CGRect(x: 15, y: 5, width: 10, height: 20))
         viewForSection.addSubview(labelNumberTeam)
-        labelNumberTeam.font = UIFont(name: "System", size: 8)
-        labelNumberTeam.text = "#"
-        labelNumberTeam.textColor = .white
-        labelNumberTeam.layer.masksToBounds = true
-        let labelTeam = UILabel(frame: CGRect(x: 34, y: 5, width: 60, height: 20))
         viewForSection.addSubview(labelTeam)
-        labelTeam.font = UIFont(name: "System", size: 8)
-        labelTeam.text = "TEAM"
-        labelTeam.textColor = .white
-        labelTeam.layer.masksToBounds = true
-        let labelPTS = UILabel(frame: CGRect(x: view.frame.size.width - 35, y: 5, width: 45, height: 20))
         viewForSection.addSubview(labelPTS)
-        labelPTS.font = UIFont(name: "System", size: 8)
-        labelPTS.text = "PTS"
-        labelPTS.textColor = .white
-        let labelGoals = UILabel(frame: CGRect(x: view.frame.size.width - 75, y: 5, width: 15, height: 20))
         viewForSection.addSubview(labelGoals)
-        labelGoals.text = "G"
-        labelGoals.font = UIFont(name: "System", size: 8)
-        labelGoals.textColor = .white
-        let labelMatches = UILabel(frame: CGRect(x: view.frame.size.width - 120, y: 5, width: 15, height: 20))
         viewForSection.addSubview(labelMatches)
-        labelMatches.text = "M"
-        labelMatches.font = UIFont(name: "System", size: 8)
-        labelMatches.textColor = .white
         switch indexPath.row {
         case 0:
             return viewForSection
@@ -65,53 +108,101 @@ extension UIView {
     
     func createTitleViewHeaderForTeamInfoVC(indexPath: IndexPath, view: UIView) -> UIView {
         let viewForSection = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
+        viewForSection.backgroundColor = .blue
         let viewForResults = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         viewForResults.backgroundColor = .blue
-        let labelResults = UILabel(frame: CGRect(x: 15, y: 5, width: 80, height: 20))
-        labelResults.text = "RESULTS"
-        labelResults.textColor = .white
-        viewForResults.addSubview(labelResults)
         let viewForPlayers = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         viewForPlayers.backgroundColor = .blue
-        let labelPlayers = UILabel(frame: CGRect(x: 15, y: 5, width: 80, height: 20))
-        labelPlayers.text = "PLAYERS"
-        labelPlayers.textColor = .white
-        viewForPlayers.addSubview(labelPlayers)
         let viewForCalendar = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         viewForCalendar.backgroundColor = .blue
-        let labelCalendar = UILabel(frame: CGRect(x: 15, y: 5, width: 100, height: 20))
-        labelCalendar.text = "CALENDAR"
-        labelCalendar.textColor = .white
-        viewForCalendar.addSubview(labelCalendar)
-        viewForSection.backgroundColor = .blue
-        let labelNumberTeam = UILabel(frame: CGRect(x: 15, y: 5, width: 10, height: 20))
-        viewForSection.addSubview(labelNumberTeam)
-        labelNumberTeam.font = UIFont(name: "System", size: 8)
-        labelNumberTeam.text = "#"
-        labelNumberTeam.textColor = .white
-        labelNumberTeam.layer.masksToBounds = true
-        let labelTeam = UILabel(frame: CGRect(x: 34, y: 5, width: 60, height: 20))
-        viewForSection.addSubview(labelTeam)
-        labelTeam.font = UIFont(name: "System", size: 8)
-        labelTeam.text = "TEAM"
-        labelTeam.textColor = .white
-        labelTeam.layer.masksToBounds = true
-        let labelPTS = UILabel(frame: CGRect(x: view.frame.size.width - 35, y: 5, width: 45, height: 20))
-        viewForSection.addSubview(labelPTS)
-        labelPTS.font = UIFont(name: "System", size: 8)
-        labelPTS.text = "PTS"
-        labelPTS.textColor = .white
-        let labelGoals = UILabel(frame: CGRect(x: view.frame.size.width - 75, y: 5, width: 15, height: 20))
+        let labelPlayers = UILabel()
+        let labelResults = UILabel()
+        let labelCalendar = UILabel()
+        let labelNumberTeam = UILabel()
+        let labelTeam = UILabel()
+        let labelPTS = UILabel()
+        let labelGoals = UILabel()
+        let labelMatches = UILabel()
+        DispatchQueue.main.async {
+            labelPlayers.snp.makeConstraints { make in
+                make.width.equalTo(80)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForPlayers).inset(15)
+                make.top.equalTo(viewForPlayers).inset(5)
+            }
+            labelResults.snp.makeConstraints { make in
+                make.width.equalTo(80)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForResults).inset(15)
+                make.top.equalTo(viewForResults).inset(5)
+            }
+            labelCalendar.snp.makeConstraints { make in
+                make.width.equalTo(100)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForCalendar).inset(15)
+                make.top.equalTo(viewForCalendar).inset(5)
+            }
+            labelNumberTeam.snp.makeConstraints { make in
+                make.width.equalTo(10)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForSection).inset(15)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelTeam.snp.makeConstraints { make in
+                make.width.equalTo(60)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForSection).inset(34)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelPTS.snp.makeConstraints { make in
+                make.width.equalTo(35)
+                make.height.equalTo(20)
+                make.trailing.equalTo(viewForSection).inset(0)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelGoals.snp.makeConstraints { make in
+                make.width.equalTo(15)
+                make.height.equalTo(20)
+                make.trailing.equalTo(viewForSection).inset(58)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelMatches.snp.makeConstraints { make in
+                make.width.equalTo(15)
+                make.height.equalTo(20)
+                make.trailing.equalTo(viewForSection).inset(105)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelResults.text = "RESULTS"
+            labelResults.textColor = .white
+            labelPlayers.text = "PLAYERS"
+            labelPlayers.textColor = .white
+            labelCalendar.text = "CALENDAR"
+            labelCalendar.textColor = .white
+            labelNumberTeam.font = UIFont(name: "System", size: 8)
+            labelNumberTeam.text = "#"
+            labelNumberTeam.textColor = .white
+            labelTeam.font = UIFont(name: "System", size: 8)
+            labelTeam.text = "TEAM"
+            labelTeam.textColor = .white
+            labelPTS.font = UIFont(name: "System", size: 8)
+            labelPTS.text = "PTS"
+            labelPTS.textColor = .white
+            labelGoals.text = "G"
+            labelGoals.font = UIFont(name: "System", size: 8)
+            labelGoals.textColor = .white
+            labelMatches.text = "M"
+            labelMatches.font = UIFont(name: "System", size: 8)
+            labelMatches.textColor = .white
+        }
         viewForSection.addSubview(labelGoals)
-        labelGoals.text = "G"
-        labelGoals.font = UIFont(name: "System", size: 8)
-        labelGoals.textColor = .white
-        let labelMatches = UILabel(frame: CGRect(x: view.frame.size.width - 120, y: 5, width: 15, height: 20))
+        viewForSection.addSubview(labelPTS)
+        viewForSection.addSubview(labelTeam)
+        viewForCalendar.addSubview(labelCalendar)
+        viewForSection.addSubview(labelNumberTeam)
         viewForSection.addSubview(labelMatches)
-        labelMatches.text = "M"
-        labelMatches.font = UIFont(name: "System", size: 8)
-        labelMatches.textColor = .white
-        
+        viewForPlayers.addSubview(labelPlayers)
+        viewForResults.addSubview(labelResults)
+
         switch indexPath.row {
         case 0:
             return viewForResults
@@ -128,60 +219,112 @@ extension UIView {
     
     func createTitleViewHeaderForMatchEventsVC(indexPath: IndexPath, view: UIView) -> UIView {
         let viewForSection = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
+        viewForSection.backgroundColor = .blue
         let viewForEvents = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         viewForEvents.backgroundColor = .blue
-        let labelEvents = UILabel(frame: CGRect(x: 15, y: 5, width: 100, height: 20))
-        labelEvents.text = "EVENTS"
-        labelEvents.textColor = .white
-        viewForEvents.addSubview(labelEvents)
         let viewForStatistics = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         viewForStatistics.backgroundColor = .blue
-        let labelStatistics = UILabel(frame: CGRect(x: 15, y: 5, width: 100, height: 20))
-        labelStatistics.text = "STATISTICS"
-        labelStatistics.textColor = .white
-        viewForStatistics.addSubview(labelStatistics)
         let viewForLineUps = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         viewForLineUps.backgroundColor = .blue
-        let labelLineUps = UILabel(frame: CGRect(x: 15, y: 5, width: 100, height: 20))
-        labelLineUps.text = "LINEUPS"
-        labelLineUps.textColor = .white
-        viewForLineUps.addSubview(labelLineUps)
-        viewForSection.backgroundColor = .blue
         let viewForH2H = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         viewForH2H.backgroundColor = .blue
-        let labelH2H = UILabel(frame: CGRect(x: 15, y: 5, width: 140, height: 20))
-        labelH2H.text = "HEAD TO HEAD"
-        labelH2H.textColor = .white
-        viewForH2H.addSubview(labelH2H)
-        viewForSection.backgroundColor = .blue
-        let labelNumberTeam = UILabel(frame: CGRect(x: 15, y: 5, width: 10, height: 20))
-        viewForSection.addSubview(labelNumberTeam)
-        labelNumberTeam.font = UIFont(name: "System", size: 8)
-        labelNumberTeam.text = "#"
-        labelNumberTeam.textColor = .white
-        labelNumberTeam.layer.masksToBounds = true
-        let labelTeam = UILabel(frame: CGRect(x: 34, y: 5, width: 60, height: 20))
-        viewForSection.addSubview(labelTeam)
-        labelTeam.font = UIFont(name: "System", size: 8)
-        labelTeam.text = "TEAM"
-        labelTeam.textColor = .white
-        labelTeam.layer.masksToBounds = true
-        let labelPTS = UILabel(frame: CGRect(x: view.frame.size.width - 35, y: 5, width: 45, height: 20))
-        viewForSection.addSubview(labelPTS)
-        labelPTS.font = UIFont(name: "System", size: 8)
-        labelPTS.text = "PTS"
-        labelPTS.textColor = .white
-        let labelGoals = UILabel(frame: CGRect(x: view.frame.size.width - 75, y: 5, width: 15, height: 20))
-        viewForSection.addSubview(labelGoals)
-        labelGoals.text = "G"
-        labelGoals.font = UIFont(name: "System", size: 8)
-        labelGoals.textColor = .white
-        let labelMatches = UILabel(frame: CGRect(x: view.frame.size.width - 120, y: 5, width: 15, height: 20))
+        let labelLineUps = UILabel()
+        let labelH2H = UILabel()
+        let labelNumberTeam = UILabel()
+        let labelTeam = UILabel()
+        let labelPTS = UILabel()
+        let labelGoals = UILabel()
+        let labelMatches = UILabel()
+        let labelEvents = UILabel()
+        let labelStatistics = UILabel()
+        DispatchQueue.main.async {
+            labelEvents.snp.makeConstraints { make in
+                make.width.equalTo(80)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForEvents).inset(15)
+                make.top.equalTo(viewForEvents).inset(5)
+            }
+            labelH2H.snp.makeConstraints { make in
+                make.width.equalTo(150)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForH2H).inset(15)
+                make.top.equalTo(viewForH2H).inset(5)
+            }
+            labelStatistics.snp.makeConstraints { make in
+                make.width.equalTo(100)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForStatistics).inset(15)
+                make.top.equalTo(viewForStatistics).inset(5)
+            }
+            labelLineUps.snp.makeConstraints { make in
+                make.width.equalTo(100)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForLineUps).inset(15)
+                make.top.equalTo(viewForLineUps).inset(5)
+            }
+            labelNumberTeam.snp.makeConstraints { make in
+                make.width.equalTo(10)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForSection).inset(15)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelTeam.snp.makeConstraints { make in
+                make.width.equalTo(60)
+                make.height.equalTo(20)
+                make.leading.equalTo(viewForSection).inset(34)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelPTS.snp.makeConstraints { make in
+                make.width.equalTo(35)
+                make.height.equalTo(20)
+                make.trailing.equalTo(viewForSection).inset(0)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelGoals.snp.makeConstraints { make in
+                make.width.equalTo(15)
+                make.height.equalTo(20)
+                make.trailing.equalTo(viewForSection).inset(58)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelMatches.snp.makeConstraints { make in
+                make.width.equalTo(15)
+                make.height.equalTo(20)
+                make.trailing.equalTo(viewForSection).inset(105)
+                make.top.equalTo(viewForSection).inset(5)
+            }
+            labelEvents.text = "EVENTS"
+            labelEvents.textColor = .white
+            labelStatistics.text = "STATISTICS"
+            labelStatistics.textColor = .white
+            labelLineUps.text = "LINEUPS"
+            labelLineUps.textColor = .white
+            labelH2H.text = "HEAD TO HEAD"
+            labelH2H.textColor = .white
+            labelNumberTeam.font = UIFont(name: "System", size: 8)
+            labelNumberTeam.text = "#"
+            labelNumberTeam.textColor = .white
+            labelTeam.font = UIFont(name: "System", size: 8)
+            labelTeam.text = "TEAM"
+            labelTeam.textColor = .white
+            labelPTS.font = UIFont(name: "System", size: 8)
+            labelPTS.text = "PTS"
+            labelPTS.textColor = .white
+            labelGoals.text = "G"
+            labelGoals.font = UIFont(name: "System", size: 8)
+            labelGoals.textColor = .white
+            labelMatches.text = "M"
+            labelMatches.font = UIFont(name: "System", size: 8)
+            labelMatches.textColor = .white
+        }
+        viewForEvents.addSubview(labelEvents)
         viewForSection.addSubview(labelMatches)
-        labelMatches.text = "M"
-        labelMatches.font = UIFont(name: "System", size: 8)
-        labelMatches.textColor = .white
-        
+        viewForSection.addSubview(labelGoals)
+        viewForSection.addSubview(labelPTS)
+        viewForSection.addSubview(labelTeam)
+        viewForSection.addSubview(labelNumberTeam)
+        viewForH2H.addSubview(labelH2H)
+        viewForLineUps.addSubview(labelLineUps)
+        viewForStatistics.addSubview(labelStatistics)
         switch indexPath.row {
         case 0:
             return viewForEvents

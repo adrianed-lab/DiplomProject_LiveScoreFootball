@@ -14,12 +14,8 @@ extension MatchEventsViewController: UITableViewDelegate, UITableViewDataSource 
         guard let index = matchEventsCollectionView.indexPathsForSelectedItems?.first else {return 0}
         if index.row == 0 {
             return 2
-        } else if index.row == 1 {
-            return 1
         } else if index.row == 2 {
             return 4
-        } else if index.row == 3 {
-            return 1
         }
         return 1
     }
@@ -31,10 +27,6 @@ extension MatchEventsViewController: UITableViewDelegate, UITableViewDataSource 
             return presenter.countStatisticsItems()
         } else if index.row == 2 {
             switch section {
-            case 0:
-                return 1
-            case 1:
-                return 1
             case 2:
                 return 11
             case 3:
@@ -88,11 +80,7 @@ extension MatchEventsViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let index = matchEventsCollectionView.indexPathsForSelectedItems?.first else {return 0}
         switch index.row {
-        case 0:
-            return 100
-        case 1:
-            return 50
-        case 2:
+        case 1,2:
             return 50
         case 3:
             return 80
@@ -124,6 +112,16 @@ extension MatchEventsViewController: UITableViewDelegate, UITableViewDataSource 
             return "H2H MATCHES"
         }
         return ""
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let index = matchEventsCollectionView.indexPathsForSelectedItems?.first else {return }
+        switch index.row {
+        case 3:
+            return presenter.getFixtureId(indexPath: indexPath)
+        default:
+            break
+        }
     }
     
 }
