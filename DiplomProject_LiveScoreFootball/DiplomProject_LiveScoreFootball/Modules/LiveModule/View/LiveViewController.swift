@@ -8,7 +8,6 @@
 import UIKit
 
 protocol LiveViewProtocol: AnyObject {
-    func successGetLiveMatches()
     func failure(error: Error)
 }
 
@@ -26,11 +25,7 @@ class LiveViewController: UIViewController, LiveViewProtocol {
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         liveTableView.register(UINib(nibName: "LiveTableViewCell", bundle: nil), forCellReuseIdentifier: LiveTableViewCell.key)
     }
-    
-    func successGetLiveMatches() {
-        
-    }
-    
+
     @objc func refreshData(_ sender: UIRefreshControl) {
         DispatchQueue.main.asyncAfter(deadline: .now()+2) {
             self.presenter.getLiveMatches(live: "all")

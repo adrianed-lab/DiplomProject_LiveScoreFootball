@@ -113,6 +113,7 @@
 		84EE909628B25CBA005EE75C /* LiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EE909428B25CBA005EE75C /* LiveTableViewCell.xib */; };
 		84EE909928B37808005EE75C /* TablesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE909728B37808005EE75C /* TablesViewCell.swift */; };
 		84EE909A28B37808005EE75C /* TablesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EE909828B37808005EE75C /* TablesViewCell.xib */; };
+		84FB8EE228CFAF16005E6B0E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84FB8EE128CFAF16005E6B0E /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -229,6 +230,7 @@
 				8425491628A32E1E0078427F /* RealmSwift in Frameworks */,
 				8425491428A32E1E0078427F /* Realm in Frameworks */,
 				841FD90528CCB54700905828 /* SVGKitSwift in Frameworks */,
+				84FB8EE228CFAF16005E6B0E /* SnapKit in Frameworks */,
 				841FD90328CCB54700905828 /* SVGKit in Frameworks */,
 				8425491128A32D260078427F /* Alamofire in Frameworks */,
 			);
@@ -753,6 +755,7 @@
 				8425491528A32E1E0078427F /* RealmSwift */,
 				841FD90228CCB54700905828 /* SVGKit */,
 				841FD90428CCB54700905828 /* SVGKitSwift */,
+				84FB8EE128CFAF16005E6B0E /* SnapKit */,
 			);
 			productName = DiplomProject_LiveScoreFootball;
 			productReference = 842548F828A1BC850078427F /* DiplomProject_LiveScoreFootball.app */;
@@ -786,6 +789,7 @@
 				8425490F28A32D260078427F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8425491228A32E1E0078427F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				841FD90128CCB54700905828 /* XCRemoteSwiftPackageReference "SVGKit" */,
+				84FB8EE028CFAF15005E6B0E /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 842548F928A1BC850078427F /* Products */;
 			projectDirPath = "";
@@ -1155,6 +1159,14 @@
 				minimumVersion = 10.28.2;
 			};
 		};
+		84FB8EE028CFAF15005E6B0E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1182,6 +1194,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8425491228A32E1E0078427F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		84FB8EE128CFAF16005E6B0E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84FB8EE028CFAF15005E6B0E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

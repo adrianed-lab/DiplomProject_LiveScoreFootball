@@ -8,7 +8,6 @@
 import UIKit
 
 protocol TablesViewProtocol: AnyObject {
-    func successGetCountriesTable()
     func failure(error: Error)
 }
 
@@ -24,9 +23,6 @@ class TablesViewController: UIViewController, TablesViewProtocol {
         countriesTableView.register(UINib(nibName: "TablesViewCell", bundle: nil), forCellReuseIdentifier: TablesViewCell.key)
     }
     
-    func successGetCountriesTable() {
-        
-    }
         
     func failure(error: Error) {
         print(error.localizedDescription)

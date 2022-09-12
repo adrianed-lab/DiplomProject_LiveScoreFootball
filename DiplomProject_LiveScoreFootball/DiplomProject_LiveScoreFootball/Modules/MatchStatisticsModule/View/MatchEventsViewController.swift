@@ -61,7 +61,7 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
     }
     
     func openWarningMessage() {
-        let allertView = UIAlertController(title: "Oops!", message: "Match has't statistics", preferredStyle: .alert)
+        let allertView = UIAlertController(title: "Oops!", message: "Data not found!", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Ok", style: .cancel)
         allertView.addAction(okButton)
         self.present(allertView, animated: true)

@@ -267,7 +267,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             let positionSecondTeam = startXISecondTeam.player.pos ?? ""
             let numberFirstTeam = startXIFirstTeam.player.number ?? 1
             let numberSecondTeam = startXISecondTeam.player.number ?? 1
-            return cell.configureCellSecond(indexPath: indexPath, playerNameFirstTeam: nameFirstTeam, playerNameSecondTeam: nameSecondTeam, positionsFirstTeam: positionFirstTeam, positionsSecondTeam: positionSecondTeam, numberFirstTeam: numberFirstTeam, numberSecondTeam: numberSecondTeam)
+            return cell.configureCellSecond(playerNameFirstTeam: nameFirstTeam, playerNameSecondTeam: nameSecondTeam, positionsFirstTeam: positionFirstTeam, positionsSecondTeam: positionSecondTeam, numberFirstTeam: numberFirstTeam, numberSecondTeam: numberSecondTeam)
         case 3:
             guard let substitutesFirstTeam = matchLineups?.response.first?.substitutes[indexPath.row] else {return}
             guard let substitutesSecondTeam = matchLineups?.response.last?.substitutes[indexPath.row]  else {return}
@@ -277,7 +277,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             let positionSecondTeamSub = substitutesSecondTeam.player.pos ?? ""
             let numberFirstTeamSub = substitutesFirstTeam.player.number ?? 1
             let numberSecondTeamSub = substitutesSecondTeam.player.number ?? 1
-            return cell.configureCellSecond(indexPath: indexPath, playerNameFirstTeam: nameFirstTeamSub, playerNameSecondTeam: nameSecondTeamSub, positionsFirstTeam: positionFirstTeamSub, positionsSecondTeam: positionSecondTeamSub, numberFirstTeam: numberFirstTeamSub, numberSecondTeam: numberSecondTeamSub)
+            return cell.configureCellSecond(playerNameFirstTeam: nameFirstTeamSub, playerNameSecondTeam: nameSecondTeamSub, positionsFirstTeam: positionFirstTeamSub, positionsSecondTeam: positionSecondTeamSub, numberFirstTeam: numberFirstTeamSub, numberSecondTeam: numberSecondTeamSub)
         default:
             break
         }
