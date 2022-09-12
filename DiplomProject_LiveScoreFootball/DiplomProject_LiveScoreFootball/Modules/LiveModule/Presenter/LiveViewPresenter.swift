@@ -35,7 +35,6 @@ class LiveViewPresenter: LiveViewPresenterProtocol {
                switch result {
                case .success(let value):
                    self.liveMatches = value
-                   view.successGetLiveMatches()
                case .failure(let error):
                    view.failure(error: error)
                }
@@ -44,8 +43,7 @@ class LiveViewPresenter: LiveViewPresenterProtocol {
     }
         
    func getLeaguesCount() -> Int {
-       let liveMatches = liveMatches?.response.count ?? 0
-       return liveMatches
+       liveMatches?.response.count ?? 0
     }
     
     func configureLiveTableViewCell(indexPath: IndexPath, cell: LiveTableViewCellProtocol) {

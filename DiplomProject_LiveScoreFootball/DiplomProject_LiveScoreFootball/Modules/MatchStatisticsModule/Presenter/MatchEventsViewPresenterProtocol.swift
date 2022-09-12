@@ -16,6 +16,7 @@ protocol MatchEventsViewPresenterProtocol: AnyObject {
     func configureMatchesH2HCell(indexPath: IndexPath, cell: LastFixturesByLeagueTableViewCell)
     func configureMatchLineupsCell(indexPath: IndexPath, cell: MatchLineupsTableViewCellProtocol)
     func configureStandingCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol)
+    func getFixtureId(indexPath: IndexPath)
     func createView()
     func countStadingsItems() ->Int
     func countH2HMatches() -> Int
@@ -29,7 +30,7 @@ protocol MatchEventsViewPresenterProtocol: AnyObject {
     func getItemIndex(indexPath: IndexPath)
     var matchEventsFirstTeam: MatchEvents? {get}
     var matchStatistics: MatchStatistics? {get}
-    var matchesH2H: MatchHeadToHead? {get}
+    var matchesH2H: MatchesByDate? {get}
     var standingByLeagueId: LeagueTable? {get}
     var fixture: DataMatchesByDate? {get}
 }
@@ -44,7 +45,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
     private(set) var matchEventsSecondTeam: MatchEvents?
     private(set) var matchStatistics: MatchStatistics?
     private(set) var matchLineups: MatchLineups?
-    private(set) var matchesH2H: MatchHeadToHead?
+    private(set) var matchesH2H: MatchesByDate?
     private(set) var standingByLeagueId: LeagueTable?
     private(set) var fixture: DataMatchesByDate?
     private(set) var collectionItems: [CollectionModel] = [CollectionModel(name: "EVENTS"), CollectionModel(name: "STATISTICS"), CollectionModel(name: "LINE-UPS"), CollectionModel(name: "H2H"), CollectionModel(name: "TABLE")]
@@ -69,6 +70,9 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let value):
+                    if value.response.isEmpty {
+                        view.openWarningMessage()
+                    }
                     self.matchEventsFirstTeam = value
                     view.successGetEvents()
                 case .failure(let error):
@@ -81,6 +85,9 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let value):
+                    if value.response.isEmpty {
+                        view.openWarningMessage()
+                    }
                     self.matchEventsSecondTeam = value
                     view.successGetEvents()
                 case .failure(let error):
@@ -134,6 +141,9 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let value):
+                    if value.response.isEmpty {
+                        view.openWarningMessage()
+                    }
                     self.matchEventsFirstTeam = value
                     view.successGetEvents()
                 case .failure(let error):
@@ -146,6 +156,9 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let value):
+                    if value.response.isEmpty {
+                        view.openWarningMessage()
+                    }
                     self.matchEventsSecondTeam = value
                     view.successGetEvents()
                 case .failure(let error):
@@ -175,6 +188,9 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                     DispatchQueue.main.async {
                         switch result {
                         case .success(let value):
+                            if value.response.isEmpty {
+                                view.openWarningMessage()
+                            }
                             self.matchLineups = value
                             view.successGetEvents()
                         case .failure(let error):
@@ -188,6 +204,9 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                     DispatchQueue.main.async {
                         switch result {
                         case .success(let value):
+                            if value.response.isEmpty {
+                                view.openWarningMessage()
+                            }
                             self.matchesH2H = value
                             view.successGetEvents()
                         case .failure(let error):
@@ -202,6 +221,9 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                     DispatchQueue.main.async {
                         switch result {
                         case .success(let value):
+                            if value.response.isEmpty {
+                                view.openWarningMessage()
+                            }
                             self.standingByLeagueId = value
                             view.successGetEvents()
                         case .failure(let error):
@@ -211,6 +233,11 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             }
         }
     }
+    func getFixtureId(indexPath: IndexPath) {
+        guard let router = router, let fixture = matchesH2H?.response[indexPath.row] else {return}
+        router.showStandings(fixture: fixture )
+    }
+
     
     func configureStandingCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol) {
         guard let standings = standingByLeagueId?.response.first?.league.standings.first?[indexPath.row], let playedGames = standings.all.played, let goalsFor = standings.all.goals.goalsFor, let goalsAgainst = standings.all.goals.against else {return}
@@ -240,7 +267,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             let positionSecondTeam = startXISecondTeam.player.pos ?? ""
             let numberFirstTeam = startXIFirstTeam.player.number ?? 1
             let numberSecondTeam = startXISecondTeam.player.number ?? 1
-            return cell.configureCellSecond(playerNameFirstTeam: nameFirstTeam, playerNameSecondTeam: nameSecondTeam, positionsFirstTeam: positionFirstTeam, positionsSecondTeam: positionSecondTeam, numberFirstTeam: numberFirstTeam, numberSecondTeam: numberSecondTeam)
+            return cell.configureCellSecond(indexPath: indexPath, playerNameFirstTeam: nameFirstTeam, playerNameSecondTeam: nameSecondTeam, positionsFirstTeam: positionFirstTeam, positionsSecondTeam: positionSecondTeam, numberFirstTeam: numberFirstTeam, numberSecondTeam: numberSecondTeam)
         case 3:
             guard let substitutesFirstTeam = matchLineups?.response.first?.substitutes[indexPath.row] else {return}
             guard let substitutesSecondTeam = matchLineups?.response.last?.substitutes[indexPath.row]  else {return}
@@ -250,7 +277,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             let positionSecondTeamSub = substitutesSecondTeam.player.pos ?? ""
             let numberFirstTeamSub = substitutesFirstTeam.player.number ?? 1
             let numberSecondTeamSub = substitutesSecondTeam.player.number ?? 1
-            return cell.configureCellSecond(playerNameFirstTeam: nameFirstTeamSub, playerNameSecondTeam: nameSecondTeamSub, positionsFirstTeam: positionFirstTeamSub, positionsSecondTeam: positionSecondTeamSub, numberFirstTeam: numberFirstTeamSub, numberSecondTeam: numberSecondTeamSub)
+            return cell.configureCellSecond(indexPath: indexPath, playerNameFirstTeam: nameFirstTeamSub, playerNameSecondTeam: nameSecondTeamSub, positionsFirstTeam: positionFirstTeamSub, positionsSecondTeam: positionSecondTeamSub, numberFirstTeam: numberFirstTeamSub, numberSecondTeam: numberSecondTeamSub)
         default:
             break
         }

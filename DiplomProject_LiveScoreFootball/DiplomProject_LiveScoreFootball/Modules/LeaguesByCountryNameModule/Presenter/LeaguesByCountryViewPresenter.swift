@@ -70,7 +70,7 @@ class LeaguesByCountryViewPresenter: LeaguesByCountryViewPresenterProtocol {
         let countryLabel = UILabel(frame: CGRect(x: 51, y: 5, width: 80, height: 20))
         countryLabel.text = nameCountry
         countryLabel.font = UIFont(name: "System", size: 13)
-        countryLabel.textColor = .red
+        countryLabel.textColor = .white
         headerView.addSubview(countryLabel)
         DispatchQueue.main.async {
             let blur = UIBlurEffect(style: .systemUltraThinMaterialDark)

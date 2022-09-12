@@ -40,7 +40,6 @@ class TablesViewPresenter: TablesViewPresenterProtocol {
                 switch result {
                 case .success(let value):
                     self.countries = value
-                    view.successGetCountriesTable()
                 case .failure(let error):
                     view.failure(error: error)
                 }
