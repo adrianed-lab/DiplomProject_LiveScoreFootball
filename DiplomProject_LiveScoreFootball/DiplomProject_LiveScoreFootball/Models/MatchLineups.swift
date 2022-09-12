@@ -30,7 +30,7 @@ struct StartXi: Codable {
 }
 
 struct Player: Codable {
-    let id: Int
+    let id: Int?
     let name: String
     let number: Int?
     let pos: String?

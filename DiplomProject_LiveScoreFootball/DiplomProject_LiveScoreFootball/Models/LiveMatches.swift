@@ -59,7 +59,7 @@ struct DataFixture: Codable {
 }
 
 struct PeriodsInfo: Codable {
-    let first: Int
+    let first: Int?
     let second: Int?
 }
 
