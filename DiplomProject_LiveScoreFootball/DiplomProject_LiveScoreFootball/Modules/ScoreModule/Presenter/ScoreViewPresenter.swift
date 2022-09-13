@@ -12,8 +12,9 @@ import Alamofire
 protocol ScoreViewPresenterProtocol: AnyObject {
     func getFixturesByDate(date: String)
     func getLeaguesCount() -> Int
+    func getFixtureItem(indexPath: IndexPath)
     func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol)
-    var leaguesByDate: MatchesByDate? {get}
+    var matchesByDate: MatchesByDate? {get}
     
 }
 
@@ -22,7 +23,7 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
     private(set) weak var view: ScoreViewProtocol?
     private(set) var apiProvider: RestAPIProviderProtocol!
     private(set) var router: ScoreRouterProtocol?
-    private(set) var leaguesByDate: MatchesByDate?
+    private(set) var matchesByDate: MatchesByDate?
 
     required init(view: ScoreViewProtocol, apiProvider: RestAPIProviderProtocol, router: ScoreRouterProtocol) {
         self.view = view
@@ -32,12 +33,12 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
     }
 
     func getFixturesByDate(date: String) {
-        apiProvider.getMatchesByDate(date: date) { [weak self] result in
+        apiProvider.getMatchesByDate(date: date, timeZone: "Europe/Minsk") { [weak self] result in
             guard let self = self else {return}
             DispatchQueue.main.async {
                 switch result {
                 case .success(let value):
-                    self.leaguesByDate = value
+                    self.matchesByDate = value
                     self.view?.successGetLeaguesBySeason()
                 case .failure(let error):
                     self.view?.failure(error: error)
@@ -47,13 +48,23 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
     }
     
     func getLeaguesCount() -> Int {
-        leaguesByDate?.response.count ?? 0
+        matchesByDate?.response.count ?? 0
     }
     
     func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol) {
-        guard let leaguesBySeason = leaguesByDate?.response[indexPath.row], let flagCountry = leaguesBySeason.league.flag else {return}
-        let countryName = leaguesBySeason.league.country
-        let leagueName = leaguesBySeason.league.name
-        cell.configureCell(codeCountry: flagCountry, countryNameInfo: countryName, leagueName: leagueName)
+        guard let lastMatches = matchesByDate?.response[indexPath.row] else {return}
+        let matchDate = lastMatches.fixture.date ?? ""
+        let logoFirstTeam = lastMatches.teams.home.id
+        let logoSecondTeam = lastMatches.teams.away.id
+        let nameHomeTeam = lastMatches.teams.home.name
+        let nameAwayTeam = lastMatches.teams.away.name
+        let goalsHome = lastMatches.goals.home ?? 0
+        let goalsAway = lastMatches.goals.away ?? 0
+        cell.configureCell(date: matchDate.getDate(.startTime), lofoFirstTeam: logoFirstTeam, logoSecondTeam: logoSecondTeam, nameFirstTeam: nameHomeTeam, nameSecondTeam: nameAwayTeam, goalsHome: goalsHome, goalsAway: goalsAway)
+    }
+    
+    func getFixtureItem(indexPath: IndexPath) {
+        guard let fixture = matchesByDate?.response[indexPath.row], let router = router, let flag = fixture.league.flag else {return}
+        router.showMatchEvent(fixture: fixture, codeCountry: flag)
     }
 }

@@ -26,5 +26,9 @@ extension TablesViewController: UITableViewDelegate, UITableViewDataSource {
         presenter.getCountryNameByTap(indexPath: indexPath)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        30
+    }
+    
     
 }

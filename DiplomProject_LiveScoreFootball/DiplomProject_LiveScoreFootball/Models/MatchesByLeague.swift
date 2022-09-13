@@ -41,9 +41,9 @@ struct DataStatus: Codable {
 }
 
 struct DataVenue: Codable {
-    let id: Int
-    let name: String
-    let city: String
+    let id: Int?
+    let name: String?
+    let city: String?
 }
 
 struct DataGoals: Codable {

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SVGKit
+
 protocol TablesViewCellProtocol: AnyObject {
     func configureCell(nameCountry: String, logoCountry: String)
 }
@@ -27,6 +29,6 @@ class TablesViewCell: UITableViewCell, TablesViewCellProtocol {
     
     func configureCell(nameCountry: String, logoCountry: String) {
         countryName.text = nameCountry
-        //countryImage
+        countryImage.getCountryFlag(codeCountry: logoCountry)
     }
 }

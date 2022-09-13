@@ -57,7 +57,7 @@ struct Goals: Codable {
 }
 
 struct Team: Codable {
-    let id: Int
+    let id: Int?
     let name: String
     let logo: String
 }

@@ -31,11 +31,12 @@ extension ScoreViewController: UITableViewDataSource, UITableViewDelegate {
         "Fixtures"
     }
     
-   // func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        //
-    //}
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.getFixtureItem(indexPath: indexPath)
     }
     
 }

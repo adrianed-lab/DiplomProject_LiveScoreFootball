@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaguesByCountryViewController" customModule="DiplomProject_LiveScoreFootball" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="Hqv-RV-NQj" id="D4K-3N-lzt"/>
                 <outlet property="leaguesByCountryTable" destination="V9e-jg-5ue" id="DPT-6r-VrM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,10 +28,15 @@
                         <outlet property="delegate" destination="-1" id="iwT-xg-bWr"/>
                     </connections>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Hqv-RV-NQj">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Hqv-RV-NQj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1VX-sD-ONt"/>
+                <constraint firstItem="Hqv-RV-NQj" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="BgS-c6-3YQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="V9e-jg-5ue" secondAttribute="trailing" id="LnU-vH-8z6"/>
                 <constraint firstItem="V9e-jg-5ue" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Mli-cz-vyl"/>
                 <constraint firstItem="V9e-jg-5ue" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="VY7-Fh-bT6"/>

@@ -15,7 +15,7 @@ protocol BaseScoreRouterProtocol {
 
 
 protocol ScoreRouterProtocol: BaseScoreRouterProtocol {
-    func showFixturesByLeague()
+    func showMatchEvent(fixture: DataMatchesByDate, codeCountry: String)
 }
 
 class ScoreRouter: ScoreRouterProtocol {
@@ -28,8 +28,8 @@ class ScoreRouter: ScoreRouterProtocol {
         self.viewController = viewController
     }
     
-    func showFixturesByLeague() {
-           //
+    func showMatchEvent(fixture: DataMatchesByDate, codeCountry: String) {
+        guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture, codeCountry: codeCountry), let scoreViewController = viewController?.navigationController else {return}
+        scoreViewController.pushViewController(matchEventsViewController, animated: true)
        }
-       
 }

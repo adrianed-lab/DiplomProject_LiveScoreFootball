@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScoreViewController" customModule="DiplomProject_LiveScoreFootball" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="iYP-3p-Ldh" id="M39-bf-jDQ"/>
                 <outlet property="tableViewMatchesByDate" destination="3Un-Af-hFf" id="viy-YK-fPR"/>
                 <outlet property="view" destination="iN0-l3-epB" id="gCk-cB-87R"/>
             </connections>
@@ -27,13 +28,22 @@
                         <outlet property="delegate" destination="-1" id="NAv-XF-Oja"/>
                     </connections>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="iYP-3p-Ldh">
+                    <rect key="frame" x="157" y="398" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="O5o-bO-z7d"/>
+                        <constraint firstAttribute="width" constant="100" id="Ske-RE-czX"/>
+                    </constraints>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3Un-Af-hFf" secondAttribute="bottom" id="2Kx-2K-f3m"/>
+                <constraint firstItem="iYP-3p-Ldh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ehw-xm-Lh4"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3Un-Af-hFf" secondAttribute="trailing" id="HgP-A2-9CU"/>
                 <constraint firstItem="3Un-Af-hFf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cvl-Nd-fGM"/>
+                <constraint firstItem="iYP-3p-Ldh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="n4Q-Ks-HTe"/>
                 <constraint firstItem="3Un-Af-hFf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="pfk-eQ-tar"/>
             </constraints>
             <point key="canvasLocation" x="139" y="61"/>

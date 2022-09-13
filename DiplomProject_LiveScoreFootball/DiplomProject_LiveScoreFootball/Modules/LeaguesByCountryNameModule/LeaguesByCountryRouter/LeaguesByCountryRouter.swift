@@ -15,7 +15,7 @@ protocol BaseLeaguesByCountryRouterProtocol {
 
 
 protocol LeaguesByCountryRouterProtocol: BaseLeaguesByCountryRouterProtocol {
-    func showStandings(leagueId: Int)
+    func showStandings(leagueId: Int, countryCode: String)
 }
 
 class LeaguesByCountryRouter: LeaguesByCountryRouterProtocol {
@@ -28,8 +28,8 @@ class LeaguesByCountryRouter: LeaguesByCountryRouterProtocol {
         self.viewController = viewController
     }
     
-    func showStandings(leagueId: Int) {
-        guard let standingViewController = builder?.createTableByLeagueModule(leagueId: leagueId), let leaguesViewController = viewController?.navigationController else {return}
+    func showStandings(leagueId: Int, countryCode: String) {
+        guard let standingViewController = builder?.createTableByLeagueModule(leagueId: leagueId, countryCode: countryCode), let leaguesViewController = viewController?.navigationController else {return}
             leaguesViewController.pushViewController(standingViewController, animated: true)
     }
 }

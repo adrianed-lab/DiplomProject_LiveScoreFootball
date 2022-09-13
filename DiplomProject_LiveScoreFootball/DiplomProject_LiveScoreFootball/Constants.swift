@@ -22,7 +22,9 @@ struct Constants {
     
     static var baseURL = "https://api-football-v1.p.rapidapi.com/v3/"
     static var baseURLForCountryImage = "https://media.api-sports.io/flags/"
+    static var baseURLForLeagueLogo = "https://media.api-sports.io/football/leagues/"
     static var baseURLForTeamLogo = "https://media.api-sports.io/football/teams/"
+    static var baseURLForPlayerPhoto = "https://media.api-sports.io/football/players/"
     static var teamlogoPrefixURL: String {
         return ".png"
     }
@@ -65,27 +67,36 @@ struct Constants {
     static var getMatchStatistics: String {
         baseURL.appending("fixtures/statistics")
     }
+    static var getPlayersByTeamId: String {
+        baseURL.appending("players/squads")
+    }
+    
     static var collectionCellState = "State"
     static var currentDate: String {
         let date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = DateFormat.fullDate.formatPattern
+        dateFormatter.dateFormat = DateFormat.middleDate.formatPattern
         return dateFormatter.string(from: date)
     }
 }
 
 enum DateFormat {
     case fullDate
+    case middleDate
     case shortDate
+    case startTime
     
     var formatPattern: String {
         switch self {
         case .fullDate:
+            return "MM.dd.yyyy HH:mm"
+        case.middleDate:
             return "yyyy-MM-dd"
         case .shortDate:
             return "dd.MM."
+        case .startTime:
+            return "HH:mm"
         }
     }
-    
 }
 

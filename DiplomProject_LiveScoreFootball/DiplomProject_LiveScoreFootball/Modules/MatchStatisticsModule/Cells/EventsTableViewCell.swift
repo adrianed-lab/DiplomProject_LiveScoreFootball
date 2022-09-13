@@ -9,15 +9,16 @@ import UIKit
 
 protocol EventsTableViewCellProtocol: AnyObject {
     
-    func configureCell(playerName: String, assistentPlayerName: String, typeEvent: String, detailTypeEvent: String, timeEvent: Int)
+    func configureCell(playerNameFirstTeam: String, assistentPlayerNameFirstTeam: String, typeEventFirstTeam: String, detailTypeEventFirstTeam: String, timeEventFirstTeam: Int)
 }
 
 class EventsTableViewCell: UITableViewCell, EventsTableViewCellProtocol {
-    @IBOutlet weak var time: UILabel!
-    @IBOutlet weak var type: UILabel!
-    @IBOutlet weak var namePlayer: UILabel!
-    @IBOutlet weak var nameAssistPlayer: UILabel!
-    @IBOutlet weak var typeDetail: UILabel!
+    
+    @IBOutlet weak var timeFirstTeam: UILabel!
+    @IBOutlet weak var typeFirstTeam: UILabel!
+    @IBOutlet weak var typeDetailFirstTeam: UILabel!
+    @IBOutlet weak var namePlayerFirstTeam: UILabel!
+    @IBOutlet weak var namePlayerAssistFirstTeam: UILabel!
     
     static let key = "EventsTableViewCell"
 
@@ -30,13 +31,12 @@ class EventsTableViewCell: UITableViewCell, EventsTableViewCellProtocol {
 
     }
     
-    func configureCell(playerName: String, assistentPlayerName: String, typeEvent: String, detailTypeEvent: String, timeEvent: Int) {
-        namePlayer.text = playerName
-        nameAssistPlayer.text = assistentPlayerName
-        time.text = "\(timeEvent)'"
-        type.text = typeEvent
-        typeDetail.text = detailTypeEvent
-        
+    func configureCell(playerNameFirstTeam: String, assistentPlayerNameFirstTeam: String, typeEventFirstTeam: String, detailTypeEventFirstTeam: String, timeEventFirstTeam: Int) {
+        namePlayerFirstTeam.text = playerNameFirstTeam
+        namePlayerAssistFirstTeam.text = assistentPlayerNameFirstTeam
+        timeFirstTeam.text = "\(timeEventFirstTeam)'"
+        typeFirstTeam.text = typeEventFirstTeam
+        typeDetailFirstTeam.text = detailTypeEventFirstTeam
     }
     
 }

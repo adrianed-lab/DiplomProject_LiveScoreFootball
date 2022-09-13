@@ -14,27 +14,60 @@ extension TeamInfoViewController: UITableViewDelegate, UITableViewDataSource {
         1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.countLastFixtures()
+        guard let index = teamInfoCollectionView.indexPathsForSelectedItems?.first else {return 0}
+        if index.row == 0 {
+            return presenter.countLastFixtures()
+        } else if index.row == 1 {
+            return presenter.countFutureFixtures()
+        } else if index.row == 2 {
+            return presenter.countStandingItems()
+        } else {
+            return presenter.countPlayers()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let index = teamInfoCollectionView.indexPathsForSelectedItems?.first, let cell = teamInfoTableView.dequeueReusableCell(withIdentifier: TeamInfoTableViewCell.key, for: indexPath) as? TeamInfoTableViewCell, let cellFuture = teamInfoTableView.dequeueReusableCell(withIdentifier: FutureTeamInfoTableViewCell.key, for: indexPath) as? FutureTeamInfoTableViewCell else {return UITableViewCell()}
+        guard let index = teamInfoCollectionView.indexPathsForSelectedItems?.first else {return UITableViewCell()}
         if index.row == 0 {
+            guard let cell = teamInfoTableView.dequeueReusableCell(withIdentifier: LastFixturesByLeagueTableViewCell.key, for: indexPath) as? LastFixturesByLeagueTableViewCell else {return UITableViewCell()}
             presenter.configureTableCell(indexPath: indexPath, cell: cell)
         return cell
         } else if index.row == 1 {
-            presenter.configureFutureTeamInfoTableCell(indexPath: indexPath, cell: cellFuture)
-            return cellFuture
+           guard let cell = teamInfoTableView.dequeueReusableCell(withIdentifier: FutureTeamInfoTableViewCell.key, for: indexPath) as? FutureTeamInfoTableViewCell else {return UITableViewCell()}
+            presenter.configureFutureTeamInfoTableCell(indexPath: indexPath, cell: cell)
+            return cell
+        } else if index.row == 2 {
+            guard let cell = teamInfoTableView.dequeueReusableCell(withIdentifier: StandingTableViewCell.key, for: indexPath) as? StandingTableViewCell else {return UITableViewCell()}
+             presenter.configureStandingCell(indexPath: indexPath, cell: cell)
+            return cell
+        } else if index.row == 3 {
+            guard let cell = teamInfoTableView.dequeueReusableCell(withIdentifier: PlayersByTeamIdTableViewCell.key, for: indexPath) as? PlayersByTeamIdTableViewCell else {return UITableViewCell()}
+             presenter.configurePlayersCell(indexPath: indexPath, cell: cell)
+            return cell
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        guard let index = teamInfoCollectionView.indexPathsForSelectedItems?.first else {return 0}
+        switch index.row {
+        case 2:
+            return 40
+        case 3:
+            return 50
+        default:
+            return 80
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.getFixtureIdIndex(indexPath: indexPath)
+        guard let index = teamInfoCollectionView.indexPathsForSelectedItems?.first else {return}
+        switch index.row {
+        case 0:
+            return presenter.getFixtureIdIndex(indexPath: indexPath)
+        default:
+            break
+        }
     }
     
     

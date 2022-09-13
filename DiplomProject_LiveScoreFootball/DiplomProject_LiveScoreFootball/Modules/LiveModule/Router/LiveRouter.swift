@@ -15,7 +15,7 @@ protocol BaseLiveRouterProtocol {
 
 
 protocol LiveRouterProtocol: BaseLiveRouterProtocol {
-    func showStatistics()
+    func showMatchEvents()
 }
 
 class LiveRouter: LiveRouterProtocol {
@@ -28,7 +28,7 @@ class LiveRouter: LiveRouterProtocol {
         self.viewController = viewController
     }
     
-    func showStatistics() {
+    func showMatchEvents() {
            //
        }
        

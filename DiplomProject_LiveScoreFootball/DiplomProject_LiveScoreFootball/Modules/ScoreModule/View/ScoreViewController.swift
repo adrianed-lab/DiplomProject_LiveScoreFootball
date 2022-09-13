@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol ScoreViewProtocol: AnyObject {
     func successGetLeaguesBySeason()
@@ -14,11 +15,15 @@ protocol ScoreViewProtocol: AnyObject {
 
 class ScoreViewController: UIViewController, ScoreViewProtocol {
     @IBOutlet weak var tableViewMatchesByDate: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var presenter: ScoreViewPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Leagues and Cups"
+        
+        
+        activityIndicator.startAnimating()
         addButtons()
         tableViewMatchesByDate.register(UINib(nibName: "ScoreTableViewCell", bundle: nil), forCellReuseIdentifier: ScoreTableViewCell.key)
         tableViewMatchesByDate.register(UINib(nibName: "DateTableViewCell", bundle: nil), forCellReuseIdentifier: DateTableViewCell.key)
@@ -26,6 +31,8 @@ class ScoreViewController: UIViewController, ScoreViewProtocol {
     
     func successGetLeaguesBySeason() {
         tableViewMatchesByDate.reloadData()
+        activityIndicator.stopAnimating()
+        activityIndicator.hidesWhenStopped = true
     }
         
     func failure(error: Error) {
