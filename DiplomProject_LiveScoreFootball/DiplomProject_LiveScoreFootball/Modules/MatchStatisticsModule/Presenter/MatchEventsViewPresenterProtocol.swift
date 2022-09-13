@@ -16,6 +16,10 @@ protocol MatchEventsViewPresenterProtocol: AnyObject {
     func configureMatchesH2HCell(indexPath: IndexPath, cell: LastFixturesByLeagueTableViewCell)
     func configureMatchLineupsCell(indexPath: IndexPath, cell: MatchLineupsTableViewCellProtocol)
     func configureStandingCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol)
+    func showHomeTeamInfo()
+    func showAwayTeamInfo()
+    func openStandingVC()
+    func createButtonOpenStanding()
     func getFixtureId(indexPath: IndexPath)
     func createView()
     func countStadingsItems() ->Int
@@ -48,13 +52,15 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
     private(set) var matchesH2H: MatchesByDate?
     private(set) var standingByLeagueId: LeagueTable?
     private(set) var fixture: DataMatchesByDate?
+    private(set) var codeCountry: String?
     private(set) var collectionItems: [CollectionModel] = [CollectionModel(name: "EVENTS"), CollectionModel(name: "STATISTICS"), CollectionModel(name: "LINE-UPS"), CollectionModel(name: "H2H"), CollectionModel(name: "TABLE")]
     
-    required init(view: MatchEventsViewProtocol, apiProvider: RestAPIProviderProtocol, router: MatchEventsRouterProtocol, fixture: DataMatchesByDate) {
+    required init(view: MatchEventsViewProtocol, apiProvider: RestAPIProviderProtocol, router: MatchEventsRouterProtocol, fixture: DataMatchesByDate, codeCountry: String) {
         self.view = view
         self.apiProvider = apiProvider
         self.router = router
         self.fixture = fixture
+        self.codeCountry = codeCountry
         getMatchEventsForTeams()
     }
     
@@ -234,15 +240,39 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
         }
     }
     func getFixtureId(indexPath: IndexPath) {
-        guard let router = router, let fixture = matchesH2H?.response[indexPath.row] else {return}
-        router.showStandings(fixture: fixture )
+        guard let router = router, let fixtures = matchesH2H?.response[indexPath.row], let flag = fixtures.league.flag else {return}
+        router.showMatchEvent(fixture: fixtures, codeCountry: flag)
     }
+    func openStandingVC() {
+        guard let router = router, let fixture = fixture, let countryCode = codeCountry else {return}
+        let leagueId = fixture.league.id
+        router.showStanding(leagueId: leagueId, countryCode: countryCode)
+    }
+    
+    func showHomeTeamInfo() {
+        guard let routing = router, let fixture = fixture, let flag = fixture.league.flag else {return}
+        let teamId = fixture.teams.home.id
+        let teamName = fixture.teams.home.name
+        let countryName = fixture.league.country
+        let leagueId = fixture.league.id
+        routing.showTeamInfo(teamId: teamId, countryCode: flag, teamName: teamName, countryName: countryName, leagueId: leagueId)
+    }
+    
+    func showAwayTeamInfo() {
+        guard let routing = router, let fixture = fixture, let flag = fixture.league.flag else {return}
+        let teamId = fixture.teams.away.id
+        let teamName = fixture.teams.away.name
+        let countryName = fixture.league.country
+        let leagueId = fixture.league.id
+        routing.showTeamInfo(teamId: teamId, countryCode: flag, teamName: teamName, countryName: countryName, leagueId: leagueId)
+    }
+
 
     
     func configureStandingCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol) {
         guard let standings = standingByLeagueId?.response.first?.league.standings.first?[indexPath.row], let playedGames = standings.all.played, let goalsFor = standings.all.goals.goalsFor, let goalsAgainst = standings.all.goals.against else {return}
         let teamRank = standings.rank
-        let teamLogo = standings.team.id
+        let teamLogo = standings.team.id ?? 1
         let teamName = standings.team.name
         let points = standings.points
         cell.configureCell(rank: teamRank, teamLogo: teamLogo, teamName: teamName, games: playedGames, goalsFor: goalsFor, goalsAgainst: goalsAgainst, points: points)
@@ -337,8 +367,14 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
         let goalsFirstTeam = fixture.goals.home ?? 0
         let goalsSecondTeam = fixture.goals.away ?? 0
         let matchStart = fixture.fixture.date ?? ""
-        view.configureView(logoFirstTeam: idFirstTeam, logoSecondTeam: idSecondTeam, nameFirstTeam: nameFirstTeam, nameSecondTeam: nameSecondTeam, goalsFirstTeam: goalsFirstTeam, goalsSecondTeam: goalsSecondTeam, dateMatch: matchStart.getDate(.fullDate))
+        view.configureMatchEventView(logoFirstTeam: idFirstTeam, logoSecondTeam: idSecondTeam, nameFirstTeam: nameFirstTeam, nameSecondTeam: nameSecondTeam, goalsFirstTeam: goalsFirstTeam, goalsSecondTeam: goalsSecondTeam, dateMatch: matchStart.getDate(.fullDate))
     }
-
+    
+    func createButtonOpenStanding() {
+        guard let view = view, let code = codeCountry, let fixtures = fixture else {return}
+        let nameCountry = fixtures.league.country
+        let nameLeague = fixtures.league.name
+        view.configureButton(flag: code, nameCountry: nameCountry, nameLeague: nameLeague)
+    }
 }
 

@@ -48,13 +48,13 @@ class TablesViewPresenter: TablesViewPresenterProtocol {
     }
     
     func configureTablesViewCell(indexPath: IndexPath, cell: TablesViewCellProtocol) {
-        guard let countries = countries?.response[indexPath.row], let countryLogo = countries.code else {return}
+        guard let countries = countries?.response[indexPath.row], let countryLogo = countries.flag else {return}
         let countryName = countries.name
         cell.configureCell(nameCountry: countryName, logoCountry: countryLogo)
     }
     
     func getCountryNameByTap(indexPath: IndexPath) {
-        guard let countries = countries?.response[indexPath.row], let countryCode = countries.code, let router = router else {return}
+        guard let countries = countries?.response[indexPath.row], let countryCode = countries.flag, let router = router else {return}
         let countryName = countries.name
         router.showLeaguesByCountry(countryName: countryName, codeCountry: countryCode)
     }

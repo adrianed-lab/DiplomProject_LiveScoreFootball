@@ -85,7 +85,7 @@ class LeaguesByCountryViewPresenter: LeaguesByCountryViewPresenterProtocol {
     }
     
     func getLeagueId(indexPath: IndexPath) {
-        guard let leagues = leaguesByCountry?.response[indexPath.row], let codeCountry = leagues.country.code, let router = router else {return}
+        guard let leagues = leaguesByCountry?.response[indexPath.row], let codeCountry = leagues.country.flag, let router = router else {return}
         let leagueId = leagues.league.id
         router.showStandings(leagueId: leagueId, countryCode: codeCountry)
     }

@@ -12,6 +12,7 @@ import Alamofire
 protocol ScoreViewPresenterProtocol: AnyObject {
     func getFixturesByDate(date: String)
     func getLeaguesCount() -> Int
+    func getFixtureItem(indexPath: IndexPath)
     func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol)
     var matchesByDate: MatchesByDate? {get}
     
@@ -60,5 +61,10 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
         let goalsHome = lastMatches.goals.home ?? 0
         let goalsAway = lastMatches.goals.away ?? 0
         cell.configureCell(date: matchDate.getDate(.startTime), lofoFirstTeam: logoFirstTeam, logoSecondTeam: logoSecondTeam, nameFirstTeam: nameHomeTeam, nameSecondTeam: nameAwayTeam, goalsHome: goalsHome, goalsAway: goalsAway)
+    }
+    
+    func getFixtureItem(indexPath: IndexPath) {
+        guard let fixture = matchesByDate?.response[indexPath.row], let router = router, let flag = fixture.league.flag else {return}
+        router.showMatchEvent(fixture: fixture, codeCountry: flag)
     }
 }

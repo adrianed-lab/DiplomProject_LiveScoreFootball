@@ -14,6 +14,7 @@ protocol StandingViewPresenterProtocol: AnyObject {
     func configureStandingCollectionViewCell(indexPath: IndexPath, cell: StandingCollectionViewCellProtocol)
     func configureLastMatchesCell(indexPath: IndexPath, cell: LastFixturesByLeagueTableViewCellProtocol)
     func configureFutureMatchesByLeague(indexPath: IndexPath, cell: FutureTeamInfoTableViewCellProtocol)
+    func popToRootVC()
     func countFutureMatches() -> Int
     func countLastFixturesByLeague() -> Int
     func countStandings() -> Int
@@ -55,6 +56,9 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let value):
+                    if value.response.isEmpty {
+                        view.showAllertMessage()
+                    }
                     self.leagueTable = value
                     view.successGetStanding()
                 case .failure(let error):
@@ -149,7 +153,7 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
     func configureCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol) {
         guard let standings = leagueTable?.response.first?.league.standings.first?[indexPath.row], let playedGames = standings.all.played, let goalsFor = standings.all.goals.goalsFor, let goalsAgainst = standings.all.goals.against else {return}
         let teamRank = standings.rank
-        let teamLogo = standings.team.id
+        let teamLogo = standings.team.id ?? 1
         let teamName = standings.team.name
         let points = standings.points
         cell.configureCell(rank: teamRank, teamLogo: teamLogo, teamName: teamName, games: playedGames, goalsFor: goalsFor, goalsAgainst: goalsAgainst, points: points)
@@ -163,17 +167,21 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
     
     func getTeamId(indexPath: IndexPath) {
         guard let standings = leagueTable?.response.first?.league.standings.first?[indexPath.row], let countryName = leagueTable?.response.first?.league.country,  let router = router, let countryCode = countryCode else {return}
-        let teamId = standings.team.id
+        let teamId = standings.team.id ?? 1
         let teamName = standings.team.name
         router.showTeamInfo(teamId: teamId, countryCode: countryCode, teamName: teamName, countryName: countryName, leagueId: leagueId)
     }
     
     func getFixture(indexPath: IndexPath) {
-        guard let match = lastMatchesByLeagueId?.response[indexPath.row], let router = router else {return}
-        router.showFixtureInfo(fixture: match)
+        guard let match = lastMatchesByLeagueId?.response[indexPath.row], let router = router, let flag = match.league.flag else {return}
+        router.showFixtureInfo(fixture: match, codeCountry: flag)
     }
     
-    
+    func popToRootVC() {
+        guard let router = router else {return}
+        router.popToRoot()
+    }
+
     func createView() {
         guard let countryCode = countryCode, let countryName = leagueTable?.response.first?.league.country, let leagueId = leagueTable?.response.first?.league.id, let leagueName = leagueTable?.response.first?.league.name, let view = view else {return}
         view.configureView(flag: countryCode, countryName: countryName, leagueId: leagueId, leagueName: leagueName)

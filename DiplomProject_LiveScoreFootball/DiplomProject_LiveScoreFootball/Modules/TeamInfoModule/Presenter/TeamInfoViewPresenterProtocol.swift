@@ -98,7 +98,7 @@ class TeamInfoViewPresenter: TeamInfoViewPresenterProtocol {
     func configureStandingCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol) {
         guard let standings = standingsByLeagueID?.response.first?.league.standings.first?[indexPath.row], let playedGames = standings.all.played, let goalsFor = standings.all.goals.goalsFor, let goalsAgainst = standings.all.goals.against else {return}
         let teamRank = standings.rank
-        let teamLogo = standings.team.id
+        let teamLogo = standings.team.id ?? 1
         let teamName = standings.team.name
         let points = standings.points
         cell.configureCell(rank: teamRank, teamLogo: teamLogo, teamName: teamName, games: playedGames, goalsFor: goalsFor, goalsAgainst: goalsAgainst, points: points)
@@ -130,8 +130,8 @@ class TeamInfoViewPresenter: TeamInfoViewPresenterProtocol {
     }
     
     func getFixtureIdIndex(indexPath: IndexPath) {
-        guard let matches = lastFixtures?.response[indexPath.row], let router = router else {return}
-        router.showMatchEvents(fixture: matches)
+        guard let matches = lastFixtures?.response[indexPath.row], let router = router, let countryCode = countryCode else {return}
+        router.showMatchEvents(fixture: matches, codeCountry: countryCode)
     }
     
     func countCollectionItems() -> Int {
