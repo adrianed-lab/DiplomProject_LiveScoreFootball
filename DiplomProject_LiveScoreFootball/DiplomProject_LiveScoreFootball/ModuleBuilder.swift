@@ -16,16 +16,16 @@ protocol BuilderProtocol {
     func createLeaguesByContryNameModule(nameCountry: String, codeCountry: String) -> UIViewController
     func createTableByLeagueModule(leagueId: Int, countryCode: String) -> UIViewController
     func createTeamInfoModule(teamId: Int, countryCode: String, teamName: String, countryName: String, leagueId: Int) -> UIViewController
-    func createMatchEventsModule(fixture: DataMatchesByDate) -> UIViewController
+    func createMatchEventsModule(fixture: DataMatchesByDate, codeCountry: String) -> UIViewController
 }
 
 class ModuleBuilder: BuilderProtocol {
     
-    func createMatchEventsModule(fixture: DataMatchesByDate) -> UIViewController {
+    func createMatchEventsModule(fixture: DataMatchesByDate, codeCountry: String) -> UIViewController {
         let view = MatchEventsViewController()
         let apiProvider = AlamofireAPIProvider()
         let router = MatchEventsRouter(builder: self, viewController: view)
-        let presenter = MatchEventsViewPresenter(view: view, apiProvider: apiProvider, router: router, fixture: fixture)
+        let presenter = MatchEventsViewPresenter(view: view, apiProvider: apiProvider, router: router, fixture: fixture, codeCountry: codeCountry)
         view.presenter = presenter
         return view
     }

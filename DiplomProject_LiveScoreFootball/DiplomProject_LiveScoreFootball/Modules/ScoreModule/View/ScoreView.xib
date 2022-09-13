@@ -29,7 +29,11 @@
                     </connections>
                 </tableView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="iYP-3p-Ldh">
-                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                    <rect key="frame" x="157" y="398" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="O5o-bO-z7d"/>
+                        <constraint firstAttribute="width" constant="100" id="Ske-RE-czX"/>
+                    </constraints>
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
