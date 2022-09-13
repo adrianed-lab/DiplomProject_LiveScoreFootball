@@ -44,7 +44,7 @@ extension UIImageView {
     }
     
     func getCountryFlag(codeCountry: String) {
-        guard let svgPhoto = URL(string: "\(Constants.baseURLForCountryImage)\(codeCountry.lowercased())\(Constants.countryImagePrefixURL)") else {return}
+        guard let svgPhoto = URL(string: codeCountry) else {return}
         DispatchQueue.global(qos: .utility).async {
             if let data = try? Data(contentsOf: svgPhoto) {
                 let receivedimage: SVGKImage = SVGKImage(data: data)

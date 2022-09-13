@@ -12,7 +12,7 @@ extension UIViewController {
     func addButtons() {
         //let searchButton = UIButton()
         //searchButton.frame = CGRect
-        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: nil), UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)]
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: nil)]
     }
 }
 

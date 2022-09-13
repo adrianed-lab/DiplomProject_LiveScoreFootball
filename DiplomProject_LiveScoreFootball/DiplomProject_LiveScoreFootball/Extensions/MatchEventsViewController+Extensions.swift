@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 extension MatchEventsViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -152,5 +153,83 @@ extension MatchEventsViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         0
+    }
+}
+
+extension MatchEventsViewController {
+    func createButtonView(flag: String, nameCountry: String, nameLeague: String) {
+        let viewForButton = UIView()
+        let imageViewForFlag = UIImageView()
+        imageViewForFlag.getCountryFlag(codeCountry: flag)
+        standingButton.backgroundColor = .blue
+        let labelCountryName = UILabel()
+        let labelLeagueName = UILabel()
+        labelLeagueName.text = nameLeague
+        labelLeagueName.font = UIFont(name: "Thin", size: 8)
+        labelLeagueName.textColor = .white
+        labelCountryName.text = "\(nameCountry):"
+        labelCountryName.font = UIFont(name: "Bold", size: 10)
+        labelCountryName.textColor = .white
+        DispatchQueue.main.async {
+            viewForButton.snp.makeConstraints { make in
+                make.top.equalTo(self.standingButton).inset(0)
+                make.bottom.equalTo(self.standingButton).inset(0)
+                make.leading.equalTo(self.standingButton).inset(0)
+                make.bottom.equalTo(self.standingButton).inset(0)
+            }
+            imageViewForFlag.snp.makeConstraints { make in
+                make.leading.equalTo(viewForButton).inset(10)
+                make.width.equalTo(25)
+                make.height.equalTo(20)
+                make.centerY.equalTo(viewForButton)
+            }
+            labelCountryName.snp.makeConstraints { make in
+                make.leading.equalTo(imageViewForFlag.snp.trailing).offset(10)
+                make.height.equalTo(20)
+                make.centerY.equalTo(viewForButton)
+            }
+            
+            labelLeagueName.snp.makeConstraints { make in
+                make.leading.equalTo(labelCountryName.snp.trailing).offset(10)
+                make.width.equalTo(150)
+                make.height.equalTo(20)
+                make.centerY.equalTo(viewForButton)
+            }
+        }
+        viewForButton.addSubview(imageViewForFlag)
+        viewForButton.addSubview(labelCountryName)
+        viewForButton.addSubview(labelLeagueName)
+        standingButton.addSubview(viewForButton)
+    }
+    
+    func configureView(logoFirstTeam: Int, logoSecondTeam: Int, nameFirstTeam: String, nameSecondTeam: String, goalsFirstTeam: Int, goalsSecondTeam: Int, dateMatch: String) {
+        let imageViewForHomeTeamLogo = UIImageView()
+        let imageViewForAwayTeamLogo = UIImageView()
+        DispatchQueue.main.async {
+            imageViewForHomeTeamLogo.snp.makeConstraints { make in
+                make.width.equalTo(70)
+                make.height.equalTo(70)
+                make.top.equalTo(self.buttonHomeTeam).inset(0)
+                make.bottom.equalTo(self.buttonHomeTeam).inset(0)
+                make.leading.equalTo(self.buttonHomeTeam).inset(0)
+                make.bottom.equalTo(self.buttonHomeTeam).inset(0)
+            }
+            imageViewForAwayTeamLogo.snp.makeConstraints { make in
+                make.width.equalTo(70)
+                make.height.equalTo(70)
+                make.top.equalTo(self.buttonAwayTeam).inset(0)
+                make.bottom.equalTo(self.buttonAwayTeam).inset(0)
+                make.leading.equalTo(self.buttonAwayTeam).inset(0)
+                make.bottom.equalTo(self.buttonAwayTeam).inset(0)
+            }
+        }
+        buttonHomeTeam.addSubview(imageViewForHomeTeamLogo)
+        buttonAwayTeam.addSubview(imageViewForAwayTeamLogo)
+        imageViewForHomeTeamLogo.getLogoTeam(teamId: logoFirstTeam)
+        imageViewForAwayTeamLogo.getLogoTeam(teamId: logoSecondTeam)
+        firstTeamName.text = nameFirstTeam
+        secondTeamName.text = nameSecondTeam
+        matchStart.text = dateMatch
+        matchResult.text = "\(goalsFirstTeam) - \(goalsSecondTeam)"
     }
 }
