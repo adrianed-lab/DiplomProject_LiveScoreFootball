@@ -15,7 +15,7 @@ protocol BaseTeamInfoRouterProtocol {
 
 
 protocol TeamInfoRouterProtocol: BaseTeamInfoRouterProtocol {
-    func showMatchEvents(fixture: DataMatchesByDate)
+    func showMatchEvents(fixture: DataMatchesByDate, codeCountry: String)
 }
 
 class TeamInfoRouter: TeamInfoRouterProtocol {
@@ -28,8 +28,8 @@ class TeamInfoRouter: TeamInfoRouterProtocol {
         self.viewController = viewController
     }
     
-    func showMatchEvents(fixture: DataMatchesByDate) {
-        guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture), let teamInfoViewController = viewController?.navigationController else {return}
+    func showMatchEvents(fixture: DataMatchesByDate, codeCountry: String) {
+        guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture, codeCountry: codeCountry), let teamInfoViewController = viewController?.navigationController else {return}
         teamInfoViewController.pushViewController(matchEventsViewController, animated: true)
     }
 }

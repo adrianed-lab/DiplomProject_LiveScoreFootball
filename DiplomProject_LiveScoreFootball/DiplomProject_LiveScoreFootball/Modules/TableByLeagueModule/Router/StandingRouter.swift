@@ -16,7 +16,8 @@ protocol BaseStandingRouterProtocol {
 
 protocol StandingRouterProtocol: BaseLeaguesByCountryRouterProtocol {
     func showTeamInfo(teamId: Int, countryCode: String, teamName: String, countryName: String, leagueId: Int)
-    func showFixtureInfo(fixture: DataMatchesByDate)
+    func showFixtureInfo(fixture: DataMatchesByDate, codeCountry: String)
+    func popToRoot()
 }
 
 class StandingRouter: StandingRouterProtocol {
@@ -33,8 +34,15 @@ class StandingRouter: StandingRouterProtocol {
         guard let teamInfoViewController = builder?.createTeamInfoModule(teamId: teamId, countryCode: countryCode, teamName: teamName, countryName: countryName, leagueId: leagueId), let leaguesViewController = viewController?.navigationController else {return}
             leaguesViewController.pushViewController(teamInfoViewController, animated: true)
     }
-    func showFixtureInfo(fixture: DataMatchesByDate) {
-        guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture), let standingViewController = viewController?.navigationController else {return}
+    
+    func showFixtureInfo(fixture: DataMatchesByDate, codeCountry: String) {
+        guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture, codeCountry: codeCountry), let standingViewController = viewController?.navigationController else {return}
         standingViewController.pushViewController(matchEventsViewController, animated: true)
+    }
+    
+    func popToRoot() {
+        if let standingViewController = viewController?.navigationController {
+            standingViewController.popToRootViewController(animated: true)
+        }
     }
 }
