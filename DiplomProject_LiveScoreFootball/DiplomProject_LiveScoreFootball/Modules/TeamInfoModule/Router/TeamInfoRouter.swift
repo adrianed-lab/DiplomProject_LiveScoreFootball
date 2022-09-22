@@ -28,6 +28,7 @@ class TeamInfoRouter: TeamInfoRouterProtocol {
         self.viewController = viewController
     }
     
+    // Метод перехода на экран Events
     func showMatchEvents(fixture: DataMatchesByDate, codeCountry: String) {
         guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture, codeCountry: codeCountry), let teamInfoViewController = viewController?.navigationController else {return}
         teamInfoViewController.pushViewController(matchEventsViewController, animated: true)

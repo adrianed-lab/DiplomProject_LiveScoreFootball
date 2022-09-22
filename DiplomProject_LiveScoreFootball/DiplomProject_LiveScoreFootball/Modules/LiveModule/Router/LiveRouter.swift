@@ -15,7 +15,7 @@ protocol BaseLiveRouterProtocol {
 
 
 protocol LiveRouterProtocol: BaseLiveRouterProtocol {
-    func showMatchEvents()
+    func showAuthorizationVC()
 }
 
 class LiveRouter: LiveRouterProtocol {
@@ -28,8 +28,8 @@ class LiveRouter: LiveRouterProtocol {
         self.viewController = viewController
     }
     
-    func showMatchEvents() {
-           //
-       }
-       
+    func showAuthorizationVC() {
+        guard let authorizationViewController = builder?.createAuthorizationModule(), let liveViewController = viewController?.navigationController else {return}
+        liveViewController.pushViewController(authorizationViewController, animated: true)
+    }
 }
