@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840550D128D361B700A3FBBF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 840550D328D361B700A3FBBF /* InfoPlist.strings */; };
+		8410573C28D310C800741B11 /* LogOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410573A28D310C800741B11 /* LogOutViewController.swift */; };
+		8410573D28D310C800741B11 /* LogOutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8410573B28D310C800741B11 /* LogOutViewController.xib */; };
+		8410573F28D3110200741B11 /* LogOutViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410573E28D3110100741B11 /* LogOutViewPresenter.swift */; };
+		8410574128D3111000741B11 /* LogOutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410574028D3110F00741B11 /* LogOutRouter.swift */; };
 		8414492B28AC2B5000308711 /* ScoreViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492828AC2B4F00308711 /* ScoreViewPresenter.swift */; };
 		8414492C28AC2B5000308711 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492A28AC2B4F00308711 /* ScoreViewController.swift */; };
 		8414492F28AC2B9B00308711 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414492D28AC2B9B00308711 /* Router.swift */; };
@@ -27,6 +32,17 @@
 		8425491628A32E1E0078427F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8425491528A32E1E0078427F /* RealmSwift */; };
 		8425491828A32E3C0078427F /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425491728A32E3C0078427F /* Countries.swift */; };
 		8425491B28A333FC0078427F /* LeaguesByCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425491A28A333FC0078427F /* LeaguesByCountry.swift */; };
+		842CA0CA28D298D900DE62BD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0C928D298D900DE62BD /* FirebaseAnalytics */; };
+		842CA0CC28D298D900DE62BD /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0CB28D298D900DE62BD /* FirebaseAnalyticsSwift */; };
+		842CA0CE28D298D900DE62BD /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0CD28D298D900DE62BD /* FirebaseAppCheck */; };
+		842CA0D028D298D900DE62BD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0CF28D298D900DE62BD /* FirebaseAuth */; };
+		842CA0D228D298D900DE62BD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0D128D298D900DE62BD /* FirebaseDatabase */; };
+		842CA0D428D298D900DE62BD /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0D328D298D900DE62BD /* FirebaseDatabaseSwift */; };
+		842CA0D628D298D900DE62BD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0D528D298D900DE62BD /* FirebaseFirestore */; };
+		842CA0D828D298D900DE62BD /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0D728D298D900DE62BD /* FirebaseFirestoreSwift */; };
+		842CA0DA28D298D900DE62BD /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0D928D298D900DE62BD /* FirebaseMessaging */; };
+		842CA0DC28D298D900DE62BD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 842CA0DB28D298D900DE62BD /* FirebaseStorage */; };
+		842CA0DE28D29AA000DE62BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 842CA0DD28D29AA000DE62BD /* GoogleService-Info.plist */; };
 		844DB4DD28C8FB3F002F5C9A /* PlayersByLeagueID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DB4DC28C8FB3E002F5C9A /* PlayersByLeagueID.swift */; };
 		844DB4E028C8FDF8002F5C9A /* PlayersByTeamIdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DB4DE28C8FDF8002F5C9A /* PlayersByTeamIdTableViewCell.swift */; };
 		844DB4E128C8FDF8002F5C9A /* PlayersByTeamIdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844DB4DF28C8FDF8002F5C9A /* PlayersByTeamIdTableViewCell.xib */; };
@@ -114,9 +130,23 @@
 		84EE909928B37808005EE75C /* TablesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE909728B37808005EE75C /* TablesViewCell.swift */; };
 		84EE909A28B37808005EE75C /* TablesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EE909828B37808005EE75C /* TablesViewCell.xib */; };
 		84FB8EE228CFAF16005E6B0E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84FB8EE128CFAF16005E6B0E /* SnapKit */; };
+		84FB8EEB28D2358C005E6B0E /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB8EE928D2358C005E6B0E /* AuthorizationViewController.swift */; };
+		84FB8EEC28D2358C005E6B0E /* AuthorizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FB8EEA28D2358C005E6B0E /* AuthorizationViewController.xib */; };
+		84FB8EEE28D23678005E6B0E /* AuthorizationViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB8EED28D23677005E6B0E /* AuthorizationViewPresenter.swift */; };
+		84FB8EF028D236DE005E6B0E /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB8EEF28D236DE005E6B0E /* AuthorizationRouter.swift */; };
+		84FB8EF628D24635005E6B0E /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB8EF428D24635005E6B0E /* RegistrationViewController.swift */; };
+		84FB8EF728D24635005E6B0E /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FB8EF528D24635005E6B0E /* RegistrationViewController.xib */; };
+		84FB8EF928D246C8005E6B0E /* RegistrationViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB8EF828D246C8005E6B0E /* RegistrationViewPresenter.swift */; };
+		84FB8EFB28D24713005E6B0E /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB8EFA28D24713005E6B0E /* RegistrationRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		840550D228D361B700A3FBBF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		840550D428D3624200A3FBBF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8410573A28D310C800741B11 /* LogOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutViewController.swift; sourceTree = "<group>"; };
+		8410573B28D310C800741B11 /* LogOutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogOutViewController.xib; sourceTree = "<group>"; };
+		8410573E28D3110100741B11 /* LogOutViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutViewPresenter.swift; sourceTree = "<group>"; };
+		8410574028D3110F00741B11 /* LogOutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutRouter.swift; sourceTree = "<group>"; };
 		8414492828AC2B4F00308711 /* ScoreViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewPresenter.swift; sourceTree = "<group>"; };
 		8414492A28AC2B4F00308711 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		8414492D28AC2B9B00308711 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = DiplomProject_LiveScoreFootball/Router.swift; sourceTree = SOURCE_ROOT; };
@@ -134,6 +164,7 @@
 		8425490928A1BC880078427F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8425491728A32E3C0078427F /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		8425491A28A333FC0078427F /* LeaguesByCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesByCountry.swift; sourceTree = "<group>"; };
+		842CA0DD28D29AA000DE62BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		844DB4DC28C8FB3E002F5C9A /* PlayersByLeagueID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersByLeagueID.swift; sourceTree = "<group>"; };
 		844DB4DE28C8FDF8002F5C9A /* PlayersByTeamIdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersByTeamIdTableViewCell.swift; sourceTree = "<group>"; };
 		844DB4DF28C8FDF8002F5C9A /* PlayersByTeamIdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayersByTeamIdTableViewCell.xib; sourceTree = "<group>"; };
@@ -220,6 +251,14 @@
 		84EE909428B25CBA005EE75C /* LiveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveTableViewCell.xib; sourceTree = "<group>"; };
 		84EE909728B37808005EE75C /* TablesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesViewCell.swift; sourceTree = "<group>"; };
 		84EE909828B37808005EE75C /* TablesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TablesViewCell.xib; sourceTree = "<group>"; };
+		84FB8EE928D2358C005E6B0E /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		84FB8EEA28D2358C005E6B0E /* AuthorizationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationViewController.xib; sourceTree = "<group>"; };
+		84FB8EED28D23677005E6B0E /* AuthorizationViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewPresenter.swift; sourceTree = "<group>"; };
+		84FB8EEF28D236DE005E6B0E /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
+		84FB8EF428D24635005E6B0E /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		84FB8EF528D24635005E6B0E /* RegistrationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
+		84FB8EF828D246C8005E6B0E /* RegistrationViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewPresenter.swift; sourceTree = "<group>"; };
+		84FB8EFA28D24713005E6B0E /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,11 +266,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842CA0D428D298D900DE62BD /* FirebaseDatabaseSwift in Frameworks */,
+				842CA0D628D298D900DE62BD /* FirebaseFirestore in Frameworks */,
+				842CA0CA28D298D900DE62BD /* FirebaseAnalytics in Frameworks */,
+				842CA0D828D298D900DE62BD /* FirebaseFirestoreSwift in Frameworks */,
+				842CA0D028D298D900DE62BD /* FirebaseAuth in Frameworks */,
+				842CA0DC28D298D900DE62BD /* FirebaseStorage in Frameworks */,
 				8425491628A32E1E0078427F /* RealmSwift in Frameworks */,
 				8425491428A32E1E0078427F /* Realm in Frameworks */,
 				841FD90528CCB54700905828 /* SVGKitSwift in Frameworks */,
+				842CA0CC28D298D900DE62BD /* FirebaseAnalyticsSwift in Frameworks */,
 				84FB8EE228CFAF16005E6B0E /* SnapKit in Frameworks */,
 				841FD90328CCB54700905828 /* SVGKit in Frameworks */,
+				842CA0D228D298D900DE62BD /* FirebaseDatabase in Frameworks */,
+				842CA0DA28D298D900DE62BD /* FirebaseMessaging in Frameworks */,
+				842CA0CE28D298D900DE62BD /* FirebaseAppCheck in Frameworks */,
 				8425491128A32D260078427F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +288,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8410573628D3106F00741B11 /* LogOutModule */ = {
+			isa = PBXGroup;
+			children = (
+				8410573928D3109900741B11 /* Router */,
+				8410573828D3109300741B11 /* Presenter */,
+				8410573728D3108D00741B11 /* view */,
+			);
+			path = LogOutModule;
+			sourceTree = "<group>";
+		};
+		8410573728D3108D00741B11 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8410573A28D310C800741B11 /* LogOutViewController.swift */,
+				8410573B28D310C800741B11 /* LogOutViewController.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8410573828D3109300741B11 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8410573E28D3110100741B11 /* LogOutViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8410573928D3109900741B11 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8410574028D3110F00741B11 /* LogOutRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		8414492628AC2B4F00308711 /* ScoreModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +416,8 @@
 				8425490428A1BC880078427F /* Assets.xcassets */,
 				8425490628A1BC880078427F /* LaunchScreen.storyboard */,
 				8425490928A1BC880078427F /* Info.plist */,
+				842CA0DD28D29AA000DE62BD /* GoogleService-Info.plist */,
+				840550D328D361B700A3FBBF /* InfoPlist.strings */,
 			);
 			path = DiplomProject_LiveScoreFootball;
 			sourceTree = "<group>";
@@ -675,6 +761,9 @@
 		84EE908628B1EBE5005EE75C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				8410573628D3106F00741B11 /* LogOutModule */,
+				84FB8EE428D2274D005E6B0E /* RegistrationModule */,
+				84FB8EE328D2265E005E6B0E /* AuthorizationModule */,
 				848E85FB28C1C7EC00D3804C /* MatchStatisticsModule */,
 				848E9F2A28BDD0D1002A520C /* TeamInfoModule */,
 				84BD036828B7235600E37B33 /* TableByLeagueModule */,
@@ -733,6 +822,76 @@
 			path = TablesViewCell;
 			sourceTree = "<group>";
 		};
+		84FB8EE328D2265E005E6B0E /* AuthorizationModule */ = {
+			isa = PBXGroup;
+			children = (
+				84FB8EE828D23556005E6B0E /* Presenter */,
+				84FB8EE728D2354A005E6B0E /* Router */,
+				84FB8EE528D2352F005E6B0E /* View */,
+			);
+			path = AuthorizationModule;
+			sourceTree = "<group>";
+		};
+		84FB8EE428D2274D005E6B0E /* RegistrationModule */ = {
+			isa = PBXGroup;
+			children = (
+				84FB8EF328D2460C005E6B0E /* Router */,
+				84FB8EF228D24605005E6B0E /* Presenter */,
+				84FB8EF128D245FB005E6B0E /* View */,
+			);
+			path = RegistrationModule;
+			sourceTree = "<group>";
+		};
+		84FB8EE528D2352F005E6B0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84FB8EE928D2358C005E6B0E /* AuthorizationViewController.swift */,
+				84FB8EEA28D2358C005E6B0E /* AuthorizationViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84FB8EE728D2354A005E6B0E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				84FB8EEF28D236DE005E6B0E /* AuthorizationRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		84FB8EE828D23556005E6B0E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				84FB8EED28D23677005E6B0E /* AuthorizationViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		84FB8EF128D245FB005E6B0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84FB8EF428D24635005E6B0E /* RegistrationViewController.swift */,
+				84FB8EF528D24635005E6B0E /* RegistrationViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84FB8EF228D24605005E6B0E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				84FB8EF828D246C8005E6B0E /* RegistrationViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		84FB8EF328D2460C005E6B0E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				84FB8EFA28D24713005E6B0E /* RegistrationRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -756,6 +915,16 @@
 				841FD90228CCB54700905828 /* SVGKit */,
 				841FD90428CCB54700905828 /* SVGKitSwift */,
 				84FB8EE128CFAF16005E6B0E /* SnapKit */,
+				842CA0C928D298D900DE62BD /* FirebaseAnalytics */,
+				842CA0CB28D298D900DE62BD /* FirebaseAnalyticsSwift */,
+				842CA0CD28D298D900DE62BD /* FirebaseAppCheck */,
+				842CA0CF28D298D900DE62BD /* FirebaseAuth */,
+				842CA0D128D298D900DE62BD /* FirebaseDatabase */,
+				842CA0D328D298D900DE62BD /* FirebaseDatabaseSwift */,
+				842CA0D528D298D900DE62BD /* FirebaseFirestore */,
+				842CA0D728D298D900DE62BD /* FirebaseFirestoreSwift */,
+				842CA0D928D298D900DE62BD /* FirebaseMessaging */,
+				842CA0DB28D298D900DE62BD /* FirebaseStorage */,
 			);
 			productName = DiplomProject_LiveScoreFootball;
 			productReference = 842548F828A1BC850078427F /* DiplomProject_LiveScoreFootball.app */;
@@ -783,6 +952,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 842548EF28A1BC850078427F;
 			packageReferences = (
@@ -790,6 +960,7 @@
 				8425491228A32E1E0078427F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				841FD90128CCB54700905828 /* XCRemoteSwiftPackageReference "SVGKit" */,
 				84FB8EE028CFAF15005E6B0E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 842548F928A1BC850078427F /* Products */;
 			projectDirPath = "";
@@ -807,6 +978,7 @@
 			files = (
 				84CA2DC628B7CDA7001049E5 /* DateCollectionViewCell.xib in Resources */,
 				848E85FA28C14DC300D3804C /* FutureTeamInfoTableViewCell.xib in Resources */,
+				8410573D28D310C800741B11 /* LogOutViewController.xib in Resources */,
 				848E860428C1CEB600D3804C /* EventsTableViewCell.xib in Resources */,
 				84EE908328B1E603005EE75C /* FavouritesViewController.xib in Resources */,
 				8425490828A1BC880078427F /* LaunchScreen.storyboard in Resources */,
@@ -818,7 +990,10 @@
 				84EE908D28B1EE21005EE75C /* TablesViewController.xib in Resources */,
 				8425490528A1BC880078427F /* Assets.xcassets in Resources */,
 				848E9F4028C04FFE002A520C /* TeamInfoCollectionViewCell.xib in Resources */,
+				84FB8EEC28D2358C005E6B0E /* AuthorizationViewController.xib in Resources */,
 				8462CF9E28C9CFE9006B6B50 /* LastFixturesByLeagueTableViewCell.xib in Resources */,
+				842CA0DE28D29AA000DE62BD /* GoogleService-Info.plist in Resources */,
+				84FB8EF728D24635005E6B0E /* RegistrationViewController.xib in Resources */,
 				84D4F33328B5C9B3000EE729 /* LeaguesByCountryTableViewCell.xib in Resources */,
 				848E9F3228BDD16E002A520C /* TeamInfoViewController.xib in Resources */,
 				844DB4E128C8FDF8002F5C9A /* PlayersByTeamIdTableViewCell.xib in Resources */,
@@ -832,6 +1007,7 @@
 				84D4F32D28B5C63A000EE729 /* LeaguesByCountryViewController.xib in Resources */,
 				84CE377628ACDD4400D3A8AF /* ScoreView.xib in Resources */,
 				84BD037628B727B400E37B33 /* StandingTableViewCell.xib in Resources */,
+				840550D128D361B700A3FBBF /* InfoPlist.strings in Resources */,
 				8476A4D728C4BF8600E58D73 /* SecondTeamEventsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,7 +1025,9 @@
 				84B1D79B28A4A9C40004A6FF /* LiveMatches.swift in Sources */,
 				84EE908F28B1EF1B005EE75C /* TablesViewPresenter.swift in Sources */,
 				8425491B28A333FC0078427F /* LeaguesByCountry.swift in Sources */,
+				84FB8EFB28D24713005E6B0E /* RegistrationRouter.swift in Sources */,
 				8414493028AC2B9B00308711 /* ModuleBuilder.swift in Sources */,
+				8410574128D3111000741B11 /* LogOutRouter.swift in Sources */,
 				84B1D79F28A4B2510004A6FF /* MatchesByLeague.swift in Sources */,
 				848E85F928C14DC300D3804C /* FutureTeamInfoTableViewCell.swift in Sources */,
 				848E860328C1CEB600D3804C /* EventsTableViewCell.swift in Sources */,
@@ -857,6 +1035,7 @@
 				84EAD93628CE1C85001F3EB6 /* String+Extensions.swift in Sources */,
 				848E861028C1D28000D3804C /* MatchEventsRouter.swift in Sources */,
 				84B1D7A528A4B7A60004A6FF /* MatchHeadToHead.swift in Sources */,
+				84FB8EF028D236DE005E6B0E /* AuthorizationRouter.swift in Sources */,
 				848E9F3128BDD16E002A520C /* TeamInfoViewController.swift in Sources */,
 				8414492F28AC2B9B00308711 /* Router.swift in Sources */,
 				84D0E0E728B603D100DBB538 /* TablesRouter.swift in Sources */,
@@ -864,11 +1043,14 @@
 				84BD035E28B6174B00E37B33 /* LeaguesByCountryRouter.swift in Sources */,
 				84EE907828B1DD0E005EE75C /* TabBarViewController.swift in Sources */,
 				848E861228C1D59A00D3804C /* MatchEventsViewController+Extensions.swift in Sources */,
+				84FB8EF928D246C8005E6B0E /* RegistrationViewPresenter.swift in Sources */,
 				8476A4DA28C4DA0700E58D73 /* StatisticsTableViewCell.swift in Sources */,
 				84EE908228B1E603005EE75C /* FavouritesViewController.swift in Sources */,
 				848E860D28C1D0B100D3804C /* EventsCollectionViewCell.swift in Sources */,
+				84FB8EF628D24635005E6B0E /* RegistrationViewController.swift in Sources */,
 				8476A4D628C4BF8600E58D73 /* SecondTeamEventsTableViewCell.swift in Sources */,
 				848E9F3C28BDDC24002A520C /* TeamInfoViewController+Extensions.swift in Sources */,
+				84FB8EEB28D2358C005E6B0E /* AuthorizationViewController.swift in Sources */,
 				84BD036128B7169000E37B33 /* ScoreRouter.swift in Sources */,
 				8462CF9D28C9CFE9006B6B50 /* LastFixturesByLeagueTableViewCell.swift in Sources */,
 				84BD036F28B7249600E37B33 /* StandingViewController.swift in Sources */,
@@ -878,6 +1060,7 @@
 				84B1D7A328A4B6110004A6FF /* MatchEvents.swift in Sources */,
 				84B1D79928A4A8F30004A6FF /* TimeZone.swift in Sources */,
 				84CA2DC528B7CDA7001049E5 /* DateCollectionViewCell.swift in Sources */,
+				8410573F28D3110200741B11 /* LogOutViewPresenter.swift in Sources */,
 				84B1D79728A4A6420004A6FF /* LeagueTable.swift in Sources */,
 				84EE909128B1F2B0005EE75C /* TablesViewController+Extensions.swift in Sources */,
 				84BD036428B71B4000E37B33 /* FavouritesRouter.swift in Sources */,
@@ -893,6 +1076,7 @@
 				848E860728C1CF1C00D3804C /* MatchEventsViewController.swift in Sources */,
 				84CA2DC828B91A79001049E5 /* UiViewController+Extensions.swift in Sources */,
 				842548FE28A1BC850078427F /* SceneDelegate.swift in Sources */,
+				84FB8EEE28D23678005E6B0E /* AuthorizationViewPresenter.swift in Sources */,
 				84B1D79D28A4ACB60004A6FF /* MatchesByDate.swift in Sources */,
 				844DB4DD28C8FB3F002F5C9A /* PlayersByLeagueID.swift in Sources */,
 				84CA2DBD28B730D5001049E5 /* StandingViewController+Extensions.swift in Sources */,
@@ -915,6 +1099,7 @@
 				84EE906D28B05C9B005EE75C /* UiImageView+Extansion.swift in Sources */,
 				8414492C28AC2B5000308711 /* ScoreViewController.swift in Sources */,
 				848E9F3828BDD344002A520C /* TeamInfoViewPresenterProtocol.swift in Sources */,
+				8410573C28D310C800741B11 /* LogOutViewController.swift in Sources */,
 				84D4F32C28B5C63A000EE729 /* LeaguesByCountryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -922,6 +1107,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		840550D328D361B700A3FBBF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				840550D228D361B700A3FBBF /* en */,
+				840550D428D3624200A3FBBF /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		8425490128A1BC850078427F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -945,6 +1139,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1005,6 +1200,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1159,6 +1355,14 @@
 				minimumVersion = 10.28.2;
 			};
 		};
+		842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		84FB8EE028CFAF15005E6B0E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1194,6 +1398,56 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8425491228A32E1E0078427F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		842CA0C928D298D900DE62BD /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		842CA0CB28D298D900DE62BD /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		842CA0CD28D298D900DE62BD /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		842CA0CF28D298D900DE62BD /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		842CA0D128D298D900DE62BD /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		842CA0D328D298D900DE62BD /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		842CA0D528D298D900DE62BD /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		842CA0D728D298D900DE62BD /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		842CA0D928D298D900DE62BD /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		842CA0DB28D298D900DE62BD /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 842CA0C828D298D800DE62BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		84FB8EE128CFAF16005E6B0E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
