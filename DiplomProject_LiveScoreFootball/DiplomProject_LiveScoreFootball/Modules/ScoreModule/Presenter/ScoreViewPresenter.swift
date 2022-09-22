@@ -12,7 +12,9 @@ import Alamofire
 protocol ScoreViewPresenterProtocol: AnyObject {
     func getFixturesByDate(date: String)
     func getLeaguesCount() -> Int
+    func getAuthorizationVC()
     func getFixtureItem(indexPath: IndexPath)
+    func showLogOutVC(firstName: String, lastName: String)
     func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol)
     var matchesByDate: MatchesByDate? {get}
     
@@ -31,7 +33,8 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
         self.router = router
         getFixturesByDate(date: Constants.currentDate)
     }
-
+    
+    // Получение матчей по дате
     func getFixturesByDate(date: String) {
         apiProvider.getMatchesByDate(date: date, timeZone: "Europe/Minsk") { [weak self] result in
             guard let self = self else {return}
@@ -47,10 +50,12 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
         }
     }
     
+    // Колчество матчей по дате
     func getLeaguesCount() -> Int {
         matchesByDate?.response.count ?? 0
     }
     
+    // Получение данных для сборки ячейки
     func scoreTableViewCellConfigure(indexPath: IndexPath, cell: ScoreTableViewCellProtocol) {
         guard let lastMatches = matchesByDate?.response[indexPath.row] else {return}
         let matchDate = lastMatches.fixture.date ?? ""
@@ -67,4 +72,18 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
         guard let fixture = matchesByDate?.response[indexPath.row], let router = router, let flag = fixture.league.flag else {return}
         router.showMatchEvent(fixture: fixture, codeCountry: flag)
     }
+    
+    func getAuthorizationVC() {
+        guard let router = router else {return}
+        router.showAuthorizationVC()
+    }
+    
+    func showLogOutVC(firstName: String, lastName: String) {
+        guard let router = router else {
+            return
+        }
+        router.showLogOut(firstName: firstName, lastName: lastName)
+    }
+
+
 }

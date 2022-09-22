@@ -39,17 +39,20 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
     private(set) var futureMatchesByLeagueId: MatchesByDate?
     private(set) var leagueId: Int
     private(set) var countryCode: String?
+    private(set) var countryName: String
     var collectionCellItems: [CollectionModel] = [CollectionModel(name: "TABLE"), CollectionModel(name: "RESULTS"), CollectionModel(name: "CALENDAR")]
 
-    required init(view: StandingViewProtocol, router: StandingRouterProtocol, apiProvider: RestAPIProviderProtocol, leagueId: Int, countryCode: String) {
+    required init(view: StandingViewProtocol, router: StandingRouterProtocol, apiProvider: RestAPIProviderProtocol, leagueId: Int, countryCode: String, countryName: String) {
         self.view = view
         self.router = router
         self.apiProvider = apiProvider
         self.leagueId = leagueId
         self.countryCode = countryCode
+        self.countryName = countryName
         getStandingByLeagueId(leagueId: leagueId)
     }
     
+    // Получение таблицы лиги по ее id
     func getStandingByLeagueId(leagueId: Int) {
         apiProvider.getLeagueTable(seasonYear: 2022, leagueId: leagueId) { [weak self] result in
             guard let self = self, let view = self.view else {return}
@@ -68,6 +71,7 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
         }
     }
     
+    // Отправка запросов и получение данных в зависимости от индекса элемента коллекци
     func getCollectionItemIndex(indexPath: IndexPath) {
         if indexPath.row == 0 {
             apiProvider.getLeagueTable(seasonYear: 2022, leagueId: leagueId) { [weak self] result in
@@ -110,23 +114,28 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
             }
         }
     }
-
+    
+    // Количесвто команд в лиге
     func countStandings() -> Int {
         leagueTable?.response.first?.league.standings.first?.count ?? 0
     }
     
+    // Количество будущих матчей лиги
     func countFutureMatches() -> Int {
         futureMatchesByLeagueId?.response.count ?? 0
     }
     
+    // Количество прошедших матчей лиги
     func countLastFixturesByLeague() -> Int {
         lastMatchesByLeagueId?.response.count ?? 0
     }
     
+    // Количество элементов коллекции
     func countCollectionItem() -> Int {
         collectionCellItems.count
     }
     
+    //MARK: Методы получения данных для сборки ячеек
     func configureFutureMatchesByLeague(indexPath: IndexPath, cell: FutureTeamInfoTableViewCellProtocol) {
         guard let matches = futureMatchesByLeagueId?.response[indexPath.row] else {return}
         let dateMatch = matches.fixture.date ?? ""
@@ -164,7 +173,7 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
         cell.configureCell(item: collectionItemName)
     }
 
-    
+    // Получение id команды для перехода на экран с ее информацией
     func getTeamId(indexPath: IndexPath) {
         guard let standings = leagueTable?.response.first?.league.standings.first?[indexPath.row], let countryName = leagueTable?.response.first?.league.country,  let router = router, let countryCode = countryCode else {return}
         let teamId = standings.team.id ?? 1
@@ -172,18 +181,23 @@ class StandingViewPresenter: StandingViewPresenterProtocol {
         router.showTeamInfo(teamId: teamId, countryCode: countryCode, teamName: teamName, countryName: countryName, leagueId: leagueId)
     }
     
+    // Получени данных для перехода на экран будущих матчей
     func getFixture(indexPath: IndexPath) {
         guard let match = lastMatchesByLeagueId?.response[indexPath.row], let router = router, let flag = match.league.flag else {return}
         router.showFixtureInfo(fixture: match, codeCountry: flag)
     }
     
+    
     func popToRootVC() {
-        guard let router = router else {return}
+        guard let router = router  else {return}
         router.popToRoot()
     }
 
+    // Получение данных для сборки главной view
     func createView() {
-        guard let countryCode = countryCode, let countryName = leagueTable?.response.first?.league.country, let leagueId = leagueTable?.response.first?.league.id, let leagueName = leagueTable?.response.first?.league.name, let view = view else {return}
-        view.configureView(flag: countryCode, countryName: countryName, leagueId: leagueId, leagueName: leagueName)
+        DispatchQueue.main.async {
+            guard let countryCode = self.countryCode, let countryName = self.leagueTable?.response.first?.league.country, let leagueId = self.leagueTable?.response.first?.league.id, let leagueName = self.leagueTable?.response.first?.league.name, let view = self.view else {return}
+            view.configureView(flag: countryCode, countryName: countryName, leagueId: leagueId, leagueName: leagueName)
+        }
     }
 }

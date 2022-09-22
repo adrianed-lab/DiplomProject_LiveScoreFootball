@@ -58,21 +58,23 @@ class TeamInfoViewPresenter: TeamInfoViewPresenterProtocol {
         getTeamInfo(teamId: teamId)
     }
     
+    // Метод получения информации о команде по ее id
     func getTeamInfo(teamId: Int) {
         apiProvider.getLastMatchesTeamInfo(teamId: teamId, countLastMatches: 30, timeZone: "Europe/Minsk") { [weak self] result in
             guard let self = self, let view = self.view else {return}
                 DispatchQueue.main.async {
                     switch result {
-                    case .success(let value):
+                        case .success(let value):
                         self.lastFixtures = value
                         view.successGetInfo()
-                    case .failure(let error):
+                        case .failure(let error):
                         view.failureGetInfo(error: error)
                     }
                 }
         }
     }
-        
+    
+    //MARK: Методы получения данных для сборки ячеек
     func configureTableCell(indexPath: IndexPath, cell: LastFixturesByLeagueTableViewCell) {
         guard let matches = lastFixtures?.response[indexPath.row] else {return}
         let dateMatch = matches.fixture.date ?? ""
@@ -112,37 +114,44 @@ class TeamInfoViewPresenter: TeamInfoViewPresenterProtocol {
         cell.configureCell(photoPlayerId: playerId, playerName: playerName, number: playerNumber)
     }
     
-    
+    // Количество команд лиги
     func countStandingItems() -> Int {
         standingsByLeagueID?.response.first?.league.standings.first?.count ?? 0
     }
     
+    // Количество последних матчей команды
     func countLastFixtures() -> Int {
         lastFixtures?.response.count ?? 0
     }
     
+    // Количество будущих матчей команды
     func countFutureFixtures() -> Int {
         futureFixtures?.response.count ?? 0
     }
     
+    // Количество игроков команды
     func countPlayers() -> Int {
         playersByTeamId?.response.first?.players.count ?? 0
     }
     
+    // Получения данных для перехода на EventsVC
     func getFixtureIdIndex(indexPath: IndexPath) {
         guard let matches = lastFixtures?.response[indexPath.row], let router = router, let countryCode = countryCode else {return}
         router.showMatchEvents(fixture: matches, codeCountry: countryCode)
     }
     
+    // Количество элементов коллекции
     func countCollectionItems() -> Int {
         collectionCellItems.count
     }
     
+    // Получени данных для сбоки коллекции
     func configureCollectionViewCell(indexPath: IndexPath, cell: TeamInfoCollectionViewCellProtocol) {
         let nameItem = collectionCellItems[indexPath.row].name
         cell.configureCell(item: nameItem)
     }
     
+    // Отправка запросов и получение данных в зависимости от индекса элемента коллекции
     func getItemIndex(indexPath: IndexPath) {
         if indexPath.row == 1 {
             apiProvider.getFutureMatchesTeamInfo(teamId: teamId, countFutureMatches: 30, timeZone: "Europe/Minsk") { [weak self] result in
@@ -199,6 +208,7 @@ class TeamInfoViewPresenter: TeamInfoViewPresenterProtocol {
         }
     }
     
+    // Получение данных для сборки главной view
     func configureView() {
         guard let countryCode = countryCode, let view = view else {return}
         view.configureView(countryCode: countryCode, nameCountry: countryName, teamId: teamId, nameTeam: teamName )
