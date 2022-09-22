@@ -14,12 +14,41 @@ protocol BuilderProtocol {
     func createFavouritesModule(title: String, image: UIImage?) -> UIViewController
     func createTablesModule(title: String, image: UIImage?) -> UIViewController
     func createLeaguesByContryNameModule(nameCountry: String, codeCountry: String) -> UIViewController
-    func createTableByLeagueModule(leagueId: Int, countryCode: String) -> UIViewController
+    func createTableByLeagueModule(leagueId: Int, countryCode: String, countryName: String) -> UIViewController
     func createTeamInfoModule(teamId: Int, countryCode: String, teamName: String, countryName: String, leagueId: Int) -> UIViewController
     func createMatchEventsModule(fixture: DataMatchesByDate, codeCountry: String) -> UIViewController
+    func createAuthorizationModule() -> UIViewController
+    func createRegistrationModule() -> UIViewController
+    func createLogOutModule(firstName: String, lastName: String) -> UIViewController
 }
 
+// Класс с методами для сборки модулей
+
 class ModuleBuilder: BuilderProtocol {
+    func createLogOutModule(firstName: String, lastName: String) -> UIViewController {
+        let view = LogOutViewController()
+        let router = LogOutRouter(builder: self, viewController: view)
+        let presenter = LogOutViewPresenter(view: view, lastName: lastName, firstName: firstName, router: router)
+        view.presenter = presenter
+        return view
+    }
+
+    
+    func createRegistrationModule() -> UIViewController {
+        let view = RegistrationViewController()
+        let router = RegistrationRouter(builder: self, viewController: view)
+        let presenter = RegistrationViewPresenter(view: view, router: router)
+        view.presenter = presenter
+        return view
+    }
+    
+    func createAuthorizationModule() -> UIViewController {
+        let view = AuthorizationViewController()
+        let router = AuthorizationRouter(builder: self, viewController: view)
+        let presenter = AuthorizationViewPresenter(view: view, router: router)
+        view.presenter = presenter
+        return view
+    }
     
     func createMatchEventsModule(fixture: DataMatchesByDate, codeCountry: String) -> UIViewController {
         let view = MatchEventsViewController()
@@ -39,11 +68,11 @@ class ModuleBuilder: BuilderProtocol {
         return view
     }
     
-    func createTableByLeagueModule(leagueId: Int, countryCode: String) -> UIViewController {
+    func createTableByLeagueModule(leagueId: Int, countryCode: String, countryName: String) -> UIViewController {
         let view = StandingViewController()
         let apiProvider = AlamofireAPIProvider()
         let router = StandingRouter(builder: self, viewController: view)
-        let presenter = StandingViewPresenter(view: view, router: router, apiProvider: apiProvider, leagueId: leagueId, countryCode: countryCode)
+        let presenter = StandingViewPresenter(view: view, router: router, apiProvider: apiProvider, leagueId: leagueId, countryCode: countryCode, countryName: countryName)
         view.presenter = presenter
         return view
     }
