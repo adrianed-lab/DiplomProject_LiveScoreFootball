@@ -55,9 +55,9 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkW-3u-OBF">
-                    <rect key="frame" x="45" y="54" width="80" height="20"/>
+                    <rect key="frame" x="45" y="54" width="150" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="OAH-Me-Xic"/>
+                        <constraint firstAttribute="width" constant="150" id="OAH-Me-Xic"/>
                         <constraint firstAttribute="height" constant="20" id="vzY-m2-YJc"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -71,13 +71,13 @@
                         <constraint firstAttribute="height" constant="90" id="QLA-nP-N91"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQQ-v3-hsJ">
-                    <rect key="frame" x="110" y="90" width="220" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQQ-v3-hsJ">
+                    <rect key="frame" x="110" y="90" width="280" height="80"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="2DH-di-Fw0"/>
-                        <constraint firstAttribute="width" constant="220" id="azk-TI-6kD"/>
+                        <constraint firstAttribute="height" constant="80" id="2DH-di-Fw0"/>
+                        <constraint firstAttribute="width" constant="280" id="azk-TI-6kD"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>

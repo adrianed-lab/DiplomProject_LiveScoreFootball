@@ -21,12 +21,14 @@ class LeaguesByCountryViewController: UIViewController, LeaguesByCountryViewProt
         super.viewDidLoad()
         activityIndicator.startAnimating()
         leaguesByCountryTable.register(UINib(nibName: "LeaguesByCountryTableViewCell", bundle: nil), forCellReuseIdentifier: LeaguesByCountryTableViewCell.key)
+        title = "Leagues"
     }
 
     func successGetLeagues() {
         leaguesByCountryTable.reloadData()
         activityIndicator.stopAnimating()
         activityIndicator.hidesWhenStopped = true
+        leaguesByCountryTable.tableHeaderView = presenter.getViewForHeaderInSection(view: view)
     }
         
     func failure(error: Error) {
