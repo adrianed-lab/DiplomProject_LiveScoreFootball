@@ -161,7 +161,7 @@ extension MatchEventsViewController {
         let viewForButton = UIView()
         let imageViewForFlag = UIImageView()
         imageViewForFlag.getCountryFlag(codeCountry: flag)
-        standingButton.backgroundColor = .blue
+        standingButton.backgroundColor = .lightGray
         let labelCountryName = UILabel()
         let labelLeagueName = UILabel()
         labelLeagueName.text = nameLeague
@@ -191,7 +191,6 @@ extension MatchEventsViewController {
             
             labelLeagueName.snp.makeConstraints { make in
                 make.leading.equalTo(labelCountryName.snp.trailing).offset(10)
-                make.width.equalTo(150)
                 make.height.equalTo(20)
                 make.centerY.equalTo(viewForButton)
             }

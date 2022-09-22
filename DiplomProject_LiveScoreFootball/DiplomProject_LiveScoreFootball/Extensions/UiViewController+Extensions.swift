@@ -8,11 +8,18 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-    func addButtons() {
-        //let searchButton = UIButton()
-        //searchButton.frame = CGRect
-        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: nil)]
+extension UIView {
+    // Метод получения скриншота текущего экрана
+    func takeScreenShot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        if image != nil {
+            return image!
+        }
+        return UIImage()
     }
 }
 

@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 extension String {
-    
-    // Метод получения даты в нужном формате
     func getDate(_ dateFormat: DateFormat) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat.formatPattern

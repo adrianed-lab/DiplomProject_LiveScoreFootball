@@ -9,14 +9,15 @@ import Foundation
 import UIKit
 import SnapKit
 
+// Расширени с методами создания TableViewHeaders для разных экранов
 extension UIView {
-    func createTableViewHeaderForStandingVC(indexPath:IndexPath, view: UIView) -> UIView {
+    func createTableViewHeaderForStandingVC(indexPath: IndexPath, view: UIView) -> UIView {
         let viewForSection = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForSection.backgroundColor = .blue
+        viewForSection.backgroundColor = .lightGray
         let viewForResults = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForResults.backgroundColor = .blue
+        viewForResults.backgroundColor = .lightGray
         let viewForCalendar = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForCalendar.backgroundColor = .blue
+        viewForCalendar.backgroundColor = .lightGray
         let labelResults = UILabel()
         let labelCalendar = UILabel()
         let labelNumberTeam = UILabel()
@@ -108,13 +109,13 @@ extension UIView {
     
     func createTitleViewHeaderForTeamInfoVC(indexPath: IndexPath, view: UIView) -> UIView {
         let viewForSection = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForSection.backgroundColor = .blue
+        viewForSection.backgroundColor = .lightGray
         let viewForResults = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForResults.backgroundColor = .blue
+        viewForResults.backgroundColor = .lightGray
         let viewForPlayers = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForPlayers.backgroundColor = .blue
+        viewForPlayers.backgroundColor = .lightGray
         let viewForCalendar = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForCalendar.backgroundColor = .blue
+        viewForCalendar.backgroundColor = .lightGray
         let labelPlayers = UILabel()
         let labelResults = UILabel()
         let labelCalendar = UILabel()
@@ -219,15 +220,15 @@ extension UIView {
     
     func createTitleViewHeaderForMatchEventsVC(indexPath: IndexPath, view: UIView) -> UIView {
         let viewForSection = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForSection.backgroundColor = .blue
+        viewForSection.backgroundColor = .lightGray
         let viewForEvents = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForEvents.backgroundColor = .blue
+        viewForEvents.backgroundColor = .lightGray
         let viewForStatistics = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForStatistics.backgroundColor = .blue
+        viewForStatistics.backgroundColor = .lightGray
         let viewForLineUps = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForLineUps.backgroundColor = .blue
+        viewForLineUps.backgroundColor = .lightGray
         let viewForH2H = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
-        viewForH2H.backgroundColor = .blue
+        viewForH2H.backgroundColor = .lightGray
         let labelLineUps = UILabel()
         let labelH2H = UILabel()
         let labelNumberTeam = UILabel()
@@ -340,4 +341,6 @@ extension UIView {
             return UIView()
         }
     }
+    
+    
 }

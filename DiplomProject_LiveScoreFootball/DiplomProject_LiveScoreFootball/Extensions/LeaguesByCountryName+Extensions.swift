@@ -30,10 +30,4 @@ extension LeaguesByCountryViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         40
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        presenter.getViewForHeaderInSection(view: view)
-    }
-    
-    
 }
