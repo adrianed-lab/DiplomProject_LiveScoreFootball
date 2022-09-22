@@ -30,6 +30,7 @@ class StandingTableViewCell: UITableViewCell, StandingTableViewCellProtocol {
 
     }
     
+    // Сборка ячейки
     func configureCell(rank: Int, teamLogo: Int, teamName: String, games: Int, goalsFor: Int, goalsAgainst: Int, points: Int) {
         teamRank.text = "\(rank)."
         logo.getLogoTeam(teamId: teamLogo)

@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5U-52-lYI">
-                        <rect key="frame" x="100" y="10" width="270" height="25"/>
+                        <rect key="frame" x="51" y="10" width="270" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="EXi-7n-TDr"/>
                             <constraint firstAttribute="width" constant="270" id="yQn-QU-NyZ"/>
@@ -28,7 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78F-EI-zHF">
-                        <rect key="frame" x="100" y="70" width="270" height="25"/>
+                        <rect key="frame" x="51" y="70" width="270" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="270" id="MZz-nV-4Dw"/>
                             <constraint firstAttribute="height" constant="25" id="lbt-xd-aif"/>
@@ -68,35 +68,33 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F1T-0u-YDC">
-                        <rect key="frame" x="60" y="10" width="25" height="25"/>
+                        <rect key="frame" x="16" y="10" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="BCq-eM-Gc3"/>
                             <constraint firstAttribute="width" constant="25" id="yyl-JN-rFf"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wH1-ko-4o2">
-                        <rect key="frame" x="60" y="70" width="25" height="25"/>
+                        <rect key="frame" x="16" y="70" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="Qo0-i2-8jE"/>
                             <constraint firstAttribute="width" constant="25" id="gMw-t2-qRW"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="nJi-5q-jWX"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="rP0-ph-0kd"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="lBA-UH-Rye" secondAttribute="trailing" constant="16" id="6fJ-1d-ZnG"/>
-                    <constraint firstItem="78F-EI-zHF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="100" id="6za-BV-kYF"/>
-                    <constraint firstItem="wH1-ko-4o2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="CqN-h6-I1a"/>
+                    <constraint firstItem="78F-EI-zHF" firstAttribute="leading" secondItem="wH1-ko-4o2" secondAttribute="trailing" constant="10" id="6za-BV-kYF"/>
+                    <constraint firstItem="wH1-ko-4o2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="CqN-h6-I1a"/>
                     <constraint firstItem="lXs-5x-ft2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Ldd-6c-qIj"/>
                     <constraint firstAttribute="trailing" secondItem="lXs-5x-ft2" secondAttribute="trailing" constant="16" id="Pto-hk-WDP"/>
                     <constraint firstItem="h5U-52-lYI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Q0K-Bq-aes"/>
                     <constraint firstAttribute="bottom" secondItem="lBA-UH-Rye" secondAttribute="bottom" constant="10" id="QE3-gV-Cba"/>
                     <constraint firstItem="F1T-0u-YDC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="XFv-M1-RQG"/>
                     <constraint firstAttribute="trailing" secondItem="yeM-ci-HJq" secondAttribute="trailing" constant="60" id="bRm-zy-vjd"/>
-                    <constraint firstItem="h5U-52-lYI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="100" id="eiw-cl-yMM"/>
+                    <constraint firstItem="h5U-52-lYI" firstAttribute="leading" secondItem="F1T-0u-YDC" secondAttribute="trailing" constant="10" id="eiw-cl-yMM"/>
                     <constraint firstAttribute="bottom" secondItem="78F-EI-zHF" secondAttribute="bottom" constant="10" id="fWu-yU-8K6"/>
-                    <constraint firstItem="F1T-0u-YDC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="jxy-Qa-yrx"/>
+                    <constraint firstItem="F1T-0u-YDC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="jxy-Qa-yrx"/>
                     <constraint firstItem="yeM-ci-HJq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nNC-jZ-tCa"/>
                     <constraint firstAttribute="bottom" secondItem="wH1-ko-4o2" secondAttribute="bottom" constant="10" id="wYG-Ol-Rtv"/>
                 </constraints>

@@ -26,22 +26,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAZ-SC-Hrz">
-                        <rect key="frame" x="10" y="9.5" width="50" height="25"/>
+                        <rect key="frame" x="10" y="9.5" width="80" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="2gZ-3G-ww4"/>
-                            <constraint firstAttribute="width" constant="50" id="PB1-8V-7Fb"/>
+                            <constraint firstAttribute="width" constant="80" id="PB1-8V-7Fb"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zh-bw-sfg">
-                        <rect key="frame" x="285" y="9.5" width="25" height="25"/>
+                        <rect key="frame" x="240" y="9.5" width="70" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="LcM-Jw-HsT"/>
-                            <constraint firstAttribute="width" constant="25" id="Ogu-KM-2ue"/>
+                            <constraint firstAttribute="width" constant="70" id="Ogu-KM-2ue"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

@@ -24,6 +24,7 @@ class PlayersByTeamIdTableViewCell: UITableViewCell, PlayersByTeamIdTableViewCel
 
     }
     
+    // Сборка ячейки игроков в команде
     func configureCell(photoPlayerId: Int, playerName: String, number: Int) {
         playerPhoto.getPlayerPhoto(playerId: photoPlayerId)
         namePlayer.text = playerName
