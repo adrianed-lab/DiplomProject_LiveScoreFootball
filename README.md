@@ -1,1 +1,1 @@
-# DiplomProject_LiveScoreFootball
+# LiveScoreFootball
