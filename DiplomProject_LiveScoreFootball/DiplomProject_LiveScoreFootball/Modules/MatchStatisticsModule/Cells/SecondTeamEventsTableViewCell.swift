@@ -28,7 +28,7 @@ class SecondTeamEventsTableViewCell: UITableViewCell, SecondTeamEventsTableViewC
         super.setSelected(selected, animated: animated)
 
     }
-    
+    // Метод сборки ячейки с событиями второй команды
     func configureCell(playerName: String, assistentPlayerName: String, typeEvent: String, detailTypeEvent: String, timeEvent: Int) {
         namePlayer.text = playerName
         nameAssistPlayer.text = assistentPlayerName

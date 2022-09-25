@@ -64,6 +64,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
         getMatchEventsForTeams()
     }
     
+    // Метод получения events по айди соботия и айди двух команд
     func getMatchEventsForTeams() {
         guard let fixture = fixture else {
             return
@@ -103,38 +104,47 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
         }
     }
     
+    // Получение количества команд лиги
     func countStadingsItems() ->Int {
         standingByLeagueId?.response.first?.league.standings.first?.count ?? 0
     }
     
+    // Получение количества очных встреч
     func countH2HMatches() -> Int {
         matchesH2H?.response.count ?? 0
     }
     
+    // Получение количества events первой команды
     func countEventsFirstTeam() -> Int {
         matchEventsFirstTeam?.response.count ?? 0
     }
     
+    // Получение количества events второй команды
     func countEventsSecondTeam() -> Int {
         matchEventsSecondTeam?.response.count ?? 0
     }
     
+    // Получение количества элементов статистики
     func countStatisticsItems() -> Int {
         matchStatistics?.response.first?.statistics.count ?? 0
     }
     
+    // Название первой команды
     func getFirstTeamName() -> String {
         matchEventsFirstTeam?.response.first?.team.name ?? ""
     }
     
+    // Название второй команды
     func getSecondTeamName() -> String {
         matchEventsSecondTeam?.response.first?.team.name ?? ""
     }
     
+    // Колличество элементов коллекции
     func countCollectionItem() -> Int {
         collectionItems.count
     }
     
+    //MARK: Метод отправки запроса и получения данных, в зависимости от выбранного элемента коллекции
     func getItemIndex(indexPath: IndexPath) {
         guard let fixture = fixture else {return}
         let fixtureId = fixture.fixture.id
@@ -239,6 +249,8 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
             }
         }
     }
+    
+    //MARK: Методы получения данных для передачи на роутеры
     func getFixtureId(indexPath: IndexPath) {
         guard let router = router, let fixtures = matchesH2H?.response[indexPath.row], let flag = fixtures.league.flag else {return}
         router.showMatchEvent(fixture: fixtures, codeCountry: flag)
@@ -246,7 +258,8 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
     func openStandingVC() {
         guard let router = router, let fixture = fixture, let countryCode = codeCountry else {return}
         let leagueId = fixture.league.id
-        router.showStanding(leagueId: leagueId, countryCode: countryCode)
+        let countryName = fixture.league.country
+        router.showStanding(leagueId: leagueId, countryCode: countryCode, countryName: countryName)
     }
     
     func showHomeTeamInfo() {
@@ -268,7 +281,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
     }
 
 
-    
+    //MARK: Методы передачи данных для конфигурации ячеек
     func configureStandingCell(indexPath: IndexPath, cell: StandingTableViewCellProtocol) {
         guard let standings = standingByLeagueId?.response.first?.league.standings.first?[indexPath.row], let playedGames = standings.all.played, let goalsFor = standings.all.goals.goalsFor, let goalsAgainst = standings.all.goals.against else {return}
         let teamRank = standings.rank
@@ -281,12 +294,12 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
     func configureMatchLineupsCell(indexPath: IndexPath, cell: MatchLineupsTableViewCellProtocol) {
         switch indexPath.section {
         case 0:
-            let coachSecondTeam = matchLineups?.response.last?.coach.name ?? "No name couch"
-            let coachFirstTeam = matchLineups?.response.first?.coach.name ?? "No name couch"
+            let coachSecondTeam = matchLineups?.response.last?.coach.name ?? ""
+            let coachFirstTeam = matchLineups?.response.first?.coach.name ?? ""
             return cell.configureCell(teamFirst: coachFirstTeam, teamSecond: coachSecondTeam)
         case 1:
-            let matchFormationFirstTeam = matchLineups?.response.first?.formation ?? "4-4-2"
-            let matchFormationSecondTeam = matchLineups?.response.last?.formation ?? "4-4-2"
+            let matchFormationFirstTeam = matchLineups?.response.first?.formation ?? ""
+            let matchFormationSecondTeam = matchLineups?.response.last?.formation ?? ""
             return cell.configureCell(teamFirst: matchFormationFirstTeam, teamSecond: matchFormationSecondTeam)
         case 2:
             guard let startXIFirstTeam = matchLineups?.response.first?.startXI[indexPath.row] else {return}
@@ -358,6 +371,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
         cell.configureCell(collectionItem: collectionItemName)
     }
     
+    // Метод получения данных для конфигурации главной view
     func createView() {
         guard let fixture = fixture, let view = view else {return}
         let idFirstTeam = fixture.teams.home.id
@@ -370,6 +384,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
         view.configureMatchEventView(logoFirstTeam: idFirstTeam, logoSecondTeam: idSecondTeam, nameFirstTeam: nameFirstTeam, nameSecondTeam: nameSecondTeam, goalsFirstTeam: goalsFirstTeam, goalsSecondTeam: goalsSecondTeam, dateMatch: matchStart.getDate(.fullDate))
     }
     
+    // Метод конфигурации кнопки
     func createButtonOpenStanding() {
         guard let view = view, let code = codeCountry, let fixtures = fixture else {return}
         let nameCountry = fixtures.league.country

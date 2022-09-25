@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 protocol LeaguesByCountryViewPresenterProtocol: AnyObject {
     func getLeaguesByCountry(nameCountry: String)
@@ -64,13 +65,25 @@ class LeaguesByCountryViewPresenter: LeaguesByCountryViewPresenterProtocol {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         headerView.backgroundColor = .systemBlue
         let imageView = UIImageView()
+        let countryLabel = UILabel()
+        DispatchQueue.main.async {
+            imageView.snp.makeConstraints { make in
+                make.leading.equalTo(headerView).inset(16)
+                make.width.equalTo(25)
+                make.height.equalTo(20)
+                make.centerY.equalTo(headerView)
+            }
+            countryLabel.snp.makeConstraints { make in
+                make.leading.equalTo(imageView.snp.trailing).offset(10)
+                make.height.equalTo(20)
+                make.centerY.equalTo(headerView)
+            }
+            imageView.getCountryFlag(codeCountry: self.codeCountry)
+            countryLabel.text = self.nameCountry
+            countryLabel.font = UIFont(name: "System", size: 13)
+            countryLabel.textColor = .white
+        }
         headerView.addSubview(imageView)
-        imageView.getCountryFlag(codeCountry: codeCountry)
-        imageView.frame = CGRect(x: 16, y: 5, width: 25, height: 20)
-        let countryLabel = UILabel(frame: CGRect(x: 51, y: 5, width: 80, height: 20))
-        countryLabel.text = nameCountry
-        countryLabel.font = UIFont(name: "System", size: 13)
-        countryLabel.textColor = .white
         headerView.addSubview(countryLabel)
         DispatchQueue.main.async {
             let blur = UIBlurEffect(style: .systemUltraThinMaterialDark)
@@ -87,6 +100,7 @@ class LeaguesByCountryViewPresenter: LeaguesByCountryViewPresenterProtocol {
     func getLeagueId(indexPath: IndexPath) {
         guard let leagues = leaguesByCountry?.response[indexPath.row], let codeCountry = leagues.country.flag, let router = router else {return}
         let leagueId = leagues.league.id
-        router.showStandings(leagueId: leagueId, countryCode: codeCountry)
+        let nameCountry = leagues.country.name
+        router.showStandings(leagueId: leagueId, countryCode: codeCountry, countryName: nameCountry)
     }
 }

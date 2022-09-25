@@ -28,9 +28,17 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
     @IBOutlet weak var buttonHomeTeam: UIButton!
     @IBOutlet weak var buttonAwayTeam: UIButton!
     var presenter: MatchEventsViewPresenterProtocol!
+    var shareWindowButton: UIBarButtonItem {
+        let button = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .done, target: self, action: #selector(shareSkreen(_:)))
+        button.tintColor = .black
+        button.width = 30
+        return button
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Event Info"
+        presenter.createView()
         activityIndicator.startAnimating()
         matchEventsTableView.register(UINib(nibName: "EventsTableViewCell", bundle: nil), forCellReuseIdentifier: EventsTableViewCell.key)
         matchEventsTableView.register(UINib(nibName: "SecondTeamEventsTableViewCell", bundle: nil), forCellReuseIdentifier: SecondTeamEventsTableViewCell.key)
@@ -39,12 +47,12 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
         matchEventsTableView.register(UINib(nibName: "LastFixturesByLeagueTableViewCell", bundle: nil), forCellReuseIdentifier: LastFixturesByLeagueTableViewCell.key)
         matchEventsTableView.register(UINib(nibName: "StandingTableViewCell", bundle: nil), forCellReuseIdentifier: StandingTableViewCell.key)
         matchEventsCollectionView.register(UINib(nibName: "EventsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: EventsCollectionViewCell.key)
+        navigationItem.rightBarButtonItem = shareWindowButton
         }
     
     
     
     func successGetEvents() {
-        presenter.createView()
         presenter.createButtonOpenStanding()
         guard let index = matchEventsCollectionView.indexPathsForSelectedItems?.first else {return}
         matchEventsTableView.tableHeaderView = matchEventsTableView.createTitleViewHeaderForMatchEventsVC(indexPath: index, view: view)
@@ -57,6 +65,7 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
         print(error.localizedDescription)
     }
     
+    //MARK: Сборка кнопки и главной view
     func configureButton(flag: String, nameCountry: String, nameLeague: String) {
         createButtonView(flag: flag, nameCountry: nameCountry, nameLeague: nameLeague)
     }
@@ -65,12 +74,15 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
         configureView(logoFirstTeam: logoFirstTeam, logoSecondTeam: logoSecondTeam, nameFirstTeam: nameFirstTeam, nameSecondTeam: nameSecondTeam, goalsFirstTeam: goalsFirstTeam, goalsSecondTeam: goalsSecondTeam, dateMatch: dateMatch)
     }
     
+    // Открытие информационного окна
     func openWarningMessage() {
         let allertView = UIAlertController(title: "Oops!", message: "Data not found!", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Ok", style: .cancel)
         allertView.addAction(okButton)
         self.present(allertView, animated: true)
     }
+    
+    //MARK: Кнопки для переходов на экраны
     @IBAction func showStandingVC(_ sender: Any) {
         presenter.openStandingVC()
     }
@@ -83,6 +95,7 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
         presenter.showAwayTeamInfo()
     }
     
+    //MARK: кнопки для добавления в избранное
     @IBAction func addToFavourites(_ sender: Any) {
         
     }
@@ -91,5 +104,10 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
         
     }
     
-
+    // Кнопа для отправки скриншота
+    @objc func shareSkreen(_ sender: UIBarButtonItem) {
+        let screenShot = self.view.takeScreenShot()
+        let shareController = UIActivityViewController(activityItems: [screenShot], applicationActivities: nil)
+        present(shareController, animated: true)
+    }
 }

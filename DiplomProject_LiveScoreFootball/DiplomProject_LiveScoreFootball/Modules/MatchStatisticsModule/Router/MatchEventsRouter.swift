@@ -17,7 +17,7 @@ protocol BaseMatchEventsRouterProtocol {
 
 protocol MatchEventsRouterProtocol: BaseTeamInfoRouterProtocol {
     func showMatchEvent(fixture: DataMatchesByDate, codeCountry: String)
-    func showStanding(leagueId: Int, countryCode: String)
+    func showStanding(leagueId: Int, countryCode: String, countryName: String)
     func showTeamInfo(teamId: Int, countryCode: String, teamName: String, countryName: String, leagueId: Int)
 }
 
@@ -31,12 +31,13 @@ class MatchEventsRouter: MatchEventsRouterProtocol {
         self.viewController = viewController
     }
     
+    //MARK: Методы для перехода на экраны
     func showMatchEvent(fixture: DataMatchesByDate, codeCountry: String) {
         guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture, codeCountry: codeCountry), let eventsViewController = viewController?.navigationController else {return}
         eventsViewController.pushViewController(matchEventsViewController, animated: true)
     }
-    func showStanding(leagueId: Int, countryCode: String) {
-        guard let standingViewController = builder?.createTableByLeagueModule(leagueId: leagueId, countryCode: countryCode), let eventsViewController = viewController?.navigationController else {return}
+    func showStanding(leagueId: Int, countryCode: String, countryName: String) {
+        guard let standingViewController = builder?.createTableByLeagueModule(leagueId: leagueId, countryCode: countryCode, countryName: countryName), let eventsViewController = viewController?.navigationController else {return}
         eventsViewController.pushViewController(standingViewController, animated: true)
     }
     

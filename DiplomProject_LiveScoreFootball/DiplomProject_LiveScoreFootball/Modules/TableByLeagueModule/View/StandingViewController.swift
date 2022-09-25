@@ -26,22 +26,30 @@ class StandingViewController: UIViewController, StandingViewProtocol {
     @IBOutlet weak var nameCountry: UILabel!
     @IBOutlet weak var leagueLogo: UIImageView!
     @IBOutlet weak var nameLeague: UILabel!
-    
     var presenter: StandingViewPresenterProtocol!
-    
-
+    var shareWindowButton: UIBarButtonItem {
+        let button = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .done, target: self, action: #selector(shareSkreen(_:)))
+        button.tintColor = .black
+        button.width = 30
+        return button
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Standing"
         activityIndicator.startAnimating()
         standingTableView.register(UINib(nibName: "StandingTableViewCell", bundle: nil), forCellReuseIdentifier: StandingTableViewCell.key)
         standingCollectionView.register(UINib(nibName: "StandingCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: StandingCollectionViewCell.key)
         standingTableView.register(UINib(nibName: "LastFixturesByLeagueTableViewCell", bundle: nil), forCellReuseIdentifier: LastFixturesByLeagueTableViewCell.key)
         standingTableView.register(UINib(nibName: "FutureTeamInfoTableViewCell", bundle: nil), forCellReuseIdentifier: FutureTeamInfoTableViewCell.key)
+        navigationItem.rightBarButtonItem = shareWindowButton
         
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        presenter.createView()
     }
     
     func successGetStanding() {
-        presenter.createView()
         guard let index = standingCollectionView.indexPathsForSelectedItems?.first else {return}
         standingTableView.tableHeaderView = standingTableView.createTableViewHeaderForStandingVC(indexPath: index, view: view)
         standingTableView.reloadData()
@@ -49,18 +57,22 @@ class StandingViewController: UIViewController, StandingViewProtocol {
         activityIndicator.hidesWhenStopped = true
     }
     
+    // Сборка главной view
     func configureView(flag: String, countryName: String, leagueId: Int, leagueName: String) {
-        countryFlag.getCountryFlag(codeCountry: flag)
-        nameCountry.text = countryName
-        leagueLogo.getLeagueLogo(leagueId: leagueId)
-        leagueLogo.layer.cornerRadius = 15
-        nameLeague.text = leagueName
+        DispatchQueue.main.async {
+            self.nameCountry.text = countryName
+            self.nameLeague.text = leagueName
+            self.countryFlag.getCountryFlag(codeCountry: flag)
+            self.leagueLogo.getLeagueLogo(leagueId: leagueId)
+            self.leagueLogo.layer.cornerRadius = 15
+        }
     }
 
     func failure(error: Error) {
         print(error.localizedDescription)
     }
     
+    // Метод вызова экрана ошибки если данные не найдены
     func showAllertMessage() {
     DispatchQueue.main.async {
         let blur = UIBlurEffect(style: .systemUltraThinMaterialDark)
@@ -71,12 +83,19 @@ class StandingViewController: UIViewController, StandingViewProtocol {
         blurView.layer.masksToBounds = true
         self.view.addSubview(blurView)
     }
-    let allertView = UIAlertController(title: "Oops!", message: "Table data not found!", preferredStyle: .alert)
+    let allertView = UIAlertController(title: "Oops!", message: "Standing data not found!", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Ok", style: .cancel) { [weak self] _ in
             guard let self = self else {return}
             self.presenter.popToRootVC()
         }
     allertView.addAction(okButton)
     self.present(allertView, animated: true)
+    }
+    
+    // Скриншот экрана
+    @objc func shareSkreen(_ sender: UIBarButtonItem) {
+        let screenShot = self.view.takeScreenShot()
+        let shareController = UIActivityViewController(activityItems: [screenShot], applicationActivities: nil)
+        present(shareController, animated: true)
     }
 }

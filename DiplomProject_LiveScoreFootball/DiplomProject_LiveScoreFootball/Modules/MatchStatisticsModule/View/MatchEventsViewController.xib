@@ -91,13 +91,13 @@
                         <action selector="addToFavouritesAwayTeam:" destination="-1" eventType="touchUpInside" id="aFc-of-2hF"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5D-Oe-txc">
-                    <rect key="frame" x="10" y="172" width="150" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5D-Oe-txc">
+                    <rect key="frame" x="10" y="169" width="150" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="Xly-1F-f8C"/>
+                        <constraint firstAttribute="height" constant="38" id="Xly-1F-f8C"/>
                         <constraint firstAttribute="width" constant="150" id="kYg-DP-GQr"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -111,13 +111,13 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuH-ad-IQK">
-                    <rect key="frame" x="254" y="172" width="150" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuH-ad-IQK">
+                    <rect key="frame" x="254" y="169" width="150" height="38"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="Y27-XV-uWI"/>
-                        <constraint firstAttribute="height" constant="30" id="sGy-eQ-0bm"/>
+                        <constraint firstAttribute="height" constant="38" id="sGy-eQ-0bm"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -129,7 +129,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="nQR-OE-EcD"/>
                     </constraints>
-                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" red="0.99862676858901978" green="0.99862664937973022" blue="0.99862676858901978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
                     <connections>
@@ -180,11 +180,11 @@
                 <constraint firstItem="EIY-8h-65x" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fje-Uq-Hcr"/>
                 <constraint firstItem="EIY-8h-65x" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="gh1-iL-Lj3"/>
                 <constraint firstItem="jeJ-Tv-2QY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gz8-IG-LzI"/>
-                <constraint firstItem="BuH-ad-IQK" firstAttribute="top" secondItem="X2u-bU-QJj" secondAttribute="bottom" constant="8" symbolic="YES" id="jbI-Xb-ZKd"/>
+                <constraint firstItem="BuH-ad-IQK" firstAttribute="top" secondItem="X2u-bU-QJj" secondAttribute="bottom" constant="5" id="jbI-Xb-ZKd"/>
                 <constraint firstItem="BuH-ad-IQK" firstAttribute="centerX" secondItem="X2u-bU-QJj" secondAttribute="centerX" id="m0r-LE-lG2"/>
                 <constraint firstItem="yh8-PH-e5N" firstAttribute="leading" secondItem="0LD-gH-SMC" secondAttribute="trailing" constant="10" id="o0Y-Fr-W30"/>
                 <constraint firstItem="X2u-bU-QJj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="qUf-tl-Zf0"/>
-                <constraint firstItem="W5D-Oe-txc" firstAttribute="top" secondItem="yh8-PH-e5N" secondAttribute="bottom" constant="8" symbolic="YES" id="s1l-Ab-SYF"/>
+                <constraint firstItem="W5D-Oe-txc" firstAttribute="top" secondItem="yh8-PH-e5N" secondAttribute="bottom" constant="5" id="s1l-Ab-SYF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a02-im-Bdc" secondAttribute="trailing" id="sMC-EK-Qu1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jeJ-Tv-2QY" secondAttribute="trailing" id="thR-QB-isw"/>
                 <constraint firstItem="sx0-VT-b6c" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tig-uV-zTZ"/>

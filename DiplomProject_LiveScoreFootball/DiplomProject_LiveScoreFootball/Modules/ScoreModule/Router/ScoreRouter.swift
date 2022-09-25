@@ -16,6 +16,8 @@ protocol BaseScoreRouterProtocol {
 
 protocol ScoreRouterProtocol: BaseScoreRouterProtocol {
     func showMatchEvent(fixture: DataMatchesByDate, codeCountry: String)
+    func showAuthorizationVC()
+    func showLogOut(firstName: String, lastName: String)
 }
 
 class ScoreRouter: ScoreRouterProtocol {
@@ -31,5 +33,16 @@ class ScoreRouter: ScoreRouterProtocol {
     func showMatchEvent(fixture: DataMatchesByDate, codeCountry: String) {
         guard let matchEventsViewController = builder?.createMatchEventsModule(fixture: fixture, codeCountry: codeCountry), let scoreViewController = viewController?.navigationController else {return}
         scoreViewController.pushViewController(matchEventsViewController, animated: true)
-       }
+    }
+    func showAuthorizationVC() {
+        guard let authorizationViewController = builder?.createAuthorizationModule(), let scoreViewController = viewController?.navigationController else {return}
+        scoreViewController.pushViewController(authorizationViewController, animated: true)
+    }
+    
+    func showLogOut(firstName: String, lastName: String) {
+        guard let authorizationViewController = builder?.createLogOutModule(firstName: firstName, lastName: lastName), let scoreViewController = viewController?.navigationController else {return}
+        scoreViewController.pushViewController(authorizationViewController, animated: true)
+    }
+
+
 }

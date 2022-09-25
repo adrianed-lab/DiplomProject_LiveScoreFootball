@@ -30,6 +30,7 @@ protocol RestAPIProviderProtocol {
 
 }
 
+// Класс c реализацией методов отправки запросов по заданным параметрам
 class AlamofireAPIProvider: RestAPIProviderProtocol {
     func getPlayersByTeamId(teamId: Int, completion: @escaping (Result<PlayersByTeamId, Error>) -> Void) {
         let parameters = addParameters(queryItems: ["team": teamId.description])

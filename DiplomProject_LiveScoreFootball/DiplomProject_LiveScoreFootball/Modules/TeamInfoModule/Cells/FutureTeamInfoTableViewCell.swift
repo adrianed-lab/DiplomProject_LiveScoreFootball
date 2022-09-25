@@ -30,7 +30,7 @@ class FutureTeamInfoTableViewCell: UITableViewCell, FutureTeamInfoTableViewCellP
         super.setSelected(selected, animated: animated)
 
     }
-    
+    // Сборка ячейки будущих матчей
     func configureCell(matchDate: String, firstTeamLogo: Int, secondTeamLogo: Int, firstTeamName: String, secondTeamName: String, matchStart: String) {
         dateMatch.text = matchDate
         logoFirstTeam.getLogoTeam(teamId: firstTeamLogo)

@@ -15,17 +15,27 @@ class TablesViewController: UIViewController, TablesViewProtocol {
     
     @IBOutlet weak var countriesTableView: UITableView!
     var presenter: TablesViewPresenterProtocol!
+    var showAuthorizationViewButton: UIBarButtonItem {
+        let button = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .done, target: self, action: #selector(openAuthorizationWindow(_:)))
+        button.tintColor = .black
+        button.width = 30
+        return button
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Tables"
-        addButtons()
+        title = "Countries"
         countriesTableView.register(UINib(nibName: "TablesViewCell", bundle: nil), forCellReuseIdentifier: TablesViewCell.key)
+        navigationItem.rightBarButtonItem = showAuthorizationViewButton
+
     }
     
         
     func failure(error: Error) {
         print(error.localizedDescription)
     }
-
+    
+    @objc func openAuthorizationWindow(_ sender: UIBarButtonItem) {
+        presenter.getAuthorizationVC()
+    }
 }

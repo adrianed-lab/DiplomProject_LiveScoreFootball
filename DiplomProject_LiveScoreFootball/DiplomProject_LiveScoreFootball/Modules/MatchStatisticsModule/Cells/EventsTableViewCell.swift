@@ -30,7 +30,7 @@ class EventsTableViewCell: UITableViewCell, EventsTableViewCellProtocol {
         super.setSelected(selected, animated: animated)
 
     }
-    
+    // Метод сборки ячейки с событиями первой команды
     func configureCell(playerNameFirstTeam: String, assistentPlayerNameFirstTeam: String, typeEventFirstTeam: String, detailTypeEventFirstTeam: String, timeEventFirstTeam: Int) {
         namePlayerFirstTeam.text = playerNameFirstTeam
         namePlayerAssistFirstTeam.text = assistentPlayerNameFirstTeam

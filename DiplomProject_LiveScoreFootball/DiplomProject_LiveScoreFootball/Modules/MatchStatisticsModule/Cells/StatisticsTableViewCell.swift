@@ -24,7 +24,7 @@ class StatisticsTableViewCell: UITableViewCell, StatisticsTableViewCellProtocol 
         super.setSelected(selected, animated: animated)
 
     }
-    
+    // Метод сборки ячейки со статистикой
     func configureCell(type: String, valueFirstTeam: Value, valueSecondTeam: Value) {
         typeStatistic.text = type
         firstTeamValue.text = "\(valueFirstTeam)"

@@ -30,6 +30,7 @@ class MatchLineupsTableViewCell: UITableViewCell, MatchLineupsTableViewCellProto
 
     }
     
+    // Сборка ячеек составов команд
     func configureCell(teamFirst: String, teamSecond: String) {
         firstTeam.text = teamFirst
         secondTeam.text = teamSecond

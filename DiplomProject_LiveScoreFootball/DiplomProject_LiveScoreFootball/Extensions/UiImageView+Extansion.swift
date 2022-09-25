@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SVGKit
 
-
+// Расширение, в котором реализованы методы получения фото-данных по URL
 extension UIImageView {
     func getLeagueLogo(leagueId: Int) {
         guard let imageUrl = URL(string: "\(Constants.baseURLForLeagueLogo)\(leagueId)\(Constants.teamlogoPrefixURL)") else {return}
@@ -44,8 +44,9 @@ extension UIImageView {
     }
     
     func getCountryFlag(codeCountry: String) {
-        guard let svgPhoto = URL(string: codeCountry) else {return}
-        DispatchQueue.global(qos: .utility).async {
+        let flag = codeCountry
+        guard let svgPhoto = URL(string: flag) else {return}
+        DispatchQueue.global(qos: .userInitiated).async {
             if let data = try? Data(contentsOf: svgPhoto) {
                 let receivedimage: SVGKImage = SVGKImage(data: data)
                 let image = receivedimage.uiImage

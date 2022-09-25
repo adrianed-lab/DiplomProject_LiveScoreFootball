@@ -32,6 +32,7 @@ class LiveTableViewCell: UITableViewCell, LiveTableViewCellProtocol {
 
     }
     
+    // Сборка ячейки
     func configureCell(firstTeamLogo: Int, secondTeamLogo: Int, firstTeamName: String, secondTeamName: String, currentTimeInfo: Int, homeGoalsTeam: Int, awayGoalsTeam: Int) {
         logoFirstTeam.getLogoTeam(teamId: firstTeamLogo)
         logoSecondTeam.getLogoTeam(teamId: secondTeamLogo)

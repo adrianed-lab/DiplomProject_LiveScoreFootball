@@ -17,6 +17,7 @@ protocol ViewsRouterProtocol: BaseRouter {
     func initialViewControllers()
 }
 
+// Класс роутер, который инициализирует модули таббара
 class Router: ViewsRouterProtocol {
     
     var navigationTabBarController: UITabBarController?
@@ -27,12 +28,13 @@ class Router: ViewsRouterProtocol {
         self.builder = builder
     }
     
+// Непосредственно сам метод инициализации
     func initialViewControllers() {
         guard let builder = builder, let navigationController = navigationTabBarController else {return}
-        let scoreViewController = UINavigationController(rootViewController: builder.createScoreModule(title: "Leagues and Cups", image: UIImage(systemName: "sportscourt")))
+        let scoreViewController = UINavigationController(rootViewController: builder.createScoreModule(title: "All Matches", image: UIImage(systemName: "sportscourt")))
         let liveViewController = UINavigationController(rootViewController: builder.createLiveModule(title: "Live", image: UIImage(systemName: "livephoto")))
         let favouritesViewController = UINavigationController(rootViewController: builder.createFavouritesModule(title: "Favourites", image: UIImage(systemName: "star")))
-        let tablesViewController = UINavigationController(rootViewController: builder.createTablesModule(title: "Tables", image: UIImage(systemName: "tablecells")))
+        let tablesViewController = UINavigationController(rootViewController: builder.createTablesModule(title: "Countries", image: UIImage(systemName: "globe")))
             navigationController.viewControllers = [scoreViewController, liveViewController, favouritesViewController, tablesViewController]
     }
 }

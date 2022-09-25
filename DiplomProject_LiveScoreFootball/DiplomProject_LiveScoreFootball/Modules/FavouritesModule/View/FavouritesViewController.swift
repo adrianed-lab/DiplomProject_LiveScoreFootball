@@ -16,14 +16,24 @@ class FavouritesViewController: UIViewController, FavouritesViewProtocol {
     
     @IBOutlet weak var favouritesTableView: UITableView!
     var presenter: FavouritesViewPresenterProtocol!
+    var showFavouritesTeamsButton: UIBarButtonItem {
+        let button = UIBarButtonItem(image: UIImage(systemName: "list.star"), style: .done, target: self, action: #selector(openFavouritesTeams(_:)))
+        button.tintColor = .black
+        button.width = 30
+        return button
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addButtons()
-        title = "Favourites"
+        title = "Favorites"
+        navigationItem.rightBarButtonItem = showFavouritesTeamsButton
     }
     
     func getObjects() {
         favouritesTableView.reloadData()
-        }
+    }
+    
+    @objc func openFavouritesTeams(_ sender: UIBarButtonItem) {
+        
+    }
 }

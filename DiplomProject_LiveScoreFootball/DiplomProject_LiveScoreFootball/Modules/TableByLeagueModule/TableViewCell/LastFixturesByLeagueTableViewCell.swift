@@ -31,6 +31,7 @@ class LastFixturesByLeagueTableViewCell: UITableViewCell, LastFixturesByLeagueTa
 
     }
     
+    // Сборка ячейки
     func configureCell(date: String, lofoFirstTeam: Int, logoSecondTeam: Int, nameFirstTeam: String, nameSecondTeam: String, goalsHome: Int, goalsAway: Int) {
         matchDate.text = date
         teamFirstLogo.getLogoTeam(teamId: lofoFirstTeam)

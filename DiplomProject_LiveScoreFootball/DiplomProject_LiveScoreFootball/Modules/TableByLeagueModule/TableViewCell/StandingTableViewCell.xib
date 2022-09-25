@@ -34,9 +34,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZM-O9-xBe">
-                        <rect key="frame" x="80" y="9.5" width="150" height="25"/>
+                        <rect key="frame" x="80" y="9.5" width="200" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="150" id="als-Ei-6NZ"/>
+                            <constraint firstAttribute="width" constant="200" id="als-Ei-6NZ"/>
                             <constraint firstAttribute="height" constant="25" id="oIR-Et-JbR"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
