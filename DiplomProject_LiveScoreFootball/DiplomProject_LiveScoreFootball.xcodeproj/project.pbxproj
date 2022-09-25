@@ -111,6 +111,7 @@
 		84D4F33328B5C9B3000EE729 /* LeaguesByCountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D4F33128B5C9B3000EE729 /* LeaguesByCountryTableViewCell.xib */; };
 		84D4F33528B5DBBB000EE729 /* LeaguesByCountryName+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4F33428B5DBBA000EE729 /* LeaguesByCountryName+Extensions.swift */; };
 		84EAD93628CE1C85001F3EB6 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EAD93528CE1C85001F3EB6 /* String+Extensions.swift */; };
+		84EE510828E0873D00CD985E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE510728E0873D00CD985E /* DateFormatter.swift */; };
 		84EE906D28B05C9B005EE75C /* UiImageView+Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE906C28B05C9B005EE75C /* UiImageView+Extansion.swift */; };
 		84EE907228B1CF36005EE75C /* LiveViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE907128B1CF36005EE75C /* LiveViewPresenter.swift */; };
 		84EE907528B1CF7D005EE75C /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE907328B1CF7D005EE75C /* LiveViewController.swift */; };
@@ -233,6 +234,7 @@
 		84D4F33128B5C9B3000EE729 /* LeaguesByCountryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaguesByCountryTableViewCell.xib; sourceTree = "<group>"; };
 		84D4F33428B5DBBA000EE729 /* LeaguesByCountryName+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeaguesByCountryName+Extensions.swift"; sourceTree = "<group>"; };
 		84EAD93528CE1C85001F3EB6 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		84EE510728E0873D00CD985E /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		84EE906C28B05C9B005EE75C /* UiImageView+Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiImageView+Extansion.swift"; sourceTree = "<group>"; };
 		84EE907128B1CF36005EE75C /* LiveViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewPresenter.swift; sourceTree = "<group>"; };
 		84EE907328B1CF7D005EE75C /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
@@ -408,16 +410,16 @@
 				8414492E28AC2B9B00308711 /* ModuleBuilder.swift */,
 				8414492D28AC2B9B00308711 /* Router.swift */,
 				84EE907728B1DD0E005EE75C /* TabBarViewController.swift */,
+				84EE510528E0870600CD985E /* Formatters */,
 				8414493628AC58BE00308711 /* Extensions */,
 				84B1D7AC28A4BCA20004A6FF /* Services */,
 				84EE908628B1EBE5005EE75C /* Modules */,
 				8425491928A32EAE0078427F /* Models */,
-				8425490128A1BC850078427F /* Main.storyboard */,
+				84EE510428E0859C00CD985E /* Localized */,
+				84EE510928E0879E00CD985E /* Storyboards */,
 				8425490428A1BC880078427F /* Assets.xcassets */,
-				8425490628A1BC880078427F /* LaunchScreen.storyboard */,
 				8425490928A1BC880078427F /* Info.plist */,
 				842CA0DD28D29AA000DE62BD /* GoogleService-Info.plist */,
-				840550D328D361B700A3FBBF /* InfoPlist.strings */,
 			);
 			path = DiplomProject_LiveScoreFootball;
 			sourceTree = "<group>";
@@ -564,7 +566,7 @@
 		84B1D7AC28A4BCA20004A6FF /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				84B1D7AA28A4BC990004A6FF /* AlamofireAPIProvider.swift */,
+				84EE510328E0857500CD985E /* AlamofireProvider */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -701,6 +703,47 @@
 				84D4F32B28B5C63A000EE729 /* LeaguesByCountryViewController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		84EE510328E0857500CD985E /* AlamofireProvider */ = {
+			isa = PBXGroup;
+			children = (
+				84B1D7AA28A4BC990004A6FF /* AlamofireAPIProvider.swift */,
+			);
+			path = AlamofireProvider;
+			sourceTree = "<group>";
+		};
+		84EE510428E0859C00CD985E /* Localized */ = {
+			isa = PBXGroup;
+			children = (
+				840550D328D361B700A3FBBF /* InfoPlist.strings */,
+			);
+			path = Localized;
+			sourceTree = "<group>";
+		};
+		84EE510528E0870600CD985E /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				84EE510628E0871300CD985E /* DateFormatter */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		84EE510628E0871300CD985E /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				84EE510728E0873D00CD985E /* DateFormatter.swift */,
+			);
+			path = DateFormatter;
+			sourceTree = "<group>";
+		};
+		84EE510928E0879E00CD985E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8425490128A1BC850078427F /* Main.storyboard */,
+				8425490628A1BC880078427F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		84EE906E28B1CD9B005EE75C /* LiveModule */ = {
@@ -1021,6 +1064,7 @@
 			files = (
 				84B1D7AE28A4C1370004A6FF /* Constants.swift in Sources */,
 				84BD037228B725F700E37B33 /* StandingViewPresenter.swift in Sources */,
+				84EE510828E0873D00CD985E /* DateFormatter.swift in Sources */,
 				848E860A28C1D03C00D3804C /* MatchEventsViewPresenterProtocol.swift in Sources */,
 				84B1D79B28A4A9C40004A6FF /* LiveMatches.swift in Sources */,
 				84EE908F28B1EF1B005EE75C /* TablesViewPresenter.swift in Sources */,
