@@ -1,6 +1,6 @@
 # # **LiveScore**
 
-LiveScoreFootball is an app where you can see the results of any football matches. You can also see individual statistics of the team, league, etc.The application is perfect for football fans.
+LiveScore is an app where you can see the results of any football matches. You can also see individual statistics of the team, league, etc.The application is perfect for football fans.
 
 **Table of contents**
 
