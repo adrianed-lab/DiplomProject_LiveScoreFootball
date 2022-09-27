@@ -27,7 +27,7 @@ class ScoreViewController: UIViewController, ScoreViewProtocol {
     var presenter: ScoreViewPresenterProtocol!
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "All Matches"
+        title = "Score"
         activityIndicator.startAnimating()
         tableViewMatchesByDate.register(UINib(nibName: "ScoreTableViewCell", bundle: nil), forCellReuseIdentifier: ScoreTableViewCell.key)
         tableViewMatchesByDate.register(UINib(nibName: "DateTableViewCell", bundle: nil), forCellReuseIdentifier: DateTableViewCell.key)

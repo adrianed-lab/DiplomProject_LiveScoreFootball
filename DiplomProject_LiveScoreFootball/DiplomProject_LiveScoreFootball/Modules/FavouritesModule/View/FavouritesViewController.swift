@@ -14,7 +14,10 @@ protocol FavouritesViewProtocol: AnyObject {
 
 class FavouritesViewController: UIViewController, FavouritesViewProtocol {
     
+    @IBOutlet weak var viewForEmtyFavoritesModule: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var favouritesTableView: UITableView!
+    @IBOutlet weak var messageLabel: UILabel!
     var presenter: FavouritesViewPresenterProtocol!
     var showFavouritesTeamsButton: UIBarButtonItem {
         let button = UIBarButtonItem(image: UIImage(systemName: "list.star"), style: .done, target: self, action: #selector(openFavouritesTeams(_:)))
@@ -27,6 +30,7 @@ class FavouritesViewController: UIViewController, FavouritesViewProtocol {
         super.viewDidLoad()
         title = "Favorites"
         navigationItem.rightBarButtonItem = showFavouritesTeamsButton
+        messageLabel.text = "There are currently no featured teams events"
     }
     
     func getObjects() {
@@ -34,6 +38,6 @@ class FavouritesViewController: UIViewController, FavouritesViewProtocol {
     }
     
     @objc func openFavouritesTeams(_ sender: UIBarButtonItem) {
-        
+        // Будет реализовано открытие окна со списком избранных команд
     }
 }

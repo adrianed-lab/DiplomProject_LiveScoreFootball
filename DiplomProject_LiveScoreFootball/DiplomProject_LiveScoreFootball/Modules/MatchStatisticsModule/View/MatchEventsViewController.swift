@@ -11,12 +11,16 @@ import SnapKit
 protocol MatchEventsViewProtocol: AnyObject {
     func successGetEvents()
     func failureGetEvents(error: Error)
-    func openWarningMessage()
+    func openWarningMessage(infoLabel: String)
     func configureMatchEventView(logoFirstTeam: Int, logoSecondTeam: Int, nameFirstTeam: String, nameSecondTeam: String, goalsFirstTeam: Int, goalsSecondTeam: Int, dateMatch: String)
     func configureButton(flag: String, nameCountry: String, nameLeague: String)
+    func hideView()
 }
 
 class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
+    @IBOutlet weak var infoLabelForEmptyResponse: UILabel!
+    @IBOutlet weak var imageViewForEmptyResponse: UIImageView!
+    @IBOutlet weak var viewForEmptyResponse: UIView!
     @IBOutlet weak var secondTeamName: UILabel!
     @IBOutlet weak var firstTeamName: UILabel!
     @IBOutlet weak var matchResult: UILabel!
@@ -29,7 +33,7 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
     @IBOutlet weak var buttonAwayTeam: UIButton!
     var presenter: MatchEventsViewPresenterProtocol!
     var shareWindowButton: UIBarButtonItem {
-        let button = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .done, target: self, action: #selector(shareSkreen(_:)))
+        let button = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .done, target: self, action: #selector(shareScreen(_:)))
         button.tintColor = .black
         button.width = 30
         return button
@@ -48,6 +52,7 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
         matchEventsTableView.register(UINib(nibName: "StandingTableViewCell", bundle: nil), forCellReuseIdentifier: StandingTableViewCell.key)
         matchEventsCollectionView.register(UINib(nibName: "EventsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: EventsCollectionViewCell.key)
         navigationItem.rightBarButtonItem = shareWindowButton
+        viewForEmptyResponse.isHidden = true
         }
     
     
@@ -75,9 +80,12 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
     }
     
     // Открытие информационного окна
-    func openWarningMessage() {
+    func openWarningMessage(infoLabel: String) {
         let allertView = UIAlertController(title: "Oops!", message: "Data not found!", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "Ok", style: .cancel)
+        let okButton = UIAlertAction(title: "Ok", style: .cancel) { _ in
+            self.infoLabelForEmptyResponse.text = infoLabel
+            self.viewForEmptyResponse.isHidden = false
+        }
         allertView.addAction(okButton)
         self.present(allertView, animated: true)
     }
@@ -97,17 +105,22 @@ class MatchEventsViewController: UIViewController, MatchEventsViewProtocol {
     
     //MARK: кнопки для добавления в избранное
     @IBAction func addToFavourites(_ sender: Any) {
-        
+        // Будет реализовано добавление в избранное
     }
     
     @IBAction func addToFavouritesAwayTeam(_ sender: Any) {
-        
+        // Будет реализовано добавление в избранное
     }
     
     // Кнопа для отправки скриншота
-    @objc func shareSkreen(_ sender: UIBarButtonItem) {
+    @objc func shareScreen(_ sender: UIBarButtonItem) {
         let screenShot = self.view.takeScreenShot()
         let shareController = UIActivityViewController(activityItems: [screenShot], applicationActivities: nil)
         present(shareController, animated: true)
     }
+    
+    func hideView() {
+        viewForEmptyResponse.isHidden = true
+    }
+
 }

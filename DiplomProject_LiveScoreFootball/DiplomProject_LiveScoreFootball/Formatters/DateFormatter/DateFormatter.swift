@@ -7,6 +7,15 @@
 
 import Foundation
 
+struct DateStruct {
+    static var currentDate: String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormat.middleDate.formatPattern
+        return dateFormatter.string(from: date)
+    }
+}
+
 enum DateFormat {
     case fullDate
     case middleDate

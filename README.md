@@ -39,3 +39,4 @@ I'm ready to discuss any job offers and answer your questions.
 - LinkedIn: https://www.linkedin.com/in/roman-gushchik-4220ab251/
 - CV: https://drive.google.com/file/d/1vPLiAXMDdjAMSX09ssFDcV3BnibKOfMX/view?usp=sharing
 - YouTube (videos with demo): 
+

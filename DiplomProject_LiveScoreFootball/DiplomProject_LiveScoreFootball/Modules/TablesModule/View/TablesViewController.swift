@@ -24,7 +24,7 @@ class TablesViewController: UIViewController, TablesViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Countries"
+        title = "Tables"
         countriesTableView.register(UINib(nibName: "TablesViewCell", bundle: nil), forCellReuseIdentifier: TablesViewCell.key)
         navigationItem.rightBarButtonItem = showAuthorizationViewButton
 

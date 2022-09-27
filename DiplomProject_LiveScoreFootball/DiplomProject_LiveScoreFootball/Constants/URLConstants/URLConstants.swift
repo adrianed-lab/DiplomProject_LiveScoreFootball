@@ -9,17 +9,8 @@ import Foundation
 import UIKit
 import Alamofire
 
-struct Constants {
-    
-    static var valueAPIkey: String {
-        guard let key = Bundle.main.infoDictionary?["API_KEY"] as? String else {return String()}
-        return key
-    }
-    static let headers: HTTPHeaders = [
-        "X-RapidAPI-Key" : valueAPIkey,
-        "X-RapidAPI-Host" : "api-football-v1.p.rapidapi.com"
-    ]
-    
+struct URLConstants {
+
     static var baseURL = "https://api-football-v1.p.rapidapi.com/v3/"
     static var baseURLForCountryImage = "https://media.api-sports.io/flags/"
     static var baseURLForLeagueLogo = "https://media.api-sports.io/football/leagues/"
@@ -72,12 +63,7 @@ struct Constants {
     }
     
     static var collectionCellState = "State"
-    static var currentDate: String {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = DateFormat.middleDate.formatPattern
-        return dateFormatter.string(from: date)
-    }
+    
 }
 
 
