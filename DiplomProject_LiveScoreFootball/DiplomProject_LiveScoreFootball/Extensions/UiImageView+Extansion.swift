@@ -12,7 +12,7 @@ import SVGKit
 // Расширение, в котором реализованы методы получения фото-данных по URL
 extension UIImageView {
     func getLeagueLogo(leagueId: Int) {
-        guard let imageUrl = URL(string: "\(Constants.baseURLForLeagueLogo)\(leagueId)\(Constants.teamlogoPrefixURL)") else {return}
+        guard let imageUrl = URL(string: "\(URLConstants.baseURLForLeagueLogo)\(leagueId)\(URLConstants.teamlogoPrefixURL)") else {return}
         DispatchQueue.global(qos: .utility).async {
             if let imageData = try? Data(contentsOf: imageUrl) {
                 DispatchQueue.main.async {
@@ -22,7 +22,7 @@ extension UIImageView {
         }
     }
     func getLogoTeam(teamId: Int) {
-        guard let imageUrl = URL(string: "\(Constants.baseURLForTeamLogo)\(teamId)\(Constants.teamlogoPrefixURL)") else {return}
+        guard let imageUrl = URL(string: "\(URLConstants.baseURLForTeamLogo)\(teamId)\(URLConstants.teamlogoPrefixURL)") else {return}
         DispatchQueue.global(qos: .utility).async {
             if let imageData = try? Data(contentsOf: imageUrl) {
                 DispatchQueue.main.async {
@@ -33,7 +33,7 @@ extension UIImageView {
     }
     
     func getPlayerPhoto(playerId: Int) {
-        guard let imageUrl = URL(string: "\(Constants.baseURLForPlayerPhoto)\(playerId)\(Constants.teamlogoPrefixURL)") else {return}
+        guard let imageUrl = URL(string: "\(URLConstants.baseURLForPlayerPhoto)\(playerId)\(URLConstants.teamlogoPrefixURL)") else {return}
         DispatchQueue.global(qos: .utility).async {
             if let imageData = try? Data(contentsOf: imageUrl) {
                 DispatchQueue.main.async {
