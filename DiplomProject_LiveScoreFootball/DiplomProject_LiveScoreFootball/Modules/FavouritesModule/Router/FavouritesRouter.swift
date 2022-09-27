@@ -15,7 +15,7 @@ protocol BaseFavouritesRouterProtocol {
 
 
 protocol FavouritesRouterProtocol: BaseFavouritesRouterProtocol {
-    func showStatistics()
+    func showFavoritesTeams()
 }
 
 class FavouritesRouter: FavouritesRouterProtocol {
@@ -28,8 +28,8 @@ class FavouritesRouter: FavouritesRouterProtocol {
         self.viewController = viewController
     }
     
-    func showStatistics() {
-           //
-       }
+    func showFavoritesTeams() {
+        // Презентация вью контроллера с избранными командами
+    }
        
 }
