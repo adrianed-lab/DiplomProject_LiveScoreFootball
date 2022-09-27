@@ -53,6 +53,7 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
     private(set) var standingByLeagueId: LeagueTable?
     private(set) var fixture: DataMatchesByDate?
     private(set) var codeCountry: String?
+    private(set) var infoForEmptyView: String!
     private(set) var collectionItems: [CollectionModel] = [CollectionModel(name: "EVENTS"), CollectionModel(name: "STATISTICS"), CollectionModel(name: "LINE-UPS"), CollectionModel(name: "H2H"), CollectionModel(name: "TABLE")]
     
     required init(view: MatchEventsViewProtocol, apiProvider: RestAPIProviderProtocol, router: MatchEventsRouterProtocol, fixture: DataMatchesByDate, codeCountry: String) {
@@ -78,7 +79,10 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                 switch result {
                 case .success(let value):
                     if value.response.isEmpty {
-                        view.openWarningMessage()
+                        self.infoForEmptyView = "No events found for the current match"
+                        view.openWarningMessage(infoLabel: self.infoForEmptyView)
+                    } else {
+                        view.hideView()
                     }
                     self.matchEventsFirstTeam = value
                     view.successGetEvents()
@@ -93,7 +97,10 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                 switch result {
                 case .success(let value):
                     if value.response.isEmpty {
-                        view.openWarningMessage()
+                        self.infoForEmptyView = "No events found for the current match"
+                        view.openWarningMessage(infoLabel: self.infoForEmptyView)
+                    } else {
+                        view.hideView()
                     }
                     self.matchEventsSecondTeam = value
                     view.successGetEvents()
@@ -158,7 +165,10 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                 switch result {
                 case .success(let value):
                     if value.response.isEmpty {
-                        view.openWarningMessage()
+                        self.infoForEmptyView = "No events found for the current match"
+                        view.openWarningMessage(infoLabel: self.infoForEmptyView)
+                    } else {
+                        view.hideView()
                     }
                     self.matchEventsFirstTeam = value
                     view.successGetEvents()
@@ -173,7 +183,10 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                 switch result {
                 case .success(let value):
                     if value.response.isEmpty {
-                        view.openWarningMessage()
+                        self.infoForEmptyView = "No events found for the current match"
+                        view.openWarningMessage(infoLabel: self.infoForEmptyView)
+                    } else {
+                        view.hideView()
                     }
                     self.matchEventsSecondTeam = value
                     view.successGetEvents()
@@ -189,7 +202,10 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                         switch result {
                         case .success(let value):
                             if value.response.isEmpty {
-                                view.openWarningMessage()
+                                self.infoForEmptyView = "No statistics found for the current match"
+                                view.openWarningMessage(infoLabel: self.infoForEmptyView)
+                            } else {
+                                view.hideView()
                             }
                             self.matchStatistics = value
                             view.successGetEvents()
@@ -205,7 +221,10 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                         switch result {
                         case .success(let value):
                             if value.response.isEmpty {
-                                view.openWarningMessage()
+                                self.infoForEmptyView = "No match lineups found for the current match"
+                                view.openWarningMessage(infoLabel: self.infoForEmptyView)
+                            } else {
+                                view.hideView()
                             }
                             self.matchLineups = value
                             view.successGetEvents()
@@ -221,7 +240,10 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                         switch result {
                         case .success(let value):
                             if value.response.isEmpty {
-                                view.openWarningMessage()
+                                self.infoForEmptyView = "No match H2H found for the current match"
+                                view.openWarningMessage(infoLabel: self.infoForEmptyView)
+                            } else {
+                                view.hideView()
                             }
                             self.matchesH2H = value
                             view.successGetEvents()
@@ -238,7 +260,10 @@ class MatchEventsViewPresenter: MatchEventsViewPresenterProtocol {
                         switch result {
                         case .success(let value):
                             if value.response.isEmpty {
-                                view.openWarningMessage()
+                                self.infoForEmptyView = "No league table found for the current match"
+                                view.openWarningMessage(infoLabel: self.infoForEmptyView)
+                            } else {
+                                view.hideView()
                             }
                             self.standingByLeagueId = value
                             view.successGetEvents()

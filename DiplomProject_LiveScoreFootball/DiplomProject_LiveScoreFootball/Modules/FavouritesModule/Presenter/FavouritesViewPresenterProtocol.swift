@@ -23,6 +23,6 @@ class FavouritesViewPresenter: FavouritesViewPresenterProtocol {
     
     
     func getFavouritesTeam() {
-            //
-        }
+        // В будущем будет реализовано получение списка событих избранных команд
+    }
 }

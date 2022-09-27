@@ -31,7 +31,7 @@ class ScoreViewPresenter: ScoreViewPresenterProtocol {
         self.view = view
         self.apiProvider = apiProvider
         self.router = router
-        getFixturesByDate(date: Constants.currentDate)
+        getFixturesByDate(date: DateStruct.currentDate)
     }
     
     // Получение матчей по дате
