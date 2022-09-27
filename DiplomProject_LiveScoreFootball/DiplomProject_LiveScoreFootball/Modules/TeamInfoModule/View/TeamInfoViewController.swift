@@ -79,6 +79,6 @@ class TeamInfoViewController: UIViewController, TeamInfoViewProtocol {
     
     // Добавление в избранное
     @objc func addToFavourites(_ sender: UIBarButtonItem) {
-        
+        // Будет реализовано добавление команды в избранное
     }
 }
